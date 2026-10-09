@@ -10,7 +10,8 @@
         repository = import ./repository.nix;
         pkgsFor = system: import nixpkgs {
           inherit system;
-          config.allowUnfreePredicate = package: package.pname or package.name == "idopte-p11";
+          config.allowUnfreePredicate = package:
+            builtins.elem (package.pname or package.name) [ "idopte-p11" "idopte-scmanager" ];
         };
       };
     };

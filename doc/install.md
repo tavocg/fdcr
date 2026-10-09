@@ -20,6 +20,14 @@ sudo apt update
 sudo apt install firmador
 ```
 
+`firmador` recomienda `idopte-p11`, que APT instala automáticamente salvo que
+se desactiven las recomendaciones. Para instalar también el administrador
+gráfico de tarjetas de Idopte:
+
+```sh
+sudo apt install idopte-scmanager
+```
+
 ## Fedora (`dnf`)
 
 Crea el archivo `/etc/yum.repos.d/fdcr.repo`:
@@ -37,6 +45,12 @@ gpgkey=https://tavocg.github.io/fdcr/fdcr.asc
 
 ```sh
 sudo dnf install firmador
+```
+
+El middleware y su administrador gráfico se instalan por separado:
+
+```sh
+sudo dnf install idopte-p11 idopte-scmanager
 ```
 
 ## Arch Linux (`pacman`)
@@ -62,6 +76,12 @@ Server = https://tavocg.github.io/fdcr/arch/
 
 ```sh
 sudo pacman -Sy firmador
+```
+
+El middleware y su administrador gráfico se instalan por separado:
+
+```sh
+sudo pacman -S idopte-p11 idopte-scmanager
 ```
 
 ## Nix
