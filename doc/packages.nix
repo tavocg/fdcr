@@ -8,6 +8,7 @@ Middleware Idopte para tarjetas inteligentes y firma digital.
 |--------------|--------|---------|
 | Arch Linux   | arch   |         |
 | Fedora 44    | fedora |         |
+| Ubuntu 22.04 | jammy  |         |
 | Ubuntu 24.04 | noble  |         |
 | Debian 13    | noble  |         |
 | NixOS        | nix    |         |

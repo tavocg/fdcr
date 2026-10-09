@@ -10,9 +10,9 @@ let
     cp ${package}/share/firmador/firmador.jar "$out/usr/share/firmador/firmador.jar"
     cp ${package}/share/licenses/firmador/COPYING "$out/usr/share/licenses/firmador/COPYING"
     cp ${./launcher.sh} "$out/usr/bin/firmador"
-    cp ${package}/share/applications/cr.libre.firmador.desktop \
+    install -Dm644 ${package}/share/applications/cr.libre.firmador.desktop \
       "$out/usr/share/applications/cr.libre.firmador.desktop"
-    cp ${package}/share/icons/hicolor/scalable/apps/cr.libre.firmador.svg \
+    install -Dm644 ${package}/share/icons/hicolor/scalable/apps/cr.libre.firmador.svg \
       "$out/usr/share/icons/hicolor/scalable/apps/cr.libre.firmador.svg"
     ln -s firmador "$out/usr/bin/cr.libre.firmador.sh"
     substituteInPlace "$out/usr/bin/firmador" \
@@ -39,12 +39,17 @@ let
     dnf = [ "java-21-openjdk" ];
     pacman = [ "java-runtime>=21" ];
   };
+  recommendations = {
+    deb = [ "idopte-p11" ];
+    dnf = [ "idopte-p11" ];
+    pacman = [ "idopte-p11" ];
+  };
   packages = lib.mapAttrs (
     format: builder:
     builder (common // {
       architecture = package.passthru.packageArchitectures.${format};
       depends = dependencies.${format};
-      recommends = if format == "deb" then [ "idopte-p11" ] else [ ];
+      recommends = recommendations.${format};
     })
   ) builders;
 in

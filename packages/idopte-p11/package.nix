@@ -1,25 +1,31 @@
-{ lib, stdenv, dpkg, unzip }:
+{
+  lib,
+  stdenv,
+  dpkg,
+  unzip,
+  sourceZip ? ./artifacts/sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip,
+  sourceMd5 ? "7e5c2772f958a9fd855d41d7d5c26a52",
+  debPath ? "sfd_ClientesLinux_DEB64_Ubuntu24_26_08/Firma Digital/Idopte/Idopte_6.23.50.5_ubun24_amd64.deb",
+}:
 stdenv.mkDerivation {
   pname = "idopte-p11";
   version = "6.23.50.5";
 
-  src = ./artifacts/sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip;
+  src = sourceZip;
 
   nativeBuildInputs = [ dpkg unzip ];
   dontUnpack = true;
 
   buildPhase = ''
     runHook preBuild
-    printf '%s  %s\n' '7e5c2772f958a9fd855d41d7d5c26a52' "$src" \
+    printf '%s  %s\n' '${sourceMd5}' "$src" \
       | md5sum --check --status || {
         echo "Source ZIP MD5 mismatch" >&2
         exit 1
       }
 
     mkdir -p source
-    unzip -p "$src" \
-      'sfd_ClientesLinux_DEB64_Ubuntu24_26_08/Firma Digital/Idopte/Idopte_6.23.50.5_ubun24_amd64.deb' \
-      > source/idopte.deb
+    unzip -p "$src" '${debPath}' > source/idopte.deb
     dpkg-deb --extract source/idopte.deb extracted
     runHook postBuild
   '';
