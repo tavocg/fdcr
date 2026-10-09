@@ -1,12 +1,13 @@
-{ lib, stdenv, dpkg, unzip }:
+{ lib, stdenv, dpkg, unzip, patchelf }:
 stdenv.mkDerivation {
   pname = "idopte-scmanager";
   version = "6.23.50.5";
 
   src = ../idopte-p11/artifacts/sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip;
 
-  nativeBuildInputs = [ dpkg unzip ];
+  nativeBuildInputs = [ dpkg unzip patchelf ];
   dontUnpack = true;
+  dontFixup = true;
 
   buildPhase = ''
     runHook preBuild
@@ -23,6 +24,21 @@ stdenv.mkDerivation {
     dpkg-deb --extract source/idopte.deb extracted
     unzip -q extracted/usr/share/SCMiddleware/xsd.bin \
       -d extracted/usr/share/SCMiddleware/shema
+
+    # SCManager loads vendor libraries from the adjacent SCMiddleware directory.
+    # The packaged binary's absolute RUNPATH does not resolve them in the Nix
+    # package layout, so keep the adjacent lookup and add the system install path.
+    manager=extracted/usr/lib/SCMiddleware/SCManager
+    old_runpath="$(patchelf --print-rpath "$manager" 2>/dev/null || true)"
+    case ":$old_runpath:" in
+      *:\$ORIGIN:*) new_runpath="$old_runpath" ;;
+      *) new_runpath="''${old_runpath:+$old_runpath:}\$ORIGIN" ;;
+    esac
+    case ":$new_runpath:" in
+      *:/usr/lib/SCMiddleware:*) ;;
+      *) new_runpath="''${new_runpath:+$new_runpath:}/usr/lib/SCMiddleware" ;;
+    esac
+    patchelf --set-rpath "$new_runpath" "$manager"
     runHook postBuild
   '';
 
