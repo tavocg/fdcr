@@ -50,6 +50,6 @@ maven.buildMavenPackage {
       email = "firmador@libre.cr";
     } ];
     mainProgram = "firmador";
-    platforms = [ "x86_64-linux" "aarch64-linux" ];
+    platforms = import ./systems.nix;
   };
 }
