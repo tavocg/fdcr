@@ -17,8 +17,7 @@ Middleware Idopte para tarjetas inteligentes y firma digital.
 | Arch Linux   | arch     | ✅      |
 
 Notas:
-- [ ] En arch, considerar auto-iniciar pcscd justo después de instalar.
-- [ ] Reparar problema de conflicto con opensc al navegar en firefox.
+- [ ] En arch, considerar auto-iniciar pcscd justo después de instalar, actualmente no lo hace.
 
 ## `idopte-scmanager`
 
@@ -37,7 +36,7 @@ Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11
 | Arch Linux   | arch     | ✅      |
 
 Notas:
-- [ ] Reparar íconos en 24.04.
+- [ ] Reparar ícono en 24.04, aparecen en el lanzador pero no en la barra de tareas.
 
 ## `firmador`
 
@@ -56,7 +55,7 @@ Firma de documentos con Firmador Libre.
 | Arch Linux   | arch     | ✅      |
 
 Notas:
-- [ ] Reparar íconos en 24.04.
+- [ ] Reparar ícono en 24.04, aparecen en el lanzador pero no en la barra de tareas.
 
 ## `bccr-gaudi`
 
@@ -75,7 +74,8 @@ Agente GAUDI del Banco Central de Costa Rica.
 | Arch Linux   | arch     | ✅      |
 
 Notas:
-- [ ] Reparar íconos en 24.04.
+- [ ] En fedora, aparece el lanzador pero da error al iniciar.
+- [ ] Reparar ícono en 24.04, aparecen en el lanzador pero no en la barra de tareas.
 
 ## `bccr-certs`
 
