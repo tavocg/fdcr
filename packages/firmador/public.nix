@@ -1,4 +1,5 @@
 {
+  lib,
   metarepo,
   runCommand,
   package,
@@ -23,45 +24,41 @@ let
     inherit (package.meta) description homepage;
     license = package.meta.license.spdxId;
   };
-  deb = metarepo.mkApt (
-    common
-    // {
-      architecture = package.passthru.packageArchitectures.deb;
-      depends = [ "openjdk-21-jre | java21-runtime" ];
-    }
-  );
-  dnf = metarepo.mkDnf (
-    common
-    // {
-      architecture = package.passthru.packageArchitectures.dnf;
-      depends = [ "java-21-openjdk" ];
-    }
-  );
-  arch = metarepo.mkPacman (
-    common
-    // {
-      architecture = package.passthru.packageArchitectures.pacman;
-      depends = [ "java-runtime>=21" ];
-    }
-  );
+  builders = {
+    deb = metarepo.mkApt;
+    dnf = metarepo.mkDnf;
+    pacman = metarepo.mkPacman;
+  };
+  dependencies = {
+    deb = [ "openjdk-21-jre | java21-runtime" ];
+    dnf = [ "java-21-openjdk" ];
+    pacman = [ "java-runtime>=21" ];
+  };
+  packages = lib.mapAttrs (
+    format: builder:
+    builder (common // {
+      architecture = package.passthru.packageArchitectures.${format};
+      depends = dependencies.${format};
+    })
+  ) builders;
 in
 {
   channels = {
     jammy = {
       releases = [ "ubuntu2204" ];
-      package = deb;
+      package = packages.deb;
     };
     noble = {
       releases = [ "ubuntu2404" "debian13" ];
-      package = deb;
+      package = packages.deb;
     };
     fedora = {
       releases = [ "fedora44" ];
-      package = dnf;
+      package = packages.dnf;
     };
     arch = {
       releases = [ "arch" ];
-      package = arch;
+      package = packages.pacman;
     };
   };
 }
