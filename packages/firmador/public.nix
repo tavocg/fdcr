@@ -10,6 +10,11 @@ let
     cp ${package}/share/firmador/firmador.jar "$out/usr/share/firmador/firmador.jar"
     cp ${package}/share/licenses/firmador/COPYING "$out/usr/share/licenses/firmador/COPYING"
     cp ${./launcher.sh} "$out/usr/bin/firmador"
+    cp ${package}/share/applications/cr.libre.firmador.desktop \
+      "$out/usr/share/applications/cr.libre.firmador.desktop"
+    cp ${package}/share/icons/hicolor/scalable/apps/cr.libre.firmador.svg \
+      "$out/usr/share/icons/hicolor/scalable/apps/cr.libre.firmador.svg"
+    ln -s firmador "$out/usr/bin/cr.libre.firmador.sh"
     substituteInPlace "$out/usr/bin/firmador" \
       --replace-fail '@java@' '/usr/bin/java' \
       --replace-fail '@jar@' '/usr/share/firmador/firmador.jar'

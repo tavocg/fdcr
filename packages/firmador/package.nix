@@ -25,6 +25,10 @@ maven.buildMavenPackage {
     install -Dm644 target/firmador.jar "$out/share/firmador/firmador.jar"
     install -Dm644 COPYING "$out/share/licenses/firmador/COPYING"
     install -Dm755 ${./launcher.sh} "$out/bin/firmador"
+    install -Dm644 flatpak/cr.libre.firmador.desktop \
+      "$out/share/applications/cr.libre.firmador.desktop"
+    install -Dm644 sitioweb/firmador.svg \
+      "$out/share/icons/hicolor/scalable/apps/cr.libre.firmador.svg"
     substituteInPlace "$out/bin/firmador" \
       --replace-fail '@java@' '${jdk21}/bin/java' \
       --replace-fail '@jar@' "$out/share/firmador/firmador.jar"
