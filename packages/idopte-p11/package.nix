@@ -3,6 +3,7 @@
   stdenv,
   dpkg,
   unzip,
+  patchelf,
   sourceZip ? ./artifacts/sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip,
   sourceMd5 ? "7e5c2772f958a9fd855d41d7d5c26a52",
   debPath ? "sfd_ClientesLinux_DEB64_Ubuntu24_26_08/Firma Digital/Idopte/Idopte_6.23.50.5_ubun24_amd64.deb",
@@ -13,8 +14,9 @@ stdenv.mkDerivation {
 
   src = sourceZip;
 
-  nativeBuildInputs = [ dpkg unzip ];
+  nativeBuildInputs = [ dpkg unzip patchelf ];
   dontUnpack = true;
+  dontFixup = true;
 
   buildPhase = ''
     runHook preBuild
@@ -27,6 +29,17 @@ stdenv.mkDerivation {
     mkdir -p source
     unzip -p "$src" '${debPath}' > source/idopte.deb
     dpkg-deb --extract source/idopte.deb extracted
+
+    # The vendor libraries depend on neighboring files in SCMiddleware.
+    # Search beside the ELF (Nix) and in the installed system directory.
+    for elf in extracted/usr/lib/SCMiddleware/*; do
+      old_runpath="$(patchelf --print-rpath "$elf" 2>/dev/null)" || continue
+      case "$old_runpath" in
+        *\$ORIGIN*) new_runpath="$old_runpath:/usr/lib/SCMiddleware" ;;
+        *) new_runpath='$ORIGIN:/usr/lib/SCMiddleware' ;;
+      esac
+      patchelf --set-rpath "$new_runpath" "$elf"
+    done
     runHook postBuild
   '';
 

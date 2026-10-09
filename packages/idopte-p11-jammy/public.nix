@@ -17,6 +17,8 @@ let
       "libgcc1 (>= 1:4.6)"
       "libstdc++6 (>= 4.6)"
       "libpcsclite1 (>= 1.7)"
+      "libxml2 (>= 2.7.3)"
+      "zlib1g (>= 1:1.2.3.4)"
       "pcscd"
       "libccid"
       "init-system-helpers"
