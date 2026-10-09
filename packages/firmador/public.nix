@@ -39,6 +39,7 @@ let
     builder (common // {
       architecture = package.passthru.packageArchitectures.${format};
       depends = dependencies.${format};
+      recommends = if format == "deb" then [ "idopte-p11" ] else [ ];
     })
   ) builders;
 in
