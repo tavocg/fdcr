@@ -42,7 +42,7 @@ let
   packages = lib.mapAttrs (
     format: builder:
     builder (common // {
-      architecture = "x86_64";
+      architecture = if format == "deb" then "amd64" else "x86_64";
       depends = dependencies.${format};
     })
   ) builders;
