@@ -71,7 +71,6 @@ in
       "zlib1g (>= 1:1.2.3.4)"
       "pcscd"
       "libccid"
-      "init-system-helpers"
     ];
     jammy = apt jammyPackage [
       "libc6 (>= 2.15)"
@@ -82,7 +81,6 @@ in
       "zlib1g (>= 1:1.2.3.4)"
       "pcscd"
       "libccid"
-      "init-system-helpers"
     ];
   };
 }

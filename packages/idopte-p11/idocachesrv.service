@@ -1,0 +1,11 @@
+[Unit]
+Description=Idopte smart card cache daemon
+After=pcscd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/SCMiddleware/idocachesrv
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

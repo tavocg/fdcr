@@ -60,7 +60,6 @@ stdenv.mkDerivation {
     runHook preInstall
     install -Dm644 extracted/etc/idoss.lic "$out/etc/idoss.lic"
     install -Dm644 extracted/etc/idoss.conf "$out/etc/idoss.conf"
-    install -Dm755 extracted/etc/init.d/idocachesrv "$out/etc/init.d/idocachesrv"
     install -Dm755 extracted/usr/lib/SCMiddleware/idocachesrv \
       "$out/usr/lib/SCMiddleware/idocachesrv"
     install -Dm644 extracted/usr/lib/SCMiddleware/legacy.so \
@@ -97,6 +96,8 @@ stdenv.mkDerivation {
       "$out/usr/lib/SCMiddleware/libxmlsec1-openssl.so"
     install -Dm644 extracted/usr/lib/SCMiddleware/libdigidoc.so \
       "$out/usr/lib/SCMiddleware/libdigidoc.so"
+    install -Dm644 ${./idocachesrv.service} \
+      "$out/usr/lib/systemd/system/idocachesrv.service"
     install -Dm644 extracted/usr/share/SCMiddleware/appIcon.png \
       "$out/usr/share/SCMiddleware/appIcon.png"
     install -Dm644 extracted/usr/share/SCMiddleware/application.png \
