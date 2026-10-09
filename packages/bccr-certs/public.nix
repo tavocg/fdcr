@@ -1,17 +1,10 @@
 {
-  lib,
   metarepo,
   package,
   runCommand,
-  stdenvNoCC,
-  openssl,
-  callPackage,
 }:
 let
-  jammyPackage = import ./package.nix {
-    inherit lib stdenvNoCC openssl callPackage;
-    ubuntuRelease = "jammy";
-  };
+  jammyPackage = package.override { ubuntuRelease = "jammy"; };
   payload = packageData: anchorPath: runCommand "bccr-certs-payload" { } ''
     mkdir -p "$out/usr/share" "$out${anchorPath}"
     cp -a ${packageData}/share/bccr-certs "$out/usr/share/"

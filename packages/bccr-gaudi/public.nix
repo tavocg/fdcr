@@ -2,15 +2,9 @@
   lib,
   metarepo,
   package,
-  buildFHSEnv,
-  stdenvNoCC,
-  callPackage,
 }:
 let
-  jammyPackage = import ./package.nix {
-    inherit lib buildFHSEnv stdenvNoCC callPackage;
-    ubuntuRelease = "jammy";
-  };
+  jammyPackage = package.override { ubuntuRelease = "jammy"; };
   common = payload: {
     inherit payload;
     name = package.pname;

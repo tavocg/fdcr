@@ -1,10 +1,6 @@
 {
-  lib,
   metarepo,
   package,
-  stdenv,
-  callPackage,
-  patchelf,
   runCommand,
 }:
 let
@@ -17,10 +13,7 @@ let
     inherit (payload.meta) description homepage;
     license = "LicenseRef-Proprietary";
   };
-  jammyPackage = import ./package.nix {
-    inherit lib stdenv callPackage patchelf;
-    ubuntuRelease = "jammy";
-  };
+  jammyPackage = package.override { ubuntuRelease = "jammy"; };
   apt = payload: depends: metarepo.mkApt ((common payload) // {
     architecture = "amd64";
     inherit depends;

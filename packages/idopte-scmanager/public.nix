@@ -1,17 +1,9 @@
 {
-  lib,
   metarepo,
   package,
-  stdenv,
-  callPackage,
-  unzip,
-  patchelf,
 }:
 let
-  jammyPackage = import ./package.nix {
-    inherit lib stdenv callPackage unzip patchelf;
-    ubuntuRelease = "jammy";
-  };
+  jammyPackage = package.override { ubuntuRelease = "jammy"; };
   common = payload: {
     inherit payload;
     name = payload.pname;
