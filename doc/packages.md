@@ -9,7 +9,7 @@ Middleware Idopte para tarjetas inteligentes y firma digital.
 | Arch Linux   | arch   |         |
 | Fedora 44    | fedora |         |
 | Ubuntu 22.04 | jammy  |         |
-| Ubuntu 24.04 | noble  |         |
+| Ubuntu 24.04 | noble  | ✅      |
 | Debian 13    | noble  |         |
 | NixOS        | nix    |         |
 
@@ -21,7 +21,8 @@ Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11
 |--------------|--------|---------|
 | Arch Linux   | arch   |         |
 | Fedora 44    | fedora |         |
-| Ubuntu 24.04 | noble  |         |
+| Ubuntu 22.04 | jammy  |         |
+| Ubuntu 24.04 | noble  | ✅      |
 | Debian 13    | noble  |         |
 
 ## `firmador`
@@ -32,7 +33,7 @@ Firma de documentos con Firmador Libre.
 |--------------|--------|---------|
 | Arch Linux   | arch   |         |
 | Fedora 44    | fedora |         |
-| Ubuntu 24.04 | noble  |         |
+| Ubuntu 24.04 | noble  | ✅      |
 | Debian 13    | noble  |         |
 | Ubuntu 22.04 | jammy  |         |
 | NixOS        | nix    |         |
@@ -41,20 +42,20 @@ Firma de documentos con Firmador Libre.
 
 Agente GAUDI del Banco Central de Costa Rica.
 
-| Distro    | Canal  | Probado |
-|-----------|--------|---------|
+| Distro       | Canal  | Probado |
+|--------------|--------|---------|
 | Ubuntu 22.04 | jammy  |         |
-| Ubuntu 24.04 | noble  |         |
-| Fedora 44 | fedora |         |
-| Arch Linux | arch   |         |
+| Ubuntu 24.04 | noble  | ✅      |
+| Fedora 44    | fedora |         |
+| Arch Linux   | arch   |         |
 
 ## `bccr-certs`
 
 Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 
-| Distro    | Canal  | Probado |
-|-----------|--------|---------|
+| Distro       | Canal  | Probado |
+|--------------|--------|---------|
 | Ubuntu 22.04 | jammy  |         |
-| Ubuntu 24.04 | noble  |         |
-| Fedora 44 | fedora |         |
-| Arch Linux | arch   |         |
+| Ubuntu 24.04 | noble  | ✅      |
+| Fedora 44    | fedora |         |
+| Arch Linux   | arch   |         |

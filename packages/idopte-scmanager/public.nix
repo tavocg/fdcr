@@ -4,13 +4,17 @@
   package,
 }:
 let
-  common = {
-    payload = package;
-    name = package.pname;
-    version = package.version;
+  jammyPackage = import ./package.nix {
+    inherit lib stdenv dpkg unzip patchelf;
+    ubuntuRelease = "jammy";
+  };
+  common = payload: {
+    inherit payload;
+    name = payload.pname;
+    version = payload.version;
     release = "1";
     maintainer = "Idopte <support@idopte.fr>";
-    inherit (package.meta) description homepage;
+    inherit (payload.meta) description homepage;
     license = "LicenseRef-Proprietary";
   };
   builders = {
@@ -19,6 +23,27 @@ let
     pacman = metarepo.mkPacman;
   };
   dependencies = {
+    jammy = [
+      "idopte-p11 (= 6.23.50.5-1)"
+      "libc6 (>= 2.34)"
+      "libstdc++6 (>= 12)"
+      "libgcc-s1"
+      "libpcsclite1 (>= 1.7)"
+      "libglib2.0-0"
+      "libgtk-3-0"
+      "libwebkit2gtk-4.0-37"
+      "libjavascriptcoregtk-4.0-18"
+      "libnotify4"
+      "libappindicator3-1"
+      "lsof"
+      "procps"
+      "sysvinit-utils"
+      "python3"
+      "python3-requests"
+      "zenity"
+      "xdg-utils"
+      "xdg-user-dirs"
+    ];
     deb = [
       "idopte-p11 (= 6.23.50.5-1)"
       "libc6 (>= 2.38)"
@@ -80,18 +105,24 @@ let
       "xdg-user-dirs"
     ];
   };
-  packages = lib.mapAttrs (
+  apt = payload: depends: metarepo.mkApt ((common payload) // {
+    architecture = "amd64";
+    inherit depends;
+  });
+  nativeCommon = common package;
+  nativePackages = lib.mapAttrs (
     format: builder:
-    builder (common // {
-      architecture = if format == "deb" then "amd64" else "x86_64";
+    builder (nativeCommon // {
+      architecture = "x86_64";
       depends = dependencies.${format};
     })
-  ) builders;
+  ) (removeAttrs builders [ "deb" ]);
 in
 {
   channels = {
-    noble = packages.deb;
-    fedora = packages.dnf;
-    arch = packages.pacman;
+    jammy = apt jammyPackage dependencies.jammy;
+    noble = apt package dependencies.deb;
+    fedora = nativePackages.dnf;
+    arch = nativePackages.pacman;
   };
 }
