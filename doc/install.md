@@ -69,7 +69,7 @@ rm -f "$tmp"
 Agrega el repositorio a `/etc/pacman.conf`:
 
 ```ini
-[fdcr-arch]
+[fdcr]
 SigLevel = Required
 Server = https://tavocg.github.io/fdcr/arch/
 ```
