@@ -1,5 +1,5 @@
 {
-  callPackage,
+  metarepo,
   runCommand,
   package,
 }:
@@ -23,21 +23,21 @@ let
     inherit (package.meta) description homepage;
     license = package.meta.license.spdxId;
   };
-  deb = callPackage ../../lib/mk-deb.nix { } (
+  deb = metarepo.mkApt (
     common
     // {
       architecture = package.passthru.packageArchitectures.deb;
       depends = [ "openjdk-21-jre | java21-runtime" ];
     }
   );
-  dnf = callPackage ../../lib/mk-rpm.nix { } (
+  dnf = metarepo.mkDnf (
     common
     // {
       architecture = package.passthru.packageArchitectures.dnf;
       depends = [ "java-21-openjdk" ];
     }
   );
-  arch = callPackage ../../lib/mk-arch.nix { } (
+  arch = metarepo.mkPacman (
     common
     // {
       architecture = package.passthru.packageArchitectures.pacman;
@@ -48,24 +48,20 @@ in
 {
   channels = {
     jammy = {
-      format = "apt";
+      releases = [ "ubuntu2204" ];
       package = deb;
-      architecture = package.passthru.packageArchitectures.deb;
     };
     noble = {
-      format = "apt";
+      releases = [ "ubuntu2404" "debian13" ];
       package = deb;
-      architecture = package.passthru.packageArchitectures.deb;
     };
     fedora = {
-      format = "dnf";
+      releases = [ "fedora44" ];
       package = dnf;
-      architecture = package.passthru.packageArchitectures.dnf;
     };
     arch = {
-      format = "pacman";
+      releases = [ "arch" ];
       package = arch;
-      architecture = package.passthru.packageArchitectures.pacman;
     };
   };
 }
