@@ -1,8 +1,8 @@
 {
-  id = "metarepo";
-  origin = "Metarepo";
-  label = "Metarepo Linux packages";
-  url = "https://packages.example.org/metarepo";
+  id = "fdcr";
+  origin = "fdcr";
+  label = "Paquetes de firma digital para Costa Rica";
+  url = "https://tavocg.github.io/fdcr";
   aptArchitectures = [
     "amd64"
     "arm64"

@@ -1,54 +1,49 @@
-# Manual repository installation
+# Instalación manual del repositorio
 
-The generated `public/install.sh` configures the repository automatically for
-the supported distribution release and architecture. To configure it manually,
-replace `https://packages.example.org/metarepo` below with the `url` from
-`repository.nix`. These examples assume repository signing is enabled and the
-published key is `metarepo.asc`.
+El script generado `public/install.sh` configura el repositorio automáticamente
+para las versiones y arquitecturas compatibles de cada distribución. Los
+ejemplos siguientes configuran manualmente el repositorio alojado en
+`https://tavocg.github.io/fdcr`.
 
 ## Ubuntu (`apt`)
 
-Use a suite published by the repository, such as `noble` or `jammy`. Change
-`amd64` to `arm64` when that architecture is published.
+```sh
+BASE_URL=https://tavocg.github.io/fdcr
+sudo install -d -m 0755 /etc/apt/keyrings
+curl -fsSL "$BASE_URL/fdcr.asc" | sudo gpg --dearmor --yes -o /etc/apt/keyrings/fdcr.gpg
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/fdcr.gpg] $BASE_URL/noble noble main" \
+  | sudo tee /etc/apt/sources.list.d/fdcr.list >/dev/null
+sudo apt update
+```
 
 ```sh
-BASE_URL=https://packages.example.org/metarepo
-sudo install -d -m 0755 /etc/apt/keyrings
-curl -fsSL "$BASE_URL/metarepo.asc" | sudo gpg --dearmor --yes -o /etc/apt/keyrings/metarepo.gpg
-echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/metarepo.gpg] $BASE_URL/noble noble main" \
-  | sudo tee /etc/apt/sources.list.d/metarepo.list >/dev/null
-sudo apt update
-sudo apt install metarepo-hello-c metarepo-hello-python
+sudo apt install firmador
 ```
 
 ## Fedora (`dnf`)
 
-Create `/etc/yum.repos.d/metarepo.repo`:
+Crea el archivo `/etc/yum.repos.d/fdcr.repo`:
 
 ```ini
-[metarepo]
-name=Metarepo Linux packages
-baseurl=https://packages.example.org/metarepo/fedora/
+[fdcr]
+name=Paquetes de firma digital para Costa Rica
+baseurl=https://tavocg.github.io/fdcr/fedora/
 enabled=1
 gpgcheck=1
-# Disable metadata signature checks to avoid the related warning.
+# Deshabilita la verificación de firmas de los metadatos para evitar la advertencia correspondiente.
 repo_gpgcheck=0
-gpgkey=https://packages.example.org/metarepo/metarepo.asc
+gpgkey=https://tavocg.github.io/fdcr/fdcr.asc
 ```
 
-Then install the packages:
-
 ```sh
-sudo dnf install metarepo-hello-c metarepo-hello-python
+sudo dnf install firmador
 ```
 
 ## Arch Linux (`pacman`)
 
-Download and verify the key fingerprint before trusting it:
-
 ```sh
 tmp="$(mktemp)"
-curl -fsSLo "$tmp" https://packages.example.org/metarepo/metarepo.asc
+curl -fsSLo "$tmp" https://tavocg.github.io/fdcr/fdcr.asc
 gpg --show-keys --with-fingerprint "$tmp"
 fingerprint="$(gpg --show-keys --with-colons "$tmp" |
   sed -n '/^fpr:/ { s/:$//; s/.*://; p; q; }')"
@@ -57,33 +52,23 @@ sudo pacman-key --lsign-key "$fingerprint"
 rm -f "$tmp"
 ```
 
-Add the repository to `/etc/pacman.conf`:
+Agrega el repositorio a `/etc/pacman.conf`:
 
 ```ini
-[metarepo-arch]
+[fdcr-arch]
 SigLevel = Required
-Server = https://packages.example.org/metarepo/arch/
+Server = https://tavocg.github.io/fdcr/arch/
 ```
 
-Then install the packages:
-
 ```sh
-sudo pacman -Sy metarepo-hello-c metarepo-hello-python
+sudo pacman -Sy firmador
 ```
 
 ## Nix
 
-The flake also exposes the example packages directly. Install either package
-into your Nix profile:
+El flake también ofrece Firmador directamente.
 
 ```sh
-nix profile install github:AlturaLabsCR/metarepo#hello
-nix profile install github:AlturaLabsCR/metarepo#hello-python
-```
-
-Or run a package without adding it to the profile:
-
-```sh
-nix run github:AlturaLabsCR/metarepo#hello
-nix run github:AlturaLabsCR/metarepo#hello-python
+nix profile install github:tavocg/fdcr#firmador
+nix run github:tavocg/fdcr#firmador
 ```
