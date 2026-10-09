@@ -36,3 +36,25 @@ Firma de documentos con Firmador Libre.
 | Debian 13    | noble  |         |
 | Ubuntu 22.04 | jammy  |         |
 | NixOS        | nix    |         |
+
+## `bccr-gaudi`
+
+Agente GAUDI del Banco Central de Costa Rica.
+
+| Distro    | Canal  | Probado |
+|-----------|--------|---------|
+| Ubuntu 22.04 | jammy  |         |
+| Ubuntu 24.04 | noble  |         |
+| Fedora 44 | fedora |         |
+| Arch Linux | arch   |         |
+
+## `bccr-certs`
+
+Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
+
+| Distro    | Canal  | Probado |
+|-----------|--------|---------|
+| Ubuntu 22.04 | jammy  |         |
+| Ubuntu 24.04 | noble  |         |
+| Fedora 44 | fedora |         |
+| Arch Linux | arch   |         |

@@ -11,7 +11,12 @@
         pkgsFor = system: import nixpkgs {
           inherit system;
           config.allowUnfreePredicate = package:
-            builtins.elem (package.pname or package.name) [ "idopte-p11" "idopte-scmanager" ];
+            builtins.elem (package.pname or package.name) [
+              "bccr-certs"
+              "bccr-gaudi"
+              "idopte-p11"
+              "idopte-scmanager"
+            ];
         };
       };
     };
