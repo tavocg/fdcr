@@ -1,6 +1,10 @@
-# fdcr
+# fdcr (ALPHA)
 
-Repositorio de dependencias para Firma Digital en Costa Rica
+Repositorio de dependencias para Firma Digital en Costa Rica.
+
+> [!WARNING]
+> No usar en producción todavía, actualmente este repositorio se encuentra en
+> fase de pruebas.
 
 ## Instalación
 
