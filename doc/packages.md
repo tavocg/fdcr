@@ -7,13 +7,13 @@ Middleware Idopte para tarjetas inteligentes y firma digital.
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
 | Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 | jammy    | ✅      |
-| Debian 13    | noble    | ✅      |
-| Fedora 45    | fedora   |         |
-| Fedora 44    | fedora   |         |
-| Fedora 43    | fedora   |         |
-| Arch Linux   | arch     | ✅      |
+| Ubuntu 24.04 |          |         |
+| Ubuntu 22.04 |          |         |
+| Debian 13    |          |         |
+| Fedora 45    |          |         |
+| Fedora 44    |          |         |
+| Fedora 43    |          |         |
+| Arch Linux   |          |         |
 
 Notas:
 
@@ -27,13 +27,13 @@ Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
 | Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 | jammy    | ✅      |
-| Debian 13    | noble    | ✅      |
+| Ubuntu 24.04 | noble    |         |
+| Ubuntu 22.04 | jammy    |         |
+| Debian 13    | noble    |         |
 | Fedora 45    | fedora   |         |
 | Fedora 44    | fedora   |         |
 | Fedora 43    | fedora   |         |
-| Arch Linux   | arch     | ✅      |
+| Arch Linux   | arch     |         |
 
 Notas:
 
@@ -47,13 +47,13 @@ Firma de documentos con Firmador Libre.
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
 | Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 | jammy    | ✅      |
-| Debian 13    | noble    | ✅      |
+| Ubuntu 24.04 | noble    |         |
+| Ubuntu 22.04 | jammy    |         |
+| Debian 13    | noble    |         |
 | Fedora 45    | fedora   |         |
 | Fedora 44    | fedora   |         |
 | Fedora 43    | fedora   |         |
-| Arch Linux   | arch     | ✅      |
+| Arch Linux   | arch     |         |
 
 Notas:
 
@@ -70,13 +70,13 @@ Agente GAUDI del Banco Central de Costa Rica.
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
 | Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 | jammy    | ✅      |
-| Debian 13    | noble    | ✅      |
+| Ubuntu 24.04 | noble    |         |
+| Ubuntu 22.04 | jammy    |         |
+| Debian 13    | noble    |         |
 | Fedora 45    | fedora   |         |
 | Fedora 44    | fedora   |         |
 | Fedora 43    | fedora   |         |
-| Arch Linux   | arch     | ✅      |
+| Arch Linux   | arch     |         |
 
 Notas:
 
@@ -173,10 +173,10 @@ Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
 | Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 | jammy    | ✅      |
-| Debian 13    | noble    | ✅      |
-| Fedora 45    | fedora   |         |
-| Fedora 44    | fedora   |         |
-| Fedora 43    | fedora   |         |
-| Arch Linux   | arch     | ✅      |
+| Ubuntu 24.04 |          |         |
+| Ubuntu 22.04 |          |         |
+| Debian 13    |          |         |
+| Fedora 45    |          |         |
+| Fedora 44    |          |         |
+| Fedora 43    |          |         |
+| Arch Linux   |          |         |
