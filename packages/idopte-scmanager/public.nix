@@ -91,6 +91,7 @@ let
       "glibc"
       "gcc-libs"
       "pcsclite"
+      "libxml2-legacy"
       "glib2"
       "gtk3"
       "webkit2gtk-4.1"

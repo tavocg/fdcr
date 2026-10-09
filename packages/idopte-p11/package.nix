@@ -98,6 +98,9 @@ stdenv.mkDerivation {
       "$out/usr/lib/SCMiddleware/libdigidoc.so"
     install -Dm644 ${./idocachesrv.service} \
       "$out/usr/lib/systemd/system/idocachesrv.service"
+    install -d "$out/usr/lib/systemd/system/sockets.target.wants"
+    ln -s /usr/lib/systemd/system/pcscd.socket \
+      "$out/usr/lib/systemd/system/sockets.target.wants/pcscd.socket"
     install -Dm644 extracted/usr/share/SCMiddleware/appIcon.png \
       "$out/usr/share/SCMiddleware/appIcon.png"
     install -Dm644 extracted/usr/share/SCMiddleware/application.png \
