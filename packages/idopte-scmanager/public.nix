@@ -2,6 +2,10 @@
   lib,
   metarepo,
   package,
+  stdenv,
+  dpkg,
+  unzip,
+  patchelf,
 }:
 let
   jammyPackage = import ./package.nix {
