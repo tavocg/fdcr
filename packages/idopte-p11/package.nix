@@ -4,15 +4,28 @@
   dpkg,
   unzip,
   patchelf,
-  sourceZip ? ./artifacts/sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip,
-  sourceMd5 ? "7e5c2772f958a9fd855d41d7d5c26a52",
-  debPath ? "sfd_ClientesLinux_DEB64_Ubuntu24_26_08/Firma Digital/Idopte/Idopte_6.23.50.5_ubun24_amd64.deb",
+  ubuntuRelease ? "noble",
 }:
+let
+  sources = {
+    noble = {
+      zip = ./artifacts/sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip;
+      md5 = "7e5c2772f958a9fd855d41d7d5c26a52";
+      debPath = "sfd_ClientesLinux_DEB64_Ubuntu24_26_08/Firma Digital/Idopte/Idopte_6.23.50.5_ubun24_amd64.deb";
+    };
+    jammy = {
+      zip = ./artifacts/sfd_ClientesLinux_DEB64_Ubuntu22_rev26_08.zip;
+      md5 = "348e3c06ef5218542266bdf417c13e36";
+      debPath = "sfd_ClientesLinux_DEB64_Ubuntu22_26_08/Firma Digital/Idopte/Idopte_6.23.50.5_ubun22_amd64.deb";
+    };
+  };
+  source = sources.${ubuntuRelease};
+in
 stdenv.mkDerivation {
   pname = "idopte-p11";
   version = "6.23.50.5";
 
-  src = sourceZip;
+  src = source.zip;
 
   nativeBuildInputs = [ dpkg unzip patchelf ];
   dontUnpack = true;
@@ -20,14 +33,14 @@ stdenv.mkDerivation {
 
   buildPhase = ''
     runHook preBuild
-    printf '%s  %s\n' '${sourceMd5}' "$src" \
+    printf '%s  %s\n' '${source.md5}' "$src" \
       | md5sum --check --status || {
         echo "Source ZIP MD5 mismatch" >&2
         exit 1
       }
 
     mkdir -p source
-    unzip -p "$src" '${debPath}' > source/idopte.deb
+    unzip -p "$src" '${source.debPath}' > source/idopte.deb
     dpkg-deb --extract source/idopte.deb extracted
 
     # The vendor libraries depend on neighboring files in SCMiddleware.

@@ -2,34 +2,35 @@
   lib,
   metarepo,
   package,
+  stdenv,
+  dpkg,
+  unzip,
+  patchelf,
 }:
 let
-  common = {
-    payload = package;
-    name = package.pname;
-    version = package.version;
+  common = payload: {
+    inherit payload;
+    name = payload.pname;
+    version = payload.version;
     release = "1";
     maintainer = "Idopte <support@idopte.fr>";
-    inherit (package.meta) description homepage;
+    inherit (payload.meta) description homepage;
     license = "LicenseRef-Proprietary";
   };
+  jammyPackage = import ./package.nix {
+    inherit lib stdenv dpkg unzip patchelf;
+    ubuntuRelease = "jammy";
+  };
+  apt = payload: depends: metarepo.mkApt ((common payload) // {
+    architecture = "amd64";
+    inherit depends;
+  });
+  nativeCommon = common package;
   builders = {
-    deb = metarepo.mkApt;
     dnf = metarepo.mkDnf;
     pacman = metarepo.mkPacman;
   };
-  dependencies = {
-    deb = [
-      "libc6 (>= 2.38)"
-      "libstdc++6 (>= 13.2)"
-      "libgcc-s1"
-      "libpcsclite1 (>= 1.7)"
-      "libxml2 (>= 2.7.3)"
-      "zlib1g (>= 1:1.2.3.4)"
-      "pcscd"
-      "libccid"
-      "init-system-helpers"
-    ];
+  nativeDependencies = {
     dnf = [
       "glibc"
       "libgcc"
@@ -49,18 +50,39 @@ let
       "ccid"
     ];
   };
-  packages = lib.mapAttrs (
+  nativePackages = lib.mapAttrs (
     format: builder:
-    builder (common // {
-      architecture = if format == "deb" then "amd64" else "x86_64";
-      depends = dependencies.${format};
+    builder (nativeCommon // {
+      architecture = "x86_64";
+      depends = nativeDependencies.${format};
     })
   ) builders;
 in
 {
   channels = {
-    noble = packages.deb;
-    fedora = packages.dnf;
-    arch = packages.pacman;
+    fedora = nativePackages.dnf;
+    arch = nativePackages.pacman;
+    noble = apt package [
+      "libc6 (>= 2.38)"
+      "libstdc++6 (>= 13.2)"
+      "libgcc-s1"
+      "libpcsclite1 (>= 1.7)"
+      "libxml2 (>= 2.7.3)"
+      "zlib1g (>= 1:1.2.3.4)"
+      "pcscd"
+      "libccid"
+      "init-system-helpers"
+    ];
+    jammy = apt jammyPackage [
+      "libc6 (>= 2.15)"
+      "libgcc1 (>= 1:4.6)"
+      "libstdc++6 (>= 4.6)"
+      "libpcsclite1 (>= 1.7)"
+      "libxml2 (>= 2.7.3)"
+      "zlib1g (>= 1:1.2.3.4)"
+      "pcscd"
+      "libccid"
+      "init-system-helpers"
+    ];
   };
 }
