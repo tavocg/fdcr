@@ -36,7 +36,7 @@ let
   };
   dependencies = {
     deb = [ "openjdk-21-jre | java21-runtime" ];
-    dnf = [ "java-21-openjdk | java" ];
+    dnf = [ "java" ];
     pacman = [ "java-runtime>=21" ];
   };
   recommendations = {
