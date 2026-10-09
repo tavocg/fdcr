@@ -3,13 +3,13 @@
   metarepo,
   package,
   stdenv,
-  dpkg,
+  callPackage,
   unzip,
   patchelf,
 }:
 let
   jammyPackage = import ./package.nix {
-    inherit lib stdenv dpkg unzip patchelf;
+    inherit lib stdenv callPackage unzip patchelf;
     ubuntuRelease = "jammy";
   };
   common = payload: {

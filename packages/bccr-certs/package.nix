@@ -2,33 +2,23 @@
   lib,
   stdenvNoCC,
   openssl,
-  unzip,
-  sourceZip ? ../idopte-p11/artifacts/sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip,
-  sourceMd5 ? "7e5c2772f958a9fd855d41d7d5c26a52",
-  certPath ? "sfd_ClientesLinux_DEB64_Ubuntu24_26_08/Firma Digital/Certificados",
+  callPackage,
+  ubuntuRelease ? "noble",
 }:
+let
+  source = (callPackage ../../artifacts/artifacts.nix { }).${ubuntuRelease};
+in
 stdenvNoCC.mkDerivation {
   pname = "bccr-certs";
   version = "2026.08";
-  src = sourceZip;
-  nativeBuildInputs = [ openssl unzip ];
+  src = source.certificates;
+  nativeBuildInputs = [ openssl ];
   dontUnpack = true;
   dontFixup = true;
 
-  buildPhase = ''
-    runHook preBuild
-    printf '%s  %s\n' '${sourceMd5}' "$src" | md5sum --check --status || {
-      echo "Source ZIP MD5 mismatch" >&2
-      exit 1
-    }
-    mkdir -p source/originals
-    unzip -j -q "$src" '${certPath}/*' -d source/originals
-    runHook postBuild
-  '';
-
   installPhase = ''
     runHook preInstall
-    originals=source/originals
+    originals="$src"
     pem="$out/share/bccr-certs/pem"
     mkdir -p "$out/share/bccr-certs" "$pem/certificates" "$pem/roots"
     : > "$pem/bundle.pem"

@@ -3,8 +3,7 @@
   metarepo,
   package,
   stdenv,
-  dpkg,
-  unzip,
+  callPackage,
   patchelf,
   runCommand,
 }:
@@ -19,7 +18,7 @@ let
     license = "LicenseRef-Proprietary";
   };
   jammyPackage = import ./package.nix {
-    inherit lib stdenv dpkg unzip patchelf;
+    inherit lib stdenv callPackage patchelf;
     ubuntuRelease = "jammy";
   };
   apt = payload: depends: metarepo.mkApt ((common payload) // {

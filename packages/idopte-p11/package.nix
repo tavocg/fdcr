@@ -1,47 +1,27 @@
 {
   lib,
   stdenv,
-  dpkg,
-  unzip,
+  callPackage,
   patchelf,
   ubuntuRelease ? "noble",
 }:
 let
-  sources = {
-    noble = {
-      zip = ./artifacts/sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip;
-      md5 = "7e5c2772f958a9fd855d41d7d5c26a52";
-      debPath = "sfd_ClientesLinux_DEB64_Ubuntu24_26_08/Firma Digital/Idopte/Idopte_6.23.50.5_ubun24_amd64.deb";
-    };
-    jammy = {
-      zip = ./artifacts/sfd_ClientesLinux_DEB64_Ubuntu22_rev26_08.zip;
-      md5 = "348e3c06ef5218542266bdf417c13e36";
-      debPath = "sfd_ClientesLinux_DEB64_Ubuntu22_26_08/Firma Digital/Idopte/Idopte_6.23.50.5_ubun22_amd64.deb";
-    };
-  };
-  source = sources.${ubuntuRelease};
+  source = (callPackage ../../artifacts/artifacts.nix { }).${ubuntuRelease};
 in
 stdenv.mkDerivation {
   pname = "idopte-p11";
   version = "6.23.50.5";
 
-  src = source.zip;
+  src = source.idopte;
 
-  nativeBuildInputs = [ dpkg unzip patchelf ];
+  nativeBuildInputs = [ patchelf ];
   dontUnpack = true;
   dontFixup = true;
 
   buildPhase = ''
     runHook preBuild
-    printf '%s  %s\n' '${source.md5}' "$src" \
-      | md5sum --check --status || {
-        echo "Source ZIP MD5 mismatch" >&2
-        exit 1
-      }
-
-    mkdir -p source
-    unzip -p "$src" '${source.debPath}' > source/idopte.deb
-    dpkg-deb --extract source/idopte.deb extracted
+    cp -a "$src" extracted
+    chmod -R u+w extracted
 
     # The vendor libraries depend on neighboring files in SCMiddleware.
     # Search beside the ELF (Nix) and in the installed system directory.

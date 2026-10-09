@@ -5,14 +5,12 @@
   runCommand,
   stdenvNoCC,
   openssl,
-  unzip,
+  callPackage,
 }:
 let
   jammyPackage = import ./package.nix {
-    inherit lib stdenvNoCC openssl unzip;
-    sourceZip = ../idopte-p11/artifacts/sfd_ClientesLinux_DEB64_Ubuntu22_rev26_08.zip;
-    sourceMd5 = "348e3c06ef5218542266bdf417c13e36";
-    certPath = "sfd_ClientesLinux_DEB64_Ubuntu22_26_08/Firma Digital/Certificados";
+    inherit lib stdenvNoCC openssl callPackage;
+    ubuntuRelease = "jammy";
   };
   payload = packageData: anchorPath: runCommand "bccr-certs-payload" { } ''
     mkdir -p "$out/usr/share" "$out${anchorPath}"

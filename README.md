@@ -12,6 +12,11 @@ Para instalación manual, véase [doc/install.md](doc/install.md).
 
 ## Desarrollo
 
+Los ZIP del proveedor están en `artifacts/`. `artifacts/artifacts.nix` declara sus
+hashes y rutas internas, verifica cada ZIP y expone los árboles extraídos de
+Idopte, GAUDI y los certificados por variante. Los paquetes consumen esas fuentes
+mediante `callPackage` y aplican sus propios parches y reglas de instalación.
+
 ```sh
 nix flake show
 nix run .#build-public

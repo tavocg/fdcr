@@ -4,12 +4,11 @@
   package,
   buildFHSEnv,
   stdenvNoCC,
-  dpkg,
-  unzip,
+  callPackage,
 }:
 let
   jammyPackage = import ./package.nix {
-    inherit lib buildFHSEnv stdenvNoCC dpkg unzip;
+    inherit lib buildFHSEnv stdenvNoCC callPackage;
     ubuntuRelease = "jammy";
   };
   common = payload: {
