@@ -60,6 +60,8 @@ Notas:
 - [x] Agregado `StartupWMClass=Firmador` al lanzador para asociar las ventanas de Java con su ícono.
 - [ ] Confirmar el ícono en la barra de tareas de Ubuntu 24.04 con el paquete actualizado.
 - [ ] Los desarrolladores indican que el firmador 1.9.8 soporta java desde la versión 8, pero que el 2.0.0 requiere java 25 en adelante.
+      Lo ideal sería empaquetar 1.9.8 en firmador y ofrecer 2.0.0 con firmador-git (y poner de version 2.0.0+gitYYYYMMDD.abbrevhash-1) y requerir java 25 en adelante para ese.
+      Cuando eventualmente tengamos 2.0.0, entonces ya ponemos esa versión dentro de firmador y no de firmador-git
 
 ## `bccr-gaudi`
 
