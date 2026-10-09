@@ -42,65 +42,48 @@ stdenv.mkDerivation {
     install -Dm644 extracted/etc/idoss.conf "$out/etc/idoss.conf"
     install -Dm755 extracted/usr/lib/SCMiddleware/idocachesrv \
       "$out/usr/lib/SCMiddleware/idocachesrv"
-    install -Dm644 extracted/usr/lib/SCMiddleware/legacy.so \
-      "$out/usr/lib/SCMiddleware/legacy.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libidop11.so \
-      "$out/usr/lib/SCMiddleware/libidop11.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libidolog.so \
-      "$out/usr/lib/SCMiddleware/libidolog.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libt_ias.so \
-      "$out/usr/lib/SCMiddleware/libt_ias.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libpodofo.so \
-      "$out/usr/lib/SCMiddleware/libpodofo.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libcrypto.so.3 \
-      "$out/usr/lib/SCMiddleware/libcrypto.so.3"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libssl.so.3 \
-      "$out/usr/lib/SCMiddleware/libssl.so.3"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libbz2.so \
-      "$out/usr/lib/SCMiddleware/libbz2.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libbrotlicommon.so \
-      "$out/usr/lib/SCMiddleware/libbrotlicommon.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libbrotlidec.so \
-      "$out/usr/lib/SCMiddleware/libbrotlidec.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libexpat.so \
-      "$out/usr/lib/SCMiddleware/libexpat.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libfontconfig.so \
-      "$out/usr/lib/SCMiddleware/libfontconfig.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libfreetype.so \
-      "$out/usr/lib/SCMiddleware/libfreetype.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libpng16.so \
-      "$out/usr/lib/SCMiddleware/libpng16.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libxmlsec1.so \
-      "$out/usr/lib/SCMiddleware/libxmlsec1.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libxmlsec1-openssl.so \
-      "$out/usr/lib/SCMiddleware/libxmlsec1-openssl.so"
-    install -Dm644 extracted/usr/lib/SCMiddleware/libdigidoc.so \
-      "$out/usr/lib/SCMiddleware/libdigidoc.so"
+    for library in \
+      legacy.so \
+      libidop11.so \
+      libidolog.so \
+      libt_ias.so \
+      libpodofo.so \
+      libcrypto.so.3 \
+      libssl.so.3 \
+      libbz2.so \
+      libbrotlicommon.so \
+      libbrotlidec.so \
+      libexpat.so \
+      libfontconfig.so \
+      libfreetype.so \
+      libpng16.so \
+      libxmlsec1.so \
+      libxmlsec1-openssl.so \
+      libdigidoc.so \
+    ; do
+      install -Dm644 "extracted/usr/lib/SCMiddleware/$library" \
+        "$out/usr/lib/SCMiddleware/$library"
+    done
     install -Dm644 ${./idocachesrv.service} \
       "$out/usr/lib/systemd/system/idocachesrv.service"
     install -d "$out/usr/lib/systemd/system/sockets.target.wants"
     ln -s /usr/lib/systemd/system/pcscd.socket \
       "$out/usr/lib/systemd/system/sockets.target.wants/pcscd.socket"
-    install -Dm644 extracted/usr/share/SCMiddleware/appIcon.png \
-      "$out/usr/share/SCMiddleware/appIcon.png"
-    install -Dm644 extracted/usr/share/SCMiddleware/application.png \
-      "$out/usr/share/SCMiddleware/application.png"
-    install -Dm644 extracted/usr/share/SCMiddleware/branding.bin \
-      "$out/usr/share/SCMiddleware/branding.bin"
-    install -Dm644 extracted/usr/share/SCMiddleware/checkBanner.png \
-      "$out/usr/share/SCMiddleware/checkBanner.png"
-    install -Dm644 extracted/usr/share/SCMiddleware/checkIcon.png \
-      "$out/usr/share/SCMiddleware/checkIcon.png"
-    install -Dm644 extracted/usr/share/SCMiddleware/crossBanner.png \
-      "$out/usr/share/SCMiddleware/crossBanner.png"
-    install -Dm644 extracted/usr/share/SCMiddleware/crossIcon.png \
-      "$out/usr/share/SCMiddleware/crossIcon.png"
-    install -Dm644 extracted/usr/share/SCMiddleware/loadIcon.png \
-      "$out/usr/share/SCMiddleware/loadIcon.png"
-    install -Dm644 extracted/usr/share/SCMiddleware/tokmgr.bin \
-      "$out/usr/share/SCMiddleware/tokmgr.bin"
-    install -Dm644 extracted/usr/share/SCMiddleware/xsd.bin \
-      "$out/usr/share/SCMiddleware/xsd.bin"
+    for resource in \
+      appIcon.png \
+      application.png \
+      branding.bin \
+      checkBanner.png \
+      checkIcon.png \
+      crossBanner.png \
+      crossIcon.png \
+      loadIcon.png \
+      tokmgr.bin \
+      xsd.bin \
+    ; do
+      install -Dm644 "extracted/usr/share/SCMiddleware/$resource" \
+        "$out/usr/share/SCMiddleware/$resource"
+    done
     runHook postInstall
   '';
 
