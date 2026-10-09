@@ -44,21 +44,9 @@ let
 in
 {
   channels = {
-    jammy = {
-      releases = [ "ubuntu2204" ];
-      package = packages.deb;
-    };
-    noble = {
-      releases = [ "ubuntu2404" "debian13" ];
-      package = packages.deb;
-    };
-    fedora = {
-      releases = [ "fedora44" ];
-      package = packages.dnf;
-    };
-    arch = {
-      releases = [ "arch" ];
-      package = packages.pacman;
-    };
+    jammy = packages.deb;
+    noble = packages.deb;
+    fedora = packages.dnf;
+    arch = packages.pacman;
   };
 }
