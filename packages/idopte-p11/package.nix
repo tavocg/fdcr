@@ -26,6 +26,13 @@ stdenv.mkDerivation {
 
   installPhase = ''
     runHook preInstall
+    install -Dm644 extracted/etc/idoss.lic "$out/etc/idoss.lic"
+    install -Dm644 extracted/etc/idoss.conf "$out/etc/idoss.conf"
+    install -Dm755 extracted/etc/init.d/idocachesrv "$out/etc/init.d/idocachesrv"
+    install -Dm755 extracted/usr/lib/SCMiddleware/idocachesrv \
+      "$out/usr/lib/SCMiddleware/idocachesrv"
+    install -Dm644 extracted/usr/lib/SCMiddleware/legacy.so \
+      "$out/usr/lib/SCMiddleware/legacy.so"
     install -Dm644 extracted/usr/lib/SCMiddleware/libidop11.so \
       "$out/usr/lib/SCMiddleware/libidop11.so"
     install -Dm644 extracted/usr/lib/SCMiddleware/libidolog.so \
@@ -58,7 +65,26 @@ stdenv.mkDerivation {
       "$out/usr/lib/SCMiddleware/libxmlsec1-openssl.so"
     install -Dm644 extracted/usr/lib/SCMiddleware/libdigidoc.so \
       "$out/usr/lib/SCMiddleware/libdigidoc.so"
-    install -Dm644 extracted/etc/idoss.conf "$out/etc/idoss.conf"
+    install -Dm644 extracted/usr/share/SCMiddleware/appIcon.png \
+      "$out/usr/share/SCMiddleware/appIcon.png"
+    install -Dm644 extracted/usr/share/SCMiddleware/application.png \
+      "$out/usr/share/SCMiddleware/application.png"
+    install -Dm644 extracted/usr/share/SCMiddleware/branding.bin \
+      "$out/usr/share/SCMiddleware/branding.bin"
+    install -Dm644 extracted/usr/share/SCMiddleware/checkBanner.png \
+      "$out/usr/share/SCMiddleware/checkBanner.png"
+    install -Dm644 extracted/usr/share/SCMiddleware/checkIcon.png \
+      "$out/usr/share/SCMiddleware/checkIcon.png"
+    install -Dm644 extracted/usr/share/SCMiddleware/crossBanner.png \
+      "$out/usr/share/SCMiddleware/crossBanner.png"
+    install -Dm644 extracted/usr/share/SCMiddleware/crossIcon.png \
+      "$out/usr/share/SCMiddleware/crossIcon.png"
+    install -Dm644 extracted/usr/share/SCMiddleware/loadIcon.png \
+      "$out/usr/share/SCMiddleware/loadIcon.png"
+    install -Dm644 extracted/usr/share/SCMiddleware/tokmgr.bin \
+      "$out/usr/share/SCMiddleware/tokmgr.bin"
+    install -Dm644 extracted/usr/share/SCMiddleware/xsd.bin \
+      "$out/usr/share/SCMiddleware/xsd.bin"
     runHook postInstall
   '';
 
