@@ -76,6 +76,7 @@ stdenv.mkDerivation {
     Comment=Administrador de tarjetas Idopte
     Exec=/usr/lib/SCMiddleware/SCManager
     Icon=/usr/share/SCMiddleware/application.png
+    StartupWMClass=SCManager
     Terminal=false
     Categories=Utility;Security;
     EOF

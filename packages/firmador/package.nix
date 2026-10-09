@@ -6,7 +6,7 @@
 }:
 maven.buildMavenPackage {
   pname = "firmador";
-  version = "2.0.0-1";
+  version = "2.0.0";
 
   src = fetchFromCodeberg {
     owner = "firmador";
@@ -29,6 +29,9 @@ maven.buildMavenPackage {
       "$out/share/applications/cr.libre.firmador.desktop"
     install -Dm644 sitioweb/firmador.svg \
       "$out/share/icons/hicolor/scalable/apps/cr.libre.firmador.svg"
+    # AWT uses the main class as WM_CLASS when launched with java -jar.
+    sed -i '/^StartupWMClass=/d' "$out/share/applications/cr.libre.firmador.desktop"
+    printf '\nStartupWMClass=Firmador\n' >> "$out/share/applications/cr.libre.firmador.desktop"
     substituteInPlace "$out/bin/firmador" \
       --replace-fail '@java@' '${jdk21}/bin/java' \
       --replace-fail '@jar@' "$out/share/firmador/firmador.jar"
@@ -36,10 +39,9 @@ maven.buildMavenPackage {
   '';
 
   passthru = {
-    upstreamVersion = "2.0.0";
     release = "1";
     packageArchitectures = {
-      deb = "all";
+      apt = "all";
       dnf = "noarch";
       pacman = "any";
     };

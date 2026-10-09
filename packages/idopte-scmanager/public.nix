@@ -21,11 +21,6 @@ let
     inherit (payload.meta) description homepage;
     license = "LicenseRef-Proprietary";
   };
-  builders = {
-    deb = metarepo.mkApt;
-    dnf = metarepo.mkDnf;
-    pacman = metarepo.mkPacman;
-  };
   dependencies = {
     jammy = [
       "idopte-p11 (= 6.23.50.5-1)"
@@ -47,7 +42,7 @@ let
       "xdg-utils"
       "xdg-user-dirs"
     ];
-    deb = [
+    noble = [
       "idopte-p11 (= 6.23.50.5-1)"
       "libc6 (>= 2.38)"
       "libstdc++6 (>= 13.2)"
@@ -111,19 +106,20 @@ let
     inherit depends;
   });
   nativeCommon = common package;
-  nativePackages = lib.mapAttrs (
-    format: builder:
-    builder (nativeCommon // {
-      architecture = "x86_64";
-      depends = dependencies.${format};
-    })
-  ) (removeAttrs builders [ "deb" ]);
+  dnf = metarepo.mkDnf (nativeCommon // {
+    architecture = "x86_64";
+    depends = dependencies.dnf;
+  });
+  pacman = metarepo.mkPacman (nativeCommon // {
+    architecture = "x86_64";
+    depends = dependencies.pacman;
+  });
 in
 {
   channels = {
     jammy = apt jammyPackage dependencies.jammy;
-    noble = apt package dependencies.deb;
-    fedora = nativePackages.dnf;
-    arch = nativePackages.pacman;
+    noble = apt package dependencies.noble;
+    fedora = dnf;
+    arch = pacman;
   };
 }

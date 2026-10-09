@@ -1,5 +1,4 @@
 {
-  lib,
   metarepo,
   runCommand,
   package,
@@ -23,41 +22,32 @@ let
   common = {
     inherit payload;
     name = package.pname;
-    version = package.upstreamVersion;
+    version = package.version;
     inherit (package) release;
     maintainer = "Firmador authors <firmador@libre.cr>";
     inherit (package.meta) description homepage;
     license = package.meta.license.spdxId;
+    recommends = [ "idopte-p11" ];
   };
-  builders = {
-    deb = metarepo.mkApt;
-    dnf = metarepo.mkDnf;
-    pacman = metarepo.mkPacman;
-  };
-  dependencies = {
-    deb = [ "openjdk-21-jre | java21-runtime" ];
-    dnf = [ "java" ];
-    pacman = [ "java-runtime>=21" ];
-  };
-  recommendations = {
-    deb = [ "idopte-p11" ];
-    dnf = [ "idopte-p11" ];
-    pacman = [ "idopte-p11" ];
-  };
-  packages = lib.mapAttrs (
-    format: builder:
-    builder (common // {
-      architecture = package.passthru.packageArchitectures.${format};
-      depends = dependencies.${format};
-      recommends = recommendations.${format};
-    })
-  ) builders;
+  architectures = package.passthru.packageArchitectures;
+  apt = metarepo.mkApt (common // {
+    architecture = architectures.apt;
+    depends = [ "openjdk-21-jre | java21-runtime" ];
+  });
+  dnf = metarepo.mkDnf (common // {
+    architecture = architectures.dnf;
+    depends = [ "java" ];
+  });
+  pacman = metarepo.mkPacman (common // {
+    architecture = architectures.pacman;
+    depends = [ "java-runtime>=21" ];
+  });
 in
 {
   channels = {
-    jammy = packages.deb;
-    noble = packages.deb;
-    fedora = packages.dnf;
-    arch = packages.pacman;
+    jammy = apt;
+    noble = apt;
+    fedora = dnf;
+    arch = pacman;
   };
 }

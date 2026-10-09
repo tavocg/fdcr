@@ -6,6 +6,7 @@
   dpkg,
   unzip,
   patchelf,
+  runCommand,
 }:
 let
   common = payload: {
@@ -26,10 +27,23 @@ let
     inherit depends;
   });
   nativeCommon = common package;
-  builders = {
-    dnf = metarepo.mkDnf;
-    pacman = metarepo.mkPacman;
-  };
+  archPayload = runCommand "idopte-p11-arch-payload" { } ''
+    cp -a ${package}/. "$out/"
+    chmod -R u+w "$out"
+    mkdir -p "$out/usr/share/libalpm/hooks"
+    cat > "$out/usr/share/libalpm/hooks/90-idopte-pcscd.hook" <<'EOF'
+    [Trigger]
+    Operation = Install
+    Operation = Upgrade
+    Type = Package
+    Target = idopte-p11
+
+    [Action]
+    Description = Starting PC/SC socket for Idopte...
+    When = PostTransaction
+    Exec = /usr/bin/sh -c 'if [ -d /run/systemd/system ]; then /usr/bin/systemctl daemon-reload && /usr/bin/systemctl start pcscd.socket; fi'
+    EOF
+  '';
   nativeDependencies = {
     dnf = [
       "glibc"
@@ -50,18 +64,20 @@ let
       "ccid"
     ];
   };
-  nativePackages = lib.mapAttrs (
-    format: builder:
-    builder (nativeCommon // {
-      architecture = "x86_64";
-      depends = nativeDependencies.${format};
-    })
-  ) builders;
+  dnf = metarepo.mkDnf (nativeCommon // {
+    architecture = "x86_64";
+    depends = nativeDependencies.dnf;
+  });
+  pacman = metarepo.mkPacman (nativeCommon // {
+    payload = archPayload;
+    architecture = "x86_64";
+    depends = nativeDependencies.pacman;
+  });
 in
 {
   channels = {
-    fedora = nativePackages.dnf;
-    arch = nativePackages.pacman;
+    fedora = dnf;
+    arch = pacman;
     noble = apt package [
       "libc6 (>= 2.38)"
       "libstdc++6 (>= 13.2)"

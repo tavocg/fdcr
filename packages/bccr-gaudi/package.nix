@@ -43,9 +43,15 @@ let
       mkdir -p "$out/opt" "$out/usr/share/applications" \
         "$out/usr/share/licenses/bccr-gaudi" "$out/etc/xdg/autostart"
       cp -a extracted/opt "$out/"
-      install -m644 extracted/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop \
+      # The optional .desktop Version describes the desktop entry format,
+      # not GAUDI's version. Omit the vendor's application version here.
+      sed -i '/^Version=/d' "$out/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop"
+      # JavaFX names its windows after the Application class in the vendor cfg.
+      printf '\nStartupWMClass=bccr.principal.InicializadorDeActualizacion\n' \
+        >> "$out/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop"
+      install -m644 "$out/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop" \
         "$out/usr/share/applications/Agente-GAUDI.desktop"
-      install -m644 extracted/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop \
+      install -m644 "$out/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop" \
         "$out/etc/xdg/autostart/Agente-GAUDI.desktop"
       install -m644 extracted/opt/Agente-GAUDI/lib/app/licence.md \
         "$out/usr/share/licenses/bccr-gaudi/licence.md"
@@ -99,7 +105,6 @@ buildFHSEnv {
     cp ${payload}/opt/Agente-GAUDI/lib/Agente-GAUDI.png "$out/share/icons/hicolor/128x128/apps/agente-gaudi.png"
     substituteInPlace "$out/share/applications/Agente-GAUDI.desktop" \
       "$out/etc/xdg/autostart/Agente-GAUDI.desktop" \
-      --replace-fail 'Version=29.0' 'Version=1.0' \
       --replace-fail /opt/Agente-GAUDI/bin/Agente-GAUDI "$out/bin/agente-gaudi" \
       --replace-fail /opt/Agente-GAUDI/lib/Agente-GAUDI.png agente-gaudi
   '';

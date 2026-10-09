@@ -50,7 +50,7 @@ in
       architecture = "amd64";
       depends = dependencies.noble;
     });
-    fedora = metarepo.mkDnf ((common package.passthru.payload) // {
+    fedora = (metarepo.mkDnf ((common package.passthru.payload) // {
       architecture = "x86_64";
       depends = [
         "alsa-lib" "atk" "cairo" "fontconfig" "freetype" "glibc"
@@ -59,6 +59,15 @@ in
         "libgcc" "libstdc++" "pango" "pcsc-lite" "pcsc-lite-libs"
         "xdg-utils" "zlib"
       ];
+    })).overrideAttrs (old: {
+      # jpackage discovers app and runtime through `rpm -ql`. The pinned
+      # metarepo builder lists only files and symlinks, so register these two
+      # directories explicitly. %dir avoids recursively packaging them twice.
+      buildCommand = assert lib.hasInfix "rpmbuild -bb " old.buildCommand;
+        lib.replaceStrings [ "rpmbuild -bb " ] [ ''
+          printf '%s\n' '%dir /opt/Agente-GAUDI/lib/app' \
+            '%dir /opt/Agente-GAUDI/lib/runtime' >> "$TMPDIR/rpmbuild/filelist"
+          rpmbuild -bb '' ] old.buildCommand;
     });
     arch = metarepo.mkPacman ((common package.passthru.payload) // {
       architecture = "x86_64";
