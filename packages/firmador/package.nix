@@ -2,15 +2,13 @@
   lib,
   fetchFromCodeberg,
   maven,
-  jdk21,
-  buildJdk ? jdk21,
+  callPackage,
   pname ? "firmador",
-  version ? "1.9.8",
-  rev ? "09953947a51d87c2a146189ec76b6c27ab6518a1",
-  hash ? "sha256-xdiVPjihRADPK4nG+WQHWsDzVYLCeN6ouQ6SDtjf1qQ=",
-  mvnHash ? "sha256-opTjZA50tInbAmfGT1rJI3cC0+dUdYrIh8ZWReVeKWA=",
-  compilerParameters ? "-Dmaven.compiler.source=8 -Dmaven.compiler.target=8",
+  snapshot ? builtins.head (callPackage ./snapshots.nix { }),
 }:
+let
+  inherit (snapshot) version rev hash mvnHash buildJdk compilerParameters;
+in
 maven.buildMavenPackage {
   inherit pname version;
 
@@ -22,7 +20,7 @@ maven.buildMavenPackage {
 
   mvnJdk = buildJdk;
   inherit mvnHash;
-  # The stable base classes must remain runnable on Java 8.
+  # Each snapshot declares its Java compilation target explicitly.
   mvnParameters = "-Dmaven.test.skip=true ${compilerParameters}";
   doCheck = false;
 
@@ -55,7 +53,8 @@ maven.buildMavenPackage {
   '';
 
   passthru = {
-    release = "1";
+    release = snapshot.release;
+    inherit (snapshot) javaDependencies;
     packageArchitectures = {
       apt = "all";
       dnf = "noarch";
