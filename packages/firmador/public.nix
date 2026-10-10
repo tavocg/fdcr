@@ -2,22 +2,28 @@
   metarepo,
   runCommand,
   package,
+  javaDependencies ? {
+    apt = [ "default-jre | java8-runtime" ];
+    dnf = [ "java >= 1:1.8.0" ];
+    pacman = [ "java-runtime>=8" ];
+  },
 }:
 let
-  payload = runCommand "firmador-payload" { } ''
-    mkdir -p "$out/usr/bin" "$out/usr/share/firmador" "$out/usr/share/licenses/firmador"
-    cp ${package}/share/firmador/firmador.jar "$out/usr/share/firmador/firmador.jar"
-    cp ${package}/share/licenses/firmador/COPYING "$out/usr/share/licenses/firmador/COPYING"
-    cp ${./launcher.sh} "$out/usr/bin/firmador"
-    install -Dm644 ${package}/share/applications/cr.libre.firmador.desktop \
-      "$out/usr/share/applications/cr.libre.firmador.desktop"
-    install -Dm644 ${package}/share/icons/hicolor/scalable/apps/cr.libre.firmador.svg \
-      "$out/usr/share/icons/hicolor/scalable/apps/cr.libre.firmador.svg"
-    ln -s firmador "$out/usr/bin/cr.libre.firmador.sh"
-    substituteInPlace "$out/usr/bin/firmador" \
+  name = package.pname;
+  payload = runCommand "${name}-payload" { } ''
+    mkdir -p "$out/usr/bin" "$out/usr/share/${name}" "$out/usr/share/licenses/${name}"
+    cp ${package}/share/${name}/firmador.jar "$out/usr/share/${name}/firmador.jar"
+    cp ${package}/share/licenses/${name}/COPYING "$out/usr/share/licenses/${name}/COPYING"
+    cp ${./launcher.sh} "$out/usr/bin/${name}"
+    install -Dm644 ${package}/share/applications/cr.libre.${name}.desktop \
+      "$out/usr/share/applications/cr.libre.${name}.desktop"
+    install -Dm644 ${package}/share/icons/hicolor/1024x1024/apps/cr.libre.${name}.png \
+      "$out/usr/share/icons/hicolor/1024x1024/apps/cr.libre.${name}.png"
+    ln -s ${name} "$out/usr/bin/cr.libre.${name}.sh"
+    substituteInPlace "$out/usr/bin/${name}" \
       --replace-fail '@java@' '/usr/bin/java' \
-      --replace-fail '@jar@' '/usr/share/firmador/firmador.jar'
-    chmod 755 "$out/usr/bin/firmador"
+      --replace-fail '@jar@' '/usr/share/${name}/firmador.jar'
+    chmod 755 "$out/usr/bin/${name}"
   '';
   common = {
     inherit payload;
@@ -32,15 +38,15 @@ let
   architectures = package.passthru.packageArchitectures;
   apt = metarepo.mkApt (common // {
     architecture = architectures.apt;
-    depends = [ "openjdk-21-jre | java21-runtime" ];
+    depends = javaDependencies.apt;
   });
   dnf = metarepo.mkDnf (common // {
     architecture = architectures.dnf;
-    depends = [ "java" ];
+    depends = javaDependencies.dnf;
   });
   pacman = metarepo.mkPacman (common // {
     architecture = architectures.pacman;
-    depends = [ "java-runtime>=21" ];
+    depends = javaDependencies.pacman;
   });
 in
 {

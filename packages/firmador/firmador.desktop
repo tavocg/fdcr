@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Firmador Libre
+Exec=firmador %U
+Icon=cr.libre.firmador
+Comment=Firma digital de documentos
+Terminal=false
+Categories=Office;
+MimeType=x-scheme-handler/firmador;application/pdf;
