@@ -19,6 +19,8 @@ Notas:
 
 - [x] Arch: agregado un hook de pacman que inicia `pcscd.socket` después de instalar o actualizar `idopte-p11`, cuando systemd está activo. El socket activa `pcscd` cuando una aplicación lo necesita.
 - [ ] Confirmar la activación inmediata en una instalación nueva de Arch, sin reiniciar.
+- [x] Canal Noble: agregada la alternativa `libxml2-idopte-compat` para sistemas donde APT ya no ofrece `libxml2`. Conserva la ABI `libxml2.so.2` requerida por Idopte; `libxml2-16` no la sustituye. Se mantiene la preferencia por `libxml2` del sistema cuando está disponible.
+- [ ] Confirmar instalación y firma en Ubuntu 26.04 con el paquete de compatibilidad.
 
 ## `idopte-scmanager`
 
@@ -144,25 +146,6 @@ Notas:
       Processing triggers for man-db (2.13.1-1build1)…
       Processing triggers for desktop-file-utils (0.28-1build1)…
       ```
-- [ ] Error al instalar `idopte-p11` (este se debería solucionar con `libxml2-idopte-compat` o el nombre adecuado,
-      ver las [Notas técnicas](https://fran.cr/como-instalar-firma-digital-certificada-de-costa-rica-en-gnu-linux/)).
-      ```
-      sudo apt install idopte-p11
-      Solving dependencies... Error!  
-      Some packages could not be installed. This may mean that you have
-      requested an impossible situation or if you are using the unstable
-      distribution that some required packages have not yet been created
-      or been moved out of Incoming.
-      The following information may help to resolve the situation:
-
-      Unsatisfied dependencies:
-      idopte-p11 : Depends: libxml2 (>= 2.7.3) but it is not installable
-      Error: Unable to satisfy dependencies. Reached two conflicting assignments:
-        1. idopte-p11:amd64=6.23.50.5-1 is selected for install
-        2. idopte-p11:amd64 Depends libxml2 (>= 2.7.3)
-            but none of the choices are installable:
-            [no choices]
-      ```
 
 Referencias: [descubrimiento de directorios de jpackage](https://github.com/openjdk/jdk17u/blob/master/src/jdk.jpackage/linux/native/libapplauncher/Package.cpp) y [especificación de lanzadores de escritorio](https://specifications.freedesktop.org/desktop-entry/latest-single/).
 
@@ -180,3 +163,20 @@ Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 | Fedora 44    |          |         |
 | Fedora 43    |          |         |
 | Arch Linux   |          |         |
+
+## `libxml2-idopte-compat`
+
+Biblioteca de compatibilidad publicada en el canal `noble` para Idopte.
+Reempaqueta la biblioteca amd64 de [Debian 13](https://packages.debian.org/trixie/libxml2),
+versión `2.12.7+dfsg+really2.9.14-2.1+deb13u3`, con descarga y SHA-256 fijados en
+`artifacts/artifacts.nix`. Incluye los avisos de licencia y changelogs de Debian.
+
+Instala `libxml2.so.2` y su destino en `/usr/lib/SCMiddleware`, donde las bibliotecas
+Idopte ya buscan sus dependencias. No reemplaza la biblioteca del sistema ni declara
+`Provides: libxml2`, porque su ubicación privada no satisface a otros programas.
+Depende de glibc, liblzma y zlib; no necesita ICU. Solo se publica en `noble`:
+la compilación requiere glibc 2.38 y no es adecuada para Jammy.
+
+Al actualizarla, renovar la URL y el hash del artifact, la versión/revisión del paquete
+y sus dependencias según el DEB de Debian. La copia privada requiere seguimiento de
+las actualizaciones de seguridad de Debian.

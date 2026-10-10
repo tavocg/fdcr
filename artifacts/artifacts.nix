@@ -1,5 +1,5 @@
 # Vendor bundles shared by Idopte, GAUDI and the national certificates.
-{ lib, runCommand, unzip, dpkg }:
+{ lib, runCommand, unzip, dpkg, fetchurl }:
 let
   nobleRoot = "sfd_ClientesLinux_DEB64_Ubuntu24_26_08/Firma Digital";
   jammyRoot = "sfd_ClientesLinux_DEB64_Ubuntu22_26_08/Firma Digital";
@@ -51,4 +51,10 @@ lib.mapAttrs (release: source:
     gaudi = extractDeb release bundle "gaudi";
     certificates = "${bundle}/certificates";
   }
-) sources
+) sources // {
+  # Debian's ABI-2 build does not depend on a distribution-specific ICU version.
+  libxml2Compat = fetchurl {
+    url = "https://deb.debian.org/debian/pool/main/libx/libxml2/libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u3_amd64.deb";
+    hash = "sha256-4Ma2PORgKgNqUm9g/l5sFYZxBogFjZj8EAG5sxR7fv0=";
+  };
+}

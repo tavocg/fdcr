@@ -75,7 +75,7 @@ in
       "libstdc++6 (>= 13.2)"
       "libgcc-s1"
       "libpcsclite1 (>= 1.7)"
-      "libxml2 (>= 2.7.3)"
+      "libxml2 (>= 2.7.3) | libxml2-idopte-compat"
       "zlib1g (>= 1:1.2.3.4)"
       "pcscd"
       "libccid"
