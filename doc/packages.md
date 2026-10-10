@@ -6,14 +6,36 @@ Middleware Idopte para tarjetas inteligentes y firma digital.
 
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
-| Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 |          |         |
+| Ubuntu 26.04 | noble    | ✅      |
+| Ubuntu 24.04 | noble    | ✅      |
 | Ubuntu 22.04 |          |         |
-| Debian 13    |          |         |
+| Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
-| Fedora 44    |          |         |
+| Fedora 44    | fedora   |         |
 | Fedora 43    |          |         |
-| Arch Linux   |          |         |
+| Arch Linux   | arch     | ✅      |
+
+- [ ] Arreglar en archlinux:
+      ```
+      warning: directory permissions differ on /etc/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/lib/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/lib/systemd/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/lib/systemd/system/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/lib/systemd/system/sockets.target.wants/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/libalpm/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/libalpm/hooks/
+      filesystem: 755  package: 555
+      ```
 
 ## `idopte-scmanager`
 
@@ -21,14 +43,36 @@ Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11
 
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
-| Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 | noble    |         |
-| Ubuntu 22.04 | jammy    |         |
-| Debian 13    | noble    |         |
-| Fedora 45    | fedora   |         |
+| Ubuntu 26.04 | noble    | ✅      |
+| Ubuntu 24.04 | noble    | ✅      |
+| Ubuntu 22.04 |          |         |
+| Debian 13    | noble    | ✅      |
+| Fedora 45    |          |         |
 | Fedora 44    | fedora   |         |
-| Fedora 43    | fedora   |         |
-| Arch Linux   | arch     |         |
+| Fedora 43    |          |         |
+| Arch Linux   | arch     | ✅      |
+
+- [ ] Arreglar en archlinux:
+      ```
+      warning: directory permissions differ on /etc/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /etc/xdg/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /etc/xdg/autostart/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/lib/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/applications/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/mime/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/mime/packages/
+      filesystem: 755  package: 555
+      ```
 
 ## `firmador`
 
@@ -36,16 +80,47 @@ Firma de documentos con Firmador Libre.
 
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
-| Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 | noble    |         |
-| Ubuntu 22.04 | jammy    |         |
-| Debian 13    | noble    |         |
-| Fedora 45    | fedora   |         |
+| Ubuntu 26.04 | noble    | ✅      |
+| Ubuntu 24.04 | noble    | ✅      |
+| Ubuntu 22.04 |          |         |
+| Debian 13    | noble    | ✅      |
+| Fedora 45    |          |         |
 | Fedora 44    | fedora   |         |
-| Fedora 43    | fedora   |         |
-| Arch Linux   | arch     |         |
+| Fedora 43    |          |         |
+| Arch Linux   | arch     | ✅      |
+
+- [ ] Quitar `idopte-p11` como opcional para el firmador.
+- [ ] Arreglar en archlinux:
+      ```
+      warning: directory permissions differ on /usr/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/bin/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/applications/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/icons/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/icons/hicolor/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/licenses/
+      filesystem: 755  package: 555
+      ```
+- [ ] Arreglar en ubuntu 24.04 y 26.04: no tiene ícono.
 
 ### Variante `firmador-git`
+
+| Distro       | Canal    | Probado |
+|--------------|----------|---------|
+| Ubuntu 26.04 | noble    | ✅      |
+| Ubuntu 24.04 | noble    | ✅      |
+| Ubuntu 22.04 |          |         |
+| Debian 13    | noble    | ✅      |
+| Fedora 45    |          |         |
+| Fedora 44    | fedora   |         |
+| Fedora 43    |          |         |
+| Arch Linux   | arch     | ✅      |
 
 Comparte la receta de construcción y publicación con `firmador`, pero instala
 su comando `firmador-git`, JAR y lanzador en rutas separadas para permitir la
@@ -55,22 +130,40 @@ Cada snapshot fija un commit y su hash de descarga en
 `packages/firmador-git/snapshots.nix`. Al actualizarlo, ajustar también la fecha
 (del commit), su hash abreviado y, si cambian las dependencias, `mvnHash`.
 
+- [ ] Arreglar en archlinux:
+      ```
+      warning: directory permissions differ on /usr/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/bin/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/applications/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/icons/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/icons/hicolor/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/licenses/
+      filesystem: 755  package: 555
+      ```
+- [ ] Arreglar en ubuntu 24.04 y 26.04: no tiene ícono.
+
 ## `bccr-gaudi`
 
 Agente GAUDI del Banco Central de Costa Rica.
 
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
-| Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 | noble    |         |
-| Ubuntu 22.04 | jammy    |         |
-| Debian 13    | noble    |         |
-| Fedora 45    | fedora   |         |
+| Ubuntu 26.04 | noble    | ✅      |
+| Ubuntu 24.04 | noble    | ✅      |
+| Ubuntu 22.04 |          |         |
+| Debian 13    | noble    | ✅      |
+| Fedora 45    |          |         |
 | Fedora 44    | fedora   |         |
-| Fedora 43    | fedora   |         |
-| Arch Linux   | arch     |         |
+| Fedora 43    |          |         |
+| Arch Linux   | arch     | ✅      |
 
-Notas:
 - [ ] Confirmar el arranque en Fedora y el ícono en la barra de tareas de Ubuntu 24.04 con el paquete actualizado.
 - [ ] Error al instalar gaudi en ubuntu:
       ```
@@ -133,6 +226,29 @@ Notas:
       Processing triggers for man-db (2.13.1-1build1)…
       Processing triggers for desktop-file-utils (0.28-1build1)…
       ```
+- [ ] Arreglar en archlinux:
+      ```
+      warning: directory permissions differ on /etc/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /etc/xdg/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /etc/xdg/autostart/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /opt/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/applications/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/licenses/
+      ```
+- [ ] Arreglar en ubuntu 24.04 y 26.04: el Agente GAUDI crea una ventana de 0x0
+      para clickear en la barra de tareas y aparece un menú, Esta ventana de 0x0
+      Le falta el ícono del Agente GAUDI. Una vez se abre una ventana como
+      "mi cuenta" sí aparece el ícono, pero como una entrada separada en la
+      barra de tareas.
 
 Referencias: [descubrimiento de directorios de jpackage](https://github.com/openjdk/jdk17u/blob/master/src/jdk.jpackage/linux/native/libapplauncher/Package.cpp) y [especificación de lanzadores de escritorio](https://specifications.freedesktop.org/desktop-entry/latest-single/).
 
@@ -142,16 +258,34 @@ Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
-| Ubuntu 26.04 |          |         |
-| Ubuntu 24.04 |          |         |
+| Ubuntu 26.04 | noble    | ✅      |
+| Ubuntu 24.04 | noble    | ✅      |
 | Ubuntu 22.04 |          |         |
-| Debian 13    |          |         |
+| Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
-| Fedora 44    |          |         |
+| Fedora 44    | fedora   |         |
 | Fedora 43    |          |         |
-| Arch Linux   |          |         |
+| Arch Linux   | arch     | ✅      |
+
+- [ ] Arreglar en archlinux:
+      ```
+      warning: directory permissions differ on /usr/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/ca-certificates/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/ca-certificates/trust-source/
+      filesystem: 755  package: 555
+      warning: directory permissions differ on /usr/share/ca-certificates/trust-source/anchors/
+      filesystem: 755  package: 555
+      ```
 
 ## `libxml2-idopte-compat`
+
+| Distro       | Canal    | Probado |
+|--------------|----------|---------|
+| Ubuntu 26.04 | noble    | ✅      |
 
 Biblioteca de compatibilidad publicada en el canal `noble` para Idopte.
 Reempaqueta la biblioteca amd64 de [Debian 13](https://packages.debian.org/trixie/libxml2),
