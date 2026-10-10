@@ -47,8 +47,6 @@ Firma de documentos con Firmador Libre.
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
 
-- [ ] Arreglar en ubuntu 22.04, 24.04 y 26.04 y en fedora: no tiene ícono.
-
 ### Variante `firmador-git`
 
 | Distro       | Canal    | Probado |
@@ -70,8 +68,6 @@ Cada snapshot fija un commit y su hash de descarga en
 `packages/firmador-git/snapshots.nix`. Al actualizarlo, ajustar también la fecha
 (del commit), su hash abreviado y, si cambian las dependencias, `mvnHash`.
 
-- [ ] Arreglar en ubuntu 22.04, 24.04 y 26.04 y en fedora: no tiene ícono.
-
 ## `bccr-gaudi`
 
 Agente GAUDI del Banco Central de Costa Rica.
@@ -86,17 +82,6 @@ Agente GAUDI del Banco Central de Costa Rica.
 | Fedora 44    | fedora   | ✅      |
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
-
-- [ ] Arreglar en ubuntu 24.04 y 26.04: el Agente GAUDI crea una ventana de 0x0
-      para clickear en la barra de tareas y aparece un menú, Esta ventana de 0x0
-      Le falta el ícono del Agente GAUDI. Una vez se abre una ventana como
-      "mi cuenta" sí aparece el ícono, pero como una entrada separada en la
-      barra de tareas.
-      En ubuntu 22.04, se muestran correctamente los íconos del lanzador y de la
-      barra de tareas del Agente GAUDI, no obstante, sigue ocurriendo el
-      problema de que la ventana 0x0 tiene un ícono por separado, en este caso
-      sí se muestran apropiadamente dos íconos, pero deberían ser una única
-      entrada.
 
 Referencias: [descubrimiento de directorios de jpackage](https://github.com/openjdk/jdk17u/blob/master/src/jdk.jpackage/linux/native/libapplauncher/Package.cpp) y [especificación de lanzadores de escritorio](https://specifications.freedesktop.org/desktop-entry/latest-single/).
 
