@@ -8,7 +8,7 @@ Middleware Idopte para tarjetas inteligentes y firma digital.
 |--------------|----------|---------|
 | Ubuntu 26.04 | noble    | ✅      |
 | Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 |          |         |
+| Ubuntu 22.04 | jammy    | ✅      |
 | Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
 | Fedora 44    | fedora   | ❌      |
@@ -45,7 +45,7 @@ Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11
 |--------------|----------|---------|
 | Ubuntu 26.04 | noble    | ✅      |
 | Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 |          |         |
+| Ubuntu 22.04 | jammy    | ✅      |
 | Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
 | Fedora 44    | fedora   | ❌      |
@@ -85,7 +85,7 @@ Firma de documentos con Firmador Libre.
 |--------------|----------|---------|
 | Ubuntu 26.04 | noble    | ✅      |
 | Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 |          |         |
+| Ubuntu 22.04 | jammy    | ✅      |
 | Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
 | Fedora 44    | fedora   | ✅      |
@@ -110,7 +110,7 @@ Firma de documentos con Firmador Libre.
       warning: directory permissions differ on /usr/share/licenses/
       filesystem: 755  package: 555
       ```
-- [ ] Arreglar en ubuntu 24.04 y 26.04 y en fedora: no tiene ícono.
+- [ ] Arreglar en ubuntu 22.04, 24.04 y 26.04 y en fedora: no tiene ícono.
 
 ### Variante `firmador-git`
 
@@ -118,7 +118,7 @@ Firma de documentos con Firmador Libre.
 |--------------|----------|---------|
 | Ubuntu 26.04 | noble    | ✅      |
 | Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 |          |         |
+| Ubuntu 22.04 | jammy    | ✅      |
 | Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
 | Fedora 44    | fedora   | ✅      |
@@ -150,7 +150,7 @@ Cada snapshot fija un commit y su hash de descarga en
       warning: directory permissions differ on /usr/share/licenses/
       filesystem: 755  package: 555
       ```
-- [ ] Arreglar en ubuntu 24.04 y 26.04 y en fedora: no tiene ícono.
+- [ ] Arreglar en ubuntu 22.04, 24.04 y 26.04 y en fedora: no tiene ícono.
 
 ## `bccr-gaudi`
 
@@ -160,7 +160,7 @@ Agente GAUDI del Banco Central de Costa Rica.
 |--------------|----------|---------|
 | Ubuntu 26.04 | noble    | ✅      |
 | Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 |          |         |
+| Ubuntu 22.04 | jammy    | ✅      |
 | Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
 | Fedora 44    | fedora   | ✅      |
@@ -268,7 +268,7 @@ Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 |--------------|----------|---------|
 | Ubuntu 26.04 | noble    | ✅      |
 | Ubuntu 24.04 | noble    | ✅      |
-| Ubuntu 22.04 |          |         |
+| Ubuntu 22.04 | jammy    | ✅      |
 | Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
 | Fedora 44    | fedora   |         |
