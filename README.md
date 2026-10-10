@@ -2,6 +2,17 @@
 
 Repositorio de dependencias para Firma Digital en Costa Rica.
 
+Actualmente ofrece:
+
+- `firmador`
+- `firmador-git`
+- `bccr-gaudi`
+- `bccr-certs`
+- `idopte-p11`
+- `idopte-scmanager`
+
+Consulta el [estado de la paquetería](doc/packages.md).
+
 > [!WARNING]
 > No usar en producción todavía, actualmente este repositorio se encuentra en
 > fase de pruebas.
