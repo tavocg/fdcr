@@ -15,6 +15,10 @@ let
       "$out/usr/share/applications/cr.libre.${name}.desktop"
     install -Dm644 ${package}/share/icons/hicolor/1024x1024/apps/cr.libre.${name}.png \
       "$out/usr/share/icons/hicolor/1024x1024/apps/cr.libre.${name}.png"
+    # Some icon themes do not search the 1024x1024 directory.
+    substituteInPlace "$out/usr/share/applications/cr.libre.${name}.desktop" \
+      --replace-fail 'Icon=cr.libre.${name}' \
+        'Icon=/usr/share/icons/hicolor/1024x1024/apps/cr.libre.${name}.png'
     ln -s ${name} "$out/usr/bin/cr.libre.${name}.sh"
     substituteInPlace "$out/usr/bin/${name}" \
       --replace-fail '@java@' '/usr/bin/java' \

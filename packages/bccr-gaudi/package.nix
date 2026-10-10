@@ -27,8 +27,9 @@ let
       # The optional .desktop Version describes the desktop entry format,
       # not GAUDI's version. Omit the vendor's application version here.
       sed -i '/^Version=/d' "$out/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop"
-      # JavaFX names its windows after the Application class in the vendor cfg.
-      printf '\nStartupWMClass=bccr.principal.InicializadorDeActualizacion\n' \
+      # Match GAUDI's initial AWT window so GNOME groups it with its dialogs.
+      sed -i '/^StartupWMClass=/d' "$out/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop"
+      printf '\nStartupWMClass=Agente GAUDI\n' \
         >> "$out/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop"
       install -m644 "$out/opt/Agente-GAUDI/lib/Agente-GAUDI.desktop" \
         "$out/usr/share/applications/Agente-GAUDI.desktop"
