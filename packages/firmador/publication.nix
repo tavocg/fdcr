@@ -24,7 +24,6 @@ let
   common = {
     inherit payload;
     name = package.pname;
-  javaDependencies = package.javaDependencies;
     version = package.version;
     inherit (package) release;
     maintainer = "Firmador authors <firmador@libre.cr>";
