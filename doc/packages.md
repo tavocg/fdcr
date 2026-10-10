@@ -47,7 +47,6 @@ Firma de documentos con Firmador Libre.
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
 
-- [ ] Quitar `idopte-p11` como opcional para el firmador.
 - [ ] Arreglar en ubuntu 22.04, 24.04 y 26.04 y en fedora: no tiene ícono.
 
 ### Variante `firmador-git`
@@ -88,7 +87,6 @@ Agente GAUDI del Banco Central de Costa Rica.
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
 
-- [ ] Confirmar el arranque en Fedora y el ícono en la barra de tareas de Ubuntu 24.04 con el paquete actualizado.
 - [ ] Arreglar en ubuntu 24.04 y 26.04: el Agente GAUDI crea una ventana de 0x0
       para clickear en la barra de tareas y aparece un menú, Esta ventana de 0x0
       Le falta el ícono del Agente GAUDI. Una vez se abre una ventana como

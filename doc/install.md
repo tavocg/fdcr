@@ -20,12 +20,11 @@ sudo apt update
 sudo apt install firmador
 ```
 
-`firmador` recomienda `idopte-p11`, que APT instala automáticamente salvo que
-se desactiven las recomendaciones. Para instalar también el administrador
-gráfico de tarjetas de Idopte:
+El middleware Idopte se instala por separado. Para instalarlo junto con su
+administrador gráfico de tarjetas:
 
 ```sh
-sudo apt install idopte-scmanager
+sudo apt install idopte-p11 idopte-scmanager
 ```
 
 ## Fedora (`dnf`)

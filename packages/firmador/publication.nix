@@ -29,7 +29,6 @@ let
     maintainer = "Firmador authors <firmador@libre.cr>";
     inherit (package.meta) description homepage;
     license = package.meta.license.spdxId;
-    recommends = [ "idopte-p11" ];
   };
   architectures = package.passthru.packageArchitectures;
   apt = metarepo.mkApt (common // {
