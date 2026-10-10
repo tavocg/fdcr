@@ -58,6 +58,14 @@ Firma de documentos con Firmador Libre.
 
 ### Variante `firmador-git`
 
+Comparte la receta de construcción y publicación con `firmador`, pero instala
+su comando `firmador-git`, en rutas separadas para permitir la
+coexistencia.
+
+Cada snapshot fija un commit y su hash de descarga en
+`packages/firmador-git/snapshots.nix`. Al actualizarlo, ajustar también la fecha
+(del commit), su hash abreviado y, si cambian las dependencias, `mvnHash`.
+
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
 | Ubuntu 26.04 | noble    | ✅      |
@@ -68,14 +76,6 @@ Firma de documentos con Firmador Libre.
 | Fedora 44    | fedora   | ✅      |
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
-
-Comparte la receta de construcción y publicación con `firmador`, pero instala
-su comando `firmador-git`, JAR y lanzador en rutas separadas para permitir la
-coexistencia. El menú muestra «Firmador Libre (Git)».
-
-Cada snapshot fija un commit y su hash de descarga en
-`packages/firmador-git/snapshots.nix`. Al actualizarlo, ajustar también la fecha
-(del commit), su hash abreviado y, si cambian las dependencias, `mvnHash`.
 
 ## `bccr-gaudi`
 
@@ -92,18 +92,9 @@ Agente GAUDI del Banco Central de Costa Rica.
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
 
-Referencias: [descubrimiento de directorios de jpackage](https://github.com/openjdk/jdk17u/blob/master/src/jdk.jpackage/linux/native/libapplauncher/Package.cpp) y [especificación de lanzadores de escritorio](https://specifications.freedesktop.org/desktop-entry/latest-single/).
-
 ## `bccr-certs`
 
 Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
-
-En Fedora, el RPM ejecuta `update-ca-trust extract` al finalizar la transacción de
-instalación o actualización (`%posttrans`) y después de la desinstalación definitiva
-(`%postun`, si la herramienta sigue instalada). La dependencia `ca-certificates`
-se mantiene sin versión mínima. Estos scripts regeneran el almacén, sin ejecutar DNF
-ni actualizar paquetes. La adaptación del spec está limitada a `bccr-certs` mientras
-metarepo no exponga argumentos para scripts RPM.
 
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
