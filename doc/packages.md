@@ -15,13 +15,6 @@ Middleware Idopte para tarjetas inteligentes y firma digital.
 | Fedora 43    |          |         |
 | Arch Linux   |          |         |
 
-Notas:
-
-- [x] Arch: agregado un hook de pacman que inicia `pcscd.socket` después de instalar o actualizar `idopte-p11`, cuando systemd está activo. El socket activa `pcscd` cuando una aplicación lo necesita.
-- [ ] Confirmar la activación inmediata en una instalación nueva de Arch, sin reiniciar.
-- [x] Canal Noble: agregada la alternativa `libxml2-idopte-compat` para sistemas donde APT ya no ofrece `libxml2`. Conserva la ABI `libxml2.so.2` requerida por Idopte; `libxml2-16` no la sustituye. Se mantiene la preferencia por `libxml2` del sistema cuando está disponible.
-- [ ] Confirmar instalación y firma en Ubuntu 26.04 con el paquete de compatibilidad.
-
 ## `idopte-scmanager`
 
 Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11`.
@@ -36,11 +29,6 @@ Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11
 | Fedora 44    | fedora   |         |
 | Fedora 43    | fedora   |         |
 | Arch Linux   | arch     |         |
-
-Notas:
-
-- [x] Agregado `StartupWMClass=SCManager` al lanzador y al inicio automático para asociar las ventanas con su ícono.
-- [ ] Confirmar el ícono en la barra de tareas de Ubuntu 24.04 con el paquete actualizado.
 
 ## `firmador`
 
@@ -57,13 +45,15 @@ Firma de documentos con Firmador Libre.
 | Fedora 43    | fedora   |         |
 | Arch Linux   | arch     |         |
 
-Notas:
+### Variante `firmador-git`
 
-- [x] Agregado `StartupWMClass=Firmador` al lanzador para asociar las ventanas de Java con su ícono.
-- [ ] Confirmar el ícono en la barra de tareas de Ubuntu 24.04 con el paquete actualizado.
-- [ ] Los desarrolladores indican que el firmador 1.9.8 soporta java desde la versión 8, pero que el 2.0.0 requiere java 25 en adelante.
-      Lo ideal sería empaquetar 1.9.8 en firmador y ofrecer 2.0.0 con firmador-git (y poner de version 2.0.0+gitYYYYMMDD.abbrevhash-1) y requerir java 25 en adelante para ese.
-      Cuando eventualmente tengamos 2.0.0, entonces ya ponemos esa versión dentro de firmador y no de firmador-git
+Comparte la receta de construcción y publicación con `firmador`, pero instala
+su comando `firmador-git`, JAR y lanzador en rutas separadas para permitir la
+coexistencia. El menú muestra «Firmador Libre (Git)».
+
+Cada snapshot fija un commit y su hash de descarga en
+`packages/firmador-git/snapshots.nix`. Al actualizarlo, ajustar también la fecha
+(del commit), su hash abreviado y, si cambian las dependencias, `mvnHash`.
 
 ## `bccr-gaudi`
 
@@ -81,9 +71,6 @@ Agente GAUDI del Banco Central de Costa Rica.
 | Arch Linux   | arch     |         |
 
 Notas:
-
-- [x] Fedora: registrados explícitamente `/opt/Agente-GAUDI/lib/app` y `/opt/Agente-GAUDI/lib/runtime` en el RPM. El lanzador de jpackage busca esos directorios en `rpm -ql`; su ausencia causaba los errores al localizar `Agente-GAUDI.cfg` y la JVM integrada. No requiere instalar otro Java ni cambiar el directorio de trabajo.
-- [x] Agregado `StartupWMClass=bccr.principal.InicializadorDeActualizacion` al lanzador y al inicio automático para asociar las ventanas de JavaFX con su ícono. Eliminado el campo opcional `Version`, que identifica la versión del formato `.desktop`, no la de GAUDI.
 - [ ] Confirmar el arranque en Fedora y el ícono en la barra de tareas de Ubuntu 24.04 con el paquete actualizado.
 - [ ] Error al instalar gaudi en ubuntu:
       ```
@@ -172,11 +159,9 @@ versión `2.12.7+dfsg+really2.9.14-2.1+deb13u3`, con descarga y SHA-256 fijados 
 `artifacts/artifacts.nix`. Incluye los avisos de licencia y changelogs de Debian.
 
 Instala `libxml2.so.2` y su destino en `/usr/lib/SCMiddleware`, donde las bibliotecas
-Idopte ya buscan sus dependencias. No reemplaza la biblioteca del sistema ni declara
-`Provides: libxml2`, porque su ubicación privada no satisface a otros programas.
-Depende de glibc, liblzma y zlib; no necesita ICU. Solo se publica en `noble`:
-la compilación requiere glibc 2.38 y no es adecuada para Jammy.
+Idopte ya buscan sus dependencias. No reemplaza la biblioteca del sistema.
 
-Al actualizarla, renovar la URL y el hash del artifact, la versión/revisión del paquete
-y sus dependencias según el DEB de Debian. La copia privada requiere seguimiento de
-las actualizaciones de seguridad de Debian.
+> [!NOTE]
+> Al actualizarla, renovar la URL y el hash del artifact, la versión/revisión del paquete
+> y sus dependencias según el DEB de Debian. La copia privada requiere seguimiento de
+> las actualizaciones de seguridad de Debian.
