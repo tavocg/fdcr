@@ -15,6 +15,15 @@ Middleware Idopte para tarjetas inteligentes y firma digital.
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
 
+> [!NOTE]
+> En Ubuntu 26.04 se observa un fallo durante la instalación de sus componentes
+> PC/SC: el socket intenta arrancar antes de crearse el usuario `pcscd`
+> (`Failed to resolve user`, `217/USER`). En las pruebas, un segundo después
+> `pcscd.socket` ya estaba escuchando y completamente funcional sin requerir
+> intervención manual.
+>
+> Observado el 2026-10-10.
+
 ## `idopte-scmanager`
 
 Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11`.
@@ -29,8 +38,6 @@ Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11
 | Fedora 44    | fedora   | ❌      |
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
-
-- [ ] Arreglar en fedora: scmanager muestra los certificados como inválidos,
 
 ## `firmador`
 
