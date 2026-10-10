@@ -56,6 +56,7 @@ let
     ];
     dnf = [
       "idopte-p11 = 6.23.50.5-1"
+      "ca-certificates"
       "glibc"
       "libstdc++"
       "libgcc"

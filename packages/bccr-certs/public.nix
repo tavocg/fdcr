@@ -2,8 +2,23 @@
   metarepo,
   package,
   runCommand,
+  writeText,
 }:
 let
+  # The pinned metarepo API has no RPM scriptlet arguments. Extend only this
+  # package's spec until those hooks are supported by the shared builder.
+  mkDnfWithTrustRefresh = metarepo.mkDnf.override {
+    writeText = name: contents: writeText name (contents + ''
+
+      %posttrans
+      /usr/bin/update-ca-trust extract
+
+      %postun
+      if [ "$1" -eq 0 ] && [ -x /usr/bin/update-ca-trust ]; then
+        /usr/bin/update-ca-trust extract
+      fi
+    '');
+  };
   jammyPackage = package.override { ubuntuRelease = "jammy"; };
   payload = packageData: anchorPath: runCommand "bccr-certs-payload" { } ''
     mkdir -p "$out/usr/share" "$out${anchorPath}"
@@ -33,7 +48,7 @@ in
       architecture = "all";
       depends = [ "ca-certificates" ];
     });
-    fedora = metarepo.mkDnf ((common package "/usr/share/pki/ca-trust-source/anchors") // {
+    fedora = mkDnfWithTrustRefresh ((common package "/usr/share/pki/ca-trust-source/anchors") // {
       architecture = "noarch";
       depends = [ "ca-certificates" ];
     });
