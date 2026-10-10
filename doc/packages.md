@@ -11,7 +11,7 @@ Middleware Idopte para tarjetas inteligentes y firma digital.
 | Ubuntu 22.04 | jammy    | ✅      |
 | Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
-| Fedora 44    | fedora   | ❌      |
+| Fedora 44    | fedora   | ✅      |
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
 
@@ -37,7 +37,7 @@ Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11
 | Ubuntu 22.04 | jammy    | ✅      |
 | Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
-| Fedora 44    | fedora   | ✅¹     |
+| Fedora 44    | fedora   | ✅      |
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
 
@@ -112,7 +112,7 @@ metarepo no exponga argumentos para scripts RPM.
 | Ubuntu 22.04 | jammy    | ✅      |
 | Debian 13    | noble    | ✅      |
 | Fedora 45    |          |         |
-| Fedora 44    | fedora   |         |
+| Fedora 44    | fedora   | ✅      |
 | Fedora 43    |          |         |
 | Arch Linux   | arch     | ✅      |
 
