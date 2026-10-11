@@ -1,5 +1,2 @@
-{ callPackage, metarepo, package }:
-callPackage ./publish-snapshots.nix {
-  inherit metarepo package;
-  snapshots = callPackage ./snapshots.nix { };
-}
+{ callPackage, metarepo, repository, package }:
+callPackage ./publish-snapshots.nix { inherit metarepo repository package; }

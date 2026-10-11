@@ -1,20 +1,11 @@
-{ lib, callPackage, runCommand, metarepo, package, snapshots }:
+{ lib, callPackage, metarepo, repository, package }:
 let
-  publications = map (snapshot: callPackage ./publication.nix {
-    inherit metarepo;
-    package = package.override { inherit snapshot; };
-  }) snapshots;
+  # Resolve format-specific Java dependencies separately for each snapshot.
+  publications = map (snapshot: (callPackage ./publication.nix {
+    inherit metarepo repository;
+    package = snapshot;
+  }).channels) (builtins.attrValues package.passthru.snapshots);
 in
 {
-  # Keep every declared snapshot downloadable, with the same channel metadata.
-  channels = lib.mapAttrs (channel: current:
-    runCommand "${package.pname}-${channel}-snapshots" {
-      passthru.metarepo = current.passthru.metarepo;
-    } ''
-      mkdir -p "$out"
-      ${lib.concatMapStringsSep "\n" (publication: ''
-        cp ${publication.channels.${channel}}/* "$out/"
-      '') publications}
-    ''
-  ) (builtins.head publications).channels;
+  channels = lib.zipAttrsWith (_: lib.concatLists) publications;
 }

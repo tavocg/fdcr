@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = idopte-p11
+
+[Action]
+Description = Starting PC/SC socket for Idopte...
+When = PostTransaction
+Exec = /usr/bin/sh -c 'if [ -d /run/systemd/system ]; then /usr/bin/systemctl daemon-reload && /usr/bin/systemctl start pcscd.socket; fi'

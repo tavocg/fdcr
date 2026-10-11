@@ -27,10 +27,35 @@ Para instalación manual, véase [doc/install.md](doc/install.md).
 
 ## Desarrollo
 
-Los ZIP del proveedor están en `artifacts/`. `artifacts/artifacts.nix` declara sus
-hashes y rutas internas, verifica cada ZIP y expone los árboles extraídos de
-Idopte, GAUDI y los certificados por variante. Los paquetes consumen esas fuentes
-mediante `callPackage` y aplican sus propios parches y reglas de instalación.
+Los artifacts se conservan en `artifacts/`. `artifacts/artifacts.nix` registra las
+fuentes y su preparación reutilizable. Puede devolver un binario, un árbol extraído
+o componentes con versiones, dependencias y opciones de publicación. La extracción
+de los ZIP actuales vive en `artifacts/bundles/extract.nix`; sus datos y dependencias
+se conservan por revisión en `artifacts/bundles/<revisión>/`.
+
+Cada paquete decide qué versiones ofrecer en su `snapshots.nix`. Una entrada
+contiene una derivación `package` y sus opciones `publication`. Puede usar los
+artifacts registrados o construir el paquete con una receta independiente.
+`lib/artifact-snapshots.nix` adapta los componentes preparados de un artifact a
+ese formato sin hacer obligatorio su uso.
+
+Para agregar otro bundle, conserva los ZIP y registros anteriores, registra su
+preparación en `artifacts/artifacts.nix` y agrega sus snapshots a los paquetes que
+lo utilicen. Registrar un artifact no lo publica automáticamente. SCManager
+reutiliza la versión y revisión de Idopte de su propio artifact para exigir el
+middleware correspondiente.
+
+`lib/snapshots.nix` selecciona la versión predeterminada para Nix;
+`lib/publication.nix` publica todos los snapshots en sus canales configurados.
+Cada combinación `version-release` debe ser única por paquete y canal: si conserva
+la versión pero cambia el contenido o sus dependencias, incrementa `release`.
+Para seleccionar una versión Nix, usa
+`package.override { default = "26_08-jammy"; }`.
+
+Las rutas de instalación, los hooks y el ajuste RPM del GAUDI del proveedor están
+en `artifacts/bundles/*-publication.nix`. Los snapshots que usan otra receta
+definen sus propias opciones. Véase [cómo agregar snapshots](doc/snapshots.md).
+Firmador conserva su construcción mediante `metarepo.mkSnapshots`.
 
 ```sh
 nix flake show

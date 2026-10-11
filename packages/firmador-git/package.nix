@@ -1,8 +1,7 @@
-{
-  callPackage,
-  snapshot ? builtins.head (callPackage ./snapshots.nix { }),
-}:
+{ callPackage, metarepo }:
 callPackage ../firmador/package.nix {
+  inherit metarepo;
   pname = "firmador-git";
-  inherit snapshot;
+  snapshots = callPackage ./snapshots.nix { };
+  default = "a34e5b8";
 }
