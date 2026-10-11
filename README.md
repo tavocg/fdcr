@@ -27,13 +27,14 @@ Para instalación manual, véase [doc/install.md](doc/install.md).
 
 ## Desarrollo
 
-Los ZIP del proveedor están en `artifacts/`. `artifacts/artifacts.nix` declara sus
-hashes y rutas internas, verifica cada ZIP y expone los árboles extraídos de
-Idopte, GAUDI y los certificados por variante. Los paquetes consumen esas fuentes
-mediante `callPackage` y aplican sus propios parches y reglas de instalación.
+Las fuentes, herramientas y recetas de construcción/publicación están fijadas
+por snapshot. Todos los paquetes tienen `snapshots.nix`; los builders y las
+extracciones de artifacts se versionan sin modificar las recetas anteriores.
+Consulta [cómo agregar versiones y builders](doc/snapshots.md).
 
 ```sh
 nix flake show
+nix flake check
 nix run .#build-public
 ```
 
