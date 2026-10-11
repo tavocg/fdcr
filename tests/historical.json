@@ -1,0 +1,202 @@
+{
+  "aarch64-linux": {
+    "firmador": {
+      "2026-10-11": {
+        "channels": {
+          "arch": [
+            "/nix/store/hhpawja4k2azaj9jlb8gl2k687fzm5s1-firmador-arch-1.9.8.drv"
+          ],
+          "fedora": [
+            "/nix/store/iqazc7qy7hkr0nf61gyrqkmgdwb8fv15-firmador-rpm-1.9.8.drv"
+          ],
+          "jammy": [
+            "/nix/store/ffi17kjy52s55iq31v5gybryflp97znv-firmador-deb-1.9.8.drv"
+          ],
+          "noble": [
+            "/nix/store/ffi17kjy52s55iq31v5gybryflp97znv-firmador-deb-1.9.8.drv"
+          ]
+        },
+        "package": "/nix/store/hjzrz8xjjwlnjhpqc2gfvpx2dk9clj1g-firmador-1.9.8.drv"
+      }
+    },
+    "firmador-git": {
+      "2026-10-11-01": {
+        "channels": {
+          "arch": [
+            "/nix/store/lah916ql7f6bk36gc276a8anz4yjlxfq-firmador-git-arch-2.0.0+git20260908.4b6803d.drv"
+          ],
+          "fedora": [
+            "/nix/store/cf28rkr1w6bvkv69zl5jjh75pgbq4vd7-firmador-git-rpm-2.0.0+git20260908.4b6803d.drv"
+          ],
+          "jammy": [
+            "/nix/store/f4gydyb62v0gg006501ywlmpy0kv5b17-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
+          ],
+          "noble": [
+            "/nix/store/f4gydyb62v0gg006501ywlmpy0kv5b17-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
+          ]
+        },
+        "package": "/nix/store/ywi7qb00awih9vp28hnlvidbifgxfj8r-firmador-git-2.0.0+git20260908.4b6803d.drv"
+      },
+      "2026-10-11-02": {
+        "channels": {
+          "arch": [
+            "/nix/store/3nyfhnhsl9kzbfrs713pif46qxgx73ay-firmador-git-arch-2.0.0+git20260908.a34e5b8.drv"
+          ],
+          "fedora": [
+            "/nix/store/q53g6a8y0y0l1xzczp8dp1gj04zxkvqd-firmador-git-rpm-2.0.0+git20260908.a34e5b8.drv"
+          ],
+          "jammy": [
+            "/nix/store/s3wyjc85ngaq99xfdiby8gwlxxdgbfqf-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
+          ],
+          "noble": [
+            "/nix/store/s3wyjc85ngaq99xfdiby8gwlxxdgbfqf-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
+          ]
+        },
+        "package": "/nix/store/n61qdkwhmmf9zhf33gfsj13pbb3w9l5l-firmador-git-2.0.0+git20260908.a34e5b8.drv"
+      }
+    }
+  },
+  "x86_64-linux": {
+    "bccr-certs": {
+      "2026-10-11": {
+        "channels": {
+          "arch": [
+            "/nix/store/ndf789nizan7x6lnw00wpxpa0jrwc6rv-bccr-certs-arch-2026.08.drv"
+          ],
+          "fedora": [
+            "/nix/store/z9mq9md51nj93fpk4z8j7lcp3ansis66-bccr-certs-rpm-2026.08.drv"
+          ],
+          "jammy": [
+            "/nix/store/valqrm3ixycjmvc56y87n72yy5ig0hy1-bccr-certs-deb-2026.08.drv"
+          ],
+          "noble": [
+            "/nix/store/7r12qnccjmzm4awgzy99hscqvlikpkj2-bccr-certs-deb-2026.08.drv"
+          ]
+        },
+        "package": "/nix/store/ab9i93n9m7ckbyd8r2nangpisbwf99sc-bccr-certs-2026.08.drv"
+      }
+    },
+    "bccr-gaudi": {
+      "2026-10-11": {
+        "channels": {
+          "arch": [
+            "/nix/store/7r9j31r1b0fjsn7r2g0mmyl1bmwxdkpq-bccr-gaudi-arch-29.0.drv"
+          ],
+          "fedora": [
+            "/nix/store/8hmx6l4h8iqd20dc9q28c8l2lrnl32r3-bccr-gaudi-rpm-29.0.drv"
+          ],
+          "jammy": [
+            "/nix/store/0xx9ha6nzg64d2di1q87gjgjnjasxp1g-bccr-gaudi-deb-29.0.drv"
+          ],
+          "noble": [
+            "/nix/store/f9304jv94p3vgrkblkkghkp234qdq337-bccr-gaudi-deb-29.0.drv"
+          ]
+        },
+        "package": "/nix/store/vppf7y4rn4ci78mky64897lr2r576yzf-bccr-gaudi-29.0.drv"
+      }
+    },
+    "firmador": {
+      "2026-10-11": {
+        "channels": {
+          "arch": [
+            "/nix/store/v6pccgh5kdnzj2zcw9rg08cs0z2nx1zz-firmador-arch-1.9.8.drv"
+          ],
+          "fedora": [
+            "/nix/store/490if764sf3fw93l0zjq8nspi1kfrr4n-firmador-rpm-1.9.8.drv"
+          ],
+          "jammy": [
+            "/nix/store/4vhxh33ldyn64yxi8vzghlcdv01skv7l-firmador-deb-1.9.8.drv"
+          ],
+          "noble": [
+            "/nix/store/4vhxh33ldyn64yxi8vzghlcdv01skv7l-firmador-deb-1.9.8.drv"
+          ]
+        },
+        "package": "/nix/store/mdjxhl9vfnbymabw9df4w6pr9gishv97-firmador-1.9.8.drv"
+      }
+    },
+    "firmador-git": {
+      "2026-10-11-01": {
+        "channels": {
+          "arch": [
+            "/nix/store/fj9imhnsz4ybfq9msv62hwsqcbya8yv5-firmador-git-arch-2.0.0+git20260908.4b6803d.drv"
+          ],
+          "fedora": [
+            "/nix/store/f4i823nhy24f0r62fr1y5xhxc69c687p-firmador-git-rpm-2.0.0+git20260908.4b6803d.drv"
+          ],
+          "jammy": [
+            "/nix/store/askscwwm4dyar8xk1ljjck5dj8zm1b6s-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
+          ],
+          "noble": [
+            "/nix/store/askscwwm4dyar8xk1ljjck5dj8zm1b6s-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
+          ]
+        },
+        "package": "/nix/store/hcpxdxi9r04h7jl1s4vai930n2gmwq8j-firmador-git-2.0.0+git20260908.4b6803d.drv"
+      },
+      "2026-10-11-02": {
+        "channels": {
+          "arch": [
+            "/nix/store/r6ml7ap1xcav4vpn2zb56aij3mv08fha-firmador-git-arch-2.0.0+git20260908.a34e5b8.drv"
+          ],
+          "fedora": [
+            "/nix/store/b0kzx81553h2wjpcwnqcafa8shdl0wq3-firmador-git-rpm-2.0.0+git20260908.a34e5b8.drv"
+          ],
+          "jammy": [
+            "/nix/store/67b0hvcd7ijgsa0wzl26q2gji1hbdbdk-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
+          ],
+          "noble": [
+            "/nix/store/67b0hvcd7ijgsa0wzl26q2gji1hbdbdk-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
+          ]
+        },
+        "package": "/nix/store/hy3p15cav2mjzly4m57zypa45dsjz96q-firmador-git-2.0.0+git20260908.a34e5b8.drv"
+      }
+    },
+    "idopte-p11": {
+      "2026-10-11": {
+        "channels": {
+          "arch": [
+            "/nix/store/43dn8k3xkqv0di3rv9197g8jq9nabyi2-idopte-p11-arch-6.23.50.5.drv"
+          ],
+          "fedora": [
+            "/nix/store/2xqwq5h5jgvdyy9xcvpi7nw7xwr3kzpz-idopte-p11-rpm-6.23.50.5.drv"
+          ],
+          "jammy": [
+            "/nix/store/ay2241bdgyyjb6jbqzjrbwq7645rmk6h-idopte-p11-deb-6.23.50.5.drv"
+          ],
+          "noble": [
+            "/nix/store/khirpk1gnpkyllr2i8y9c51yibkvc4nf-idopte-p11-deb-6.23.50.5.drv"
+          ]
+        },
+        "package": "/nix/store/aiq3jm0ppx1p5dwhkrlb81yl0jgm06rk-idopte-p11-6.23.50.5.drv"
+      }
+    },
+    "idopte-scmanager": {
+      "2026-10-11": {
+        "channels": {
+          "arch": [
+            "/nix/store/bf4js5rzbb7v9ip95izmwrp39ssxss0n-idopte-scmanager-arch-6.23.50.5.drv"
+          ],
+          "fedora": [
+            "/nix/store/z2rlzwcmq58n7pavaspi81yjhy04n6q9-idopte-scmanager-rpm-6.23.50.5.drv"
+          ],
+          "jammy": [
+            "/nix/store/hvf056wbpil1pby81zpicj4wmk5z15bx-idopte-scmanager-deb-6.23.50.5.drv"
+          ],
+          "noble": [
+            "/nix/store/vl2bmik79jc98vainn27wr1cv98n81v5-idopte-scmanager-deb-6.23.50.5.drv"
+          ]
+        },
+        "package": "/nix/store/bcg2pka49fyg7xlaf3sxgj4gnrdi47qq-idopte-scmanager-6.23.50.5.drv"
+      }
+    },
+    "libxml2-idopte-compat": {
+      "2026-10-11": {
+        "channels": {
+          "noble": [
+            "/nix/store/68vcm47l9bj3h7kmlgy7r6n6ca4nns3g-libxml2-idopte-compat-deb-2.12.7+dfsg+really2.9.14.drv"
+          ]
+        },
+        "package": "/nix/store/kalfgm6p35fm55lss1h7arbjp3zz4axf-libxml2-idopte-compat-2.12.7+dfsg+really2.9.14.drv"
+      }
+    }
+  }
+}

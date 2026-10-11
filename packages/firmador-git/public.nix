@@ -1,5 +1,6 @@
-{ callPackage, metarepo, package }:
-callPackage ../firmador/publish-snapshots.nix {
-  inherit metarepo package;
-  snapshots = callPackage ./snapshots.nix { };
-}
+{
+  callPackage,
+  package,
+  repository,
+}:
+callPackage ../../lib/publish-snapshots.nix { inherit package repository; }

@@ -58,13 +58,13 @@ Firma de documentos con Firmador Libre.
 
 ### Variante `firmador-git`
 
-Comparte la receta de construcción y publicación con `firmador`, pero instala
-su comando `firmador-git`, en rutas separadas para permitir la
+Selecciona el mismo builder Java versionado de construcción y publicación que
+`firmador`, pero instala su comando `firmador-git`, en rutas separadas para permitir la
 coexistencia.
 
-Cada snapshot fija un commit y su hash de descarga en
-`packages/firmador-git/snapshots.nix`. Al actualizarlo, ajustar también la fecha
-(del commit), su hash abreviado y, si cambian las dependencias, `mvnHash`.
+Cada snapshot fija commit, hash, herramientas y dependencias en su propio
+directorio. `packages/firmador-git/snapshots.nix` registra esas recetas;
+[doc/snapshots.md](snapshots.md) explica cómo agregar una sin cambiar las anteriores.
 
 | Distro       | Canal    | Probado |
 |--------------|----------|---------|
@@ -116,12 +116,13 @@ Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 Biblioteca de compatibilidad publicada en el canal `noble` para Idopte.
 Reempaqueta la biblioteca amd64 de [Debian 13](https://packages.debian.org/trixie/libxml2),
 versión `2.12.7+dfsg+really2.9.14-2.1+deb13u3`, con descarga y SHA-256 fijados en
-`artifacts/artifacts.nix`. Incluye los avisos de licencia y changelogs de Debian.
+`artifacts/recipes/2026-10-11/libxml2.nix`. Incluye los avisos de licencia y
+changelogs de Debian.
 
 Instala `libxml2.so.2` y su destino en `/usr/lib/SCMiddleware`, donde las bibliotecas
 Idopte ya buscan sus dependencias. No reemplaza la biblioteca del sistema.
 
 > [!NOTE]
-> Al actualizarla, renovar la URL y el hash del artifact, la versión/revisión del paquete
-> y sus dependencias según el DEB de Debian. La copia privada requiere seguimiento de
-> las actualizaciones de seguridad de Debian.
+> Al actualizarla, agregar una receta y snapshot nuevas con URL, hash, versión/revisión
+> y dependencias según el DEB de Debian, conservando las recetas anteriores.
+> La copia privada requiere seguimiento de las actualizaciones de seguridad de Debian.
