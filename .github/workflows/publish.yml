@@ -44,6 +44,8 @@ jobs:
           gpg --batch --list-secret-keys "$GPG_KEY_ID" >/dev/null
           printf 'GPG_KEY_ID=%s\n' "$GPG_KEY_ID" >> "$GITHUB_ENV"
 
+      - run: nix flake check
+
       - run: nix run .#build-public
 
       - uses: actions/upload-pages-artifact@v5
