@@ -30,7 +30,9 @@ let
     ) config.environment.gnome.excludePackages);
 
   # Middleware compatible con NixOS: se reubica el payload nativo y se enlazan
-  # sus dependencias. Se conserva la libxml2 privada que espera el fabricante.
+  # sus dependencias. Se usa la libxml2 del sistema con ABI `.so.2`, no la copia
+  # privada de Debian que se publica en el canal Noble: esa versión (2.9.14) no
+  # exporta `xmlCtxtSetOptions`, que el fabricante enlaza vía `libxmlsec1`.
   middleware = pkgs.stdenvNoCC.mkDerivation {
     pname = "idopte-p11";
     inherit (middlewareData) version;
@@ -44,6 +46,9 @@ let
       fontconfig
       freetype
       libpng
+      # El fabricante enlaza `libxml2.so.2` y `xmlCtxtSetOptions` (libxml2 ≥ 2.13).
+      # `libxml2` (2.15) ya usa la ABI `.so.16`, por eso se fija `libxml2_13`.
+      libxml2_13
       pcsclite
       xz
       zlib
@@ -53,8 +58,6 @@ let
       mkdir -p "$out"
       cp -a --no-preserve=mode,ownership ${middlewareData}/usr/. "$out/"
       cp -a --no-preserve=mode,ownership ${middlewareData}/etc "$out/etc"
-      cp -a ${packages.libxml2-idopte-compat}/usr/lib/SCMiddleware/libxml2.so.2* \
-        "$out/lib/SCMiddleware/"
       chmod -R u+w "$out"
       runHook postInstall
     '';

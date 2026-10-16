@@ -125,8 +125,10 @@ in
 - El módulo crea `/usr/lib/SCMiddleware` con enlaces a `libt_ias.so` e
   `idocachesrv` mediante `systemd.tmpfiles`, porque el firmware espera esa ruta
   absoluta.
-- La copia privada de `libxml2.so.2` de `libxml2-idopte-compat` se conserva en
-  `$out/lib/SCMiddleware`, donde el middleware la resuelve por `$ORIGIN`.
+- El middleware necesita `libxml2.so.2` y el símbolo `xmlCtxtSetOptions`, que
+  introdujo libxml2 2.13. Como `libxml2` (2.15) ya usa la ABI `libxml2.so.16`,
+  el módulo enlaza `libxml2_13` y no reutiliza la copia privada de
+  `libxml2-idopte-compat` (2.9.14), que no exporta ese símbolo.
 - La extensión de Nautilus se activa por defecto con GNOME cuando Nautilus no
   está excluido. En otros escritorios, habilítala solo si Nautilus está
   instalado.
