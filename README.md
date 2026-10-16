@@ -11,6 +11,9 @@ Actualmente ofrece:
 - `idopte-p11`
 - `idopte-scmanager`
 
+También publica un módulo NixOS (`nixosModules.default`) que adapta el middleware
+y SCManager; véase [doc/nixos.md](doc/nixos.md).
+
 Consulta el [estado de la paquetería](doc/packages.md).
 
 > [!WARNING]

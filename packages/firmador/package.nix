@@ -2,6 +2,9 @@
   lib,
   stdenv,
   metarepo,
+  # Ruta de la biblioteca PKCS#11 del middleware. Al sobreescribir con
+  # `firmador.override { pkcs11Module = …; }` el lanzador exporta LIBASEP11.
+  pkcs11Module ? null,
 }:
 let
   snapshots = import ./snapshots.nix { system = stdenv.hostPlatform.system; };
@@ -14,9 +17,10 @@ metarepo.mkSnapshots {
   build =
     args:
     args.builder (
-      builtins.removeAttrs args [
+      (builtins.removeAttrs args [
         "builder"
         "source"
-      ]
+      ])
+      // { inherit pkcs11Module; }
     );
 }

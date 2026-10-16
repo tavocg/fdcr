@@ -28,6 +28,10 @@
               ];
           };
       };
+      nixosModules = {
+        fdcr = import ./modules/fdcr.nix { inherit self; };
+        default = self.nixosModules.fdcr;
+      };
       checks = nixpkgs.lib.mapAttrs (
         system: packages:
         let
@@ -38,6 +42,10 @@
             inherit pkgs packages;
             metarepo = metarepo.lib.forPkgs pkgs;
             repository = import ./repository.nix;
+          };
+          nixos = import ./tests/nixos.nix {
+            inherit pkgs nixpkgs;
+            module = self.nixosModules.default;
           };
         }
       ) self.packages;

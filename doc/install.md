@@ -91,3 +91,27 @@ El flake también ofrece Firmador directamente.
 nix profile install github:tavocg/fdcr#firmador
 nix run github:tavocg/fdcr#firmador
 ```
+
+## NixOS
+
+El flake publica un módulo NixOS que adapta el middleware y SCManager a las
+rutas de NixOS (solo `x86_64-linux`):
+
+```nix
+{
+  inputs.fdcr.url = "github:tavocg/fdcr";
+
+  outputs = { self, nixpkgs, fdcr, ... }: {
+    nixosConfigurations.mi-equipo = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        fdcr.nixosModules.default
+        { services.fdcr.enable = true; }
+      ];
+    };
+  };
+}
+```
+
+Para el detalle de las opciones, Firmador con su biblioteca PKCS#11,
+certificados y un ejemplo completo, véase [doc/nixos.md](nixos.md).

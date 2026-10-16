@@ -1,6 +1,7 @@
 {
   lib,
   maven,
+  makeWrapper,
   pname ? "firmador",
   version,
   src,
@@ -8,9 +9,19 @@
   buildJdk,
   compilerParameters,
   dependencies,
+  # Rutas de compilación nativas fijan el middleware en el payload. En Nix se
+  # pasa la biblioteca PKCS#11 del middleware para exportar LIBASEP11 en el
+  # lanzador; `null` conserva exactamente la derivación publicada.
+  pkcs11Module ? null,
 }:
 let
   pinFile = import ../../../../lib/recipes/2026-10-11/pin-file.nix;
+  # `override` en la derivación solo cambia este bloque; con `null` el texto es
+  # idéntico al de las recetas históricas.
+  wrapper = lib.optionalString (pkcs11Module != null) ''
+    wrapProgram "$out/bin/${pname}" \
+      --set-default LIBASEP11 ${lib.escapeShellArg (toString pkcs11Module)}
+  '';
 in
 maven.buildMavenPackage {
   inherit pname version;
@@ -19,6 +30,7 @@ maven.buildMavenPackage {
 
   mvnJdk = buildJdk;
   inherit mvnHash;
+  nativeBuildInputs = lib.optional (pkcs11Module != null) makeWrapper;
   # Each snapshot declares its Java compilation target explicitly.
   mvnParameters = "-Dmaven.test.skip=true ${compilerParameters}";
   doCheck = false;
@@ -48,7 +60,7 @@ maven.buildMavenPackage {
     substituteInPlace "$out/bin/${pname}" \
       --replace-fail '@java@' '${buildJdk}/bin/java' \
       --replace-fail '@jar@' "$out/share/${pname}/firmador.jar"
-    runHook postInstall
+    ${wrapper}runHook postInstall
   '';
 
   passthru = {
