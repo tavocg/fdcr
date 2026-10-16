@@ -4,55 +4,55 @@
       "2026-10-11": {
         "channels": {
           "arch": [
-            "/nix/store/hhpawja4k2azaj9jlb8gl2k687fzm5s1-firmador-arch-1.9.8.drv"
+            "/nix/store/lnxvc12fba7ymhlqf9169hbdgssq6h52-firmador-arch-1.9.8.drv"
           ],
           "fedora": [
-            "/nix/store/iqazc7qy7hkr0nf61gyrqkmgdwb8fv15-firmador-rpm-1.9.8.drv"
+            "/nix/store/ja12jsh548z64iyfha6wr5qmzbz9ynn9-firmador-rpm-1.9.8.drv"
           ],
           "jammy": [
-            "/nix/store/ffi17kjy52s55iq31v5gybryflp97znv-firmador-deb-1.9.8.drv"
+            "/nix/store/hra1107rdm3k2rwdfbwjjqjhm0kw2n09-firmador-deb-1.9.8.drv"
           ],
           "noble": [
-            "/nix/store/ffi17kjy52s55iq31v5gybryflp97znv-firmador-deb-1.9.8.drv"
+            "/nix/store/hra1107rdm3k2rwdfbwjjqjhm0kw2n09-firmador-deb-1.9.8.drv"
           ]
         },
-        "package": "/nix/store/hjzrz8xjjwlnjhpqc2gfvpx2dk9clj1g-firmador-1.9.8.drv"
+        "package": "/nix/store/yp4zlqf5dh2dwlx156nxqsg7zcf2n5l0-firmador-1.9.8.drv"
       }
     },
     "firmador-git": {
       "2026-10-11-01": {
         "channels": {
           "arch": [
-            "/nix/store/lah916ql7f6bk36gc276a8anz4yjlxfq-firmador-git-arch-2.0.0+git20260908.4b6803d.drv"
+            "/nix/store/bqfwkffpq6mlzmgp0l4ca3adhsfspnfg-firmador-git-arch-2.0.0+git20260908.4b6803d.drv"
           ],
           "fedora": [
-            "/nix/store/cf28rkr1w6bvkv69zl5jjh75pgbq4vd7-firmador-git-rpm-2.0.0+git20260908.4b6803d.drv"
+            "/nix/store/ryfhzlbp8hcvk9nsyydfhzx126c402mj-firmador-git-rpm-2.0.0+git20260908.4b6803d.drv"
           ],
           "jammy": [
-            "/nix/store/f4gydyb62v0gg006501ywlmpy0kv5b17-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
+            "/nix/store/74n2fvlswvarlw98c8xp0yg52846xnjq-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
           ],
           "noble": [
-            "/nix/store/f4gydyb62v0gg006501ywlmpy0kv5b17-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
+            "/nix/store/74n2fvlswvarlw98c8xp0yg52846xnjq-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
           ]
         },
-        "package": "/nix/store/ywi7qb00awih9vp28hnlvidbifgxfj8r-firmador-git-2.0.0+git20260908.4b6803d.drv"
+        "package": "/nix/store/6h99sq21bcmfi1zs07jmzq3m5nsbh0wd-firmador-git-2.0.0+git20260908.4b6803d.drv"
       },
       "2026-10-11-02": {
         "channels": {
           "arch": [
-            "/nix/store/3nyfhnhsl9kzbfrs713pif46qxgx73ay-firmador-git-arch-2.0.0+git20260908.a34e5b8.drv"
+            "/nix/store/j3znns0n6lckwxzhaip0v1kf5389383p-firmador-git-arch-2.0.0+git20260908.a34e5b8.drv"
           ],
           "fedora": [
-            "/nix/store/q53g6a8y0y0l1xzczp8dp1gj04zxkvqd-firmador-git-rpm-2.0.0+git20260908.a34e5b8.drv"
+            "/nix/store/agyabn5n9kh1z0ag6d3194njv5yj63r6-firmador-git-rpm-2.0.0+git20260908.a34e5b8.drv"
           ],
           "jammy": [
-            "/nix/store/s3wyjc85ngaq99xfdiby8gwlxxdgbfqf-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
+            "/nix/store/4y14cgi4yjxqjly89ncn5lq5a3psxcx2-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
           ],
           "noble": [
-            "/nix/store/s3wyjc85ngaq99xfdiby8gwlxxdgbfqf-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
+            "/nix/store/4y14cgi4yjxqjly89ncn5lq5a3psxcx2-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
           ]
         },
-        "package": "/nix/store/n61qdkwhmmf9zhf33gfsj13pbb3w9l5l-firmador-git-2.0.0+git20260908.a34e5b8.drv"
+        "package": "/nix/store/vdjjx27l3rm131601bivma4rg08xcs7j-firmador-git-2.0.0+git20260908.a34e5b8.drv"
       }
     }
   },
@@ -99,55 +99,55 @@
       "2026-10-11": {
         "channels": {
           "arch": [
-            "/nix/store/v6pccgh5kdnzj2zcw9rg08cs0z2nx1zz-firmador-arch-1.9.8.drv"
+            "/nix/store/bca89fvkf7y310y18rn8byni130jjxz4-firmador-arch-1.9.8.drv"
           ],
           "fedora": [
-            "/nix/store/490if764sf3fw93l0zjq8nspi1kfrr4n-firmador-rpm-1.9.8.drv"
+            "/nix/store/v99lxpya8v2hmq7aadkp05rxrcxpbbbm-firmador-rpm-1.9.8.drv"
           ],
           "jammy": [
-            "/nix/store/4vhxh33ldyn64yxi8vzghlcdv01skv7l-firmador-deb-1.9.8.drv"
+            "/nix/store/qlhr7x3knmgqcf3d1dkhblwl2gmbyf58-firmador-deb-1.9.8.drv"
           ],
           "noble": [
-            "/nix/store/4vhxh33ldyn64yxi8vzghlcdv01skv7l-firmador-deb-1.9.8.drv"
+            "/nix/store/qlhr7x3knmgqcf3d1dkhblwl2gmbyf58-firmador-deb-1.9.8.drv"
           ]
         },
-        "package": "/nix/store/mdjxhl9vfnbymabw9df4w6pr9gishv97-firmador-1.9.8.drv"
+        "package": "/nix/store/m95b13vzn0fjn7ihlll8igl3i2v5jmz0-firmador-1.9.8.drv"
       }
     },
     "firmador-git": {
       "2026-10-11-01": {
         "channels": {
           "arch": [
-            "/nix/store/fj9imhnsz4ybfq9msv62hwsqcbya8yv5-firmador-git-arch-2.0.0+git20260908.4b6803d.drv"
+            "/nix/store/lnlbn62qjxvzb7mqrgjc5yax2f7qdgvk-firmador-git-arch-2.0.0+git20260908.4b6803d.drv"
           ],
           "fedora": [
-            "/nix/store/f4i823nhy24f0r62fr1y5xhxc69c687p-firmador-git-rpm-2.0.0+git20260908.4b6803d.drv"
+            "/nix/store/qlrss3v1034ccl7d9z9llznxcz2b5j51-firmador-git-rpm-2.0.0+git20260908.4b6803d.drv"
           ],
           "jammy": [
-            "/nix/store/askscwwm4dyar8xk1ljjck5dj8zm1b6s-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
+            "/nix/store/l77d6vyikpzp8gxjq37rg67gmc3cw1kq-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
           ],
           "noble": [
-            "/nix/store/askscwwm4dyar8xk1ljjck5dj8zm1b6s-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
+            "/nix/store/l77d6vyikpzp8gxjq37rg67gmc3cw1kq-firmador-git-deb-2.0.0+git20260908.4b6803d.drv"
           ]
         },
-        "package": "/nix/store/hcpxdxi9r04h7jl1s4vai930n2gmwq8j-firmador-git-2.0.0+git20260908.4b6803d.drv"
+        "package": "/nix/store/lsjrsgnvrczidgslr1j4x2j1vmga8bgc-firmador-git-2.0.0+git20260908.4b6803d.drv"
       },
       "2026-10-11-02": {
         "channels": {
           "arch": [
-            "/nix/store/r6ml7ap1xcav4vpn2zb56aij3mv08fha-firmador-git-arch-2.0.0+git20260908.a34e5b8.drv"
+            "/nix/store/2zdys7svnljc6i1rypmryd0zyk4447la-firmador-git-arch-2.0.0+git20260908.a34e5b8.drv"
           ],
           "fedora": [
-            "/nix/store/b0kzx81553h2wjpcwnqcafa8shdl0wq3-firmador-git-rpm-2.0.0+git20260908.a34e5b8.drv"
+            "/nix/store/kzzki7g8xxisshqfv3wdx7qjfmijjwwa-firmador-git-rpm-2.0.0+git20260908.a34e5b8.drv"
           ],
           "jammy": [
-            "/nix/store/67b0hvcd7ijgsa0wzl26q2gji1hbdbdk-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
+            "/nix/store/jngv1va6q768m59k8kvfvkhli012kwyg-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
           ],
           "noble": [
-            "/nix/store/67b0hvcd7ijgsa0wzl26q2gji1hbdbdk-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
+            "/nix/store/jngv1va6q768m59k8kvfvkhli012kwyg-firmador-git-deb-2.0.0+git20260908.a34e5b8.drv"
           ]
         },
-        "package": "/nix/store/hy3p15cav2mjzly4m57zypa45dsjz96q-firmador-git-2.0.0+git20260908.a34e5b8.drv"
+        "package": "/nix/store/3hsni387sx6kck37w4ybz201bkbs65xd-firmador-git-2.0.0+git20260908.a34e5b8.drv"
       }
     },
     "idopte-p11": {
