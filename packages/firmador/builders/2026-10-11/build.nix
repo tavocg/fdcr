@@ -13,6 +13,9 @@
   # pasa la biblioteca PKCS#11 del middleware para exportar LIBASEP11 en el
   # lanzador; `null` conserva exactamente la derivación publicada.
   pkcs11Module ? null,
+  # Firmador 1.9.8 no lee LIBASEP11, así que las recetas de Nix parchean la
+  # fuente; `[ ]` conserva exactamente la derivación publicada.
+  patches ? [ ],
 }:
 let
   pinFile = import ../../../../lib/recipes/2026-10-11/pin-file.nix;
@@ -27,6 +30,8 @@ maven.buildMavenPackage {
   inherit pname version;
 
   inherit src;
+
+  inherit patches;
 
   mvnJdk = buildJdk;
   inherit mvnHash;

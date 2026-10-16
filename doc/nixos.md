@@ -82,7 +82,10 @@ también puedes escribir la ruta literal:
 
 El envoltorio de `firmador` exporta `LIBASEP11` apuntando a esa biblioteca y
 delega en `.firmador-wrapped`. La variante `firmador-git` acepta el mismo
-argumento.
+argumento. Firmador 1.9.8 todavía no leía `LIBASEP11`, así que en Nix se
+parchea la fuente con ese backport (2.0.0+ ya lo incluye); como el parche solo
+se aplica cuando se pasa `pkcs11Module`, las recetas publicadas para el resto
+de canales no cambian.
 
 ## Certificados
 
