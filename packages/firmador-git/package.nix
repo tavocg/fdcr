@@ -21,6 +21,9 @@ metarepo.mkSnapshots {
         "builder"
         "source"
       ])
-      // { inherit pkcs11Module; }
+      // {
+        inherit pkcs11Module;
+        patches = [ ./patches/java-library-path.patch ];
+      }
     );
 }

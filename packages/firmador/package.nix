@@ -26,9 +26,9 @@ metarepo.mkSnapshots {
         # Firmador 1.9.8 no lee LIBASEP11, así que el lanzador exportaría una
         # variable que el JAR ignora. El parche la agrega (2.0.0+ ya la
         # soporta) y solo se aplica en Nix, cuando el envoltorio la exporta;
-        # las recetas publicadas para el resto de canales no cambian.
-        patches =
-          lib.optional
+        # El parche de java.library.path se aplica siempre.
+        patches = [ ./patches/1.9.8-java-library-path.patch ]
+          ++ lib.optional
             (pkcs11Module != null && lib.versionOlder args.version "2.0.0")
             ./patches/1.9.8-libasep11.patch;
       }
