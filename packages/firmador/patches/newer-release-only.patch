@@ -1,0 +1,46 @@
+--- a/src/main/java/cr/libre/firmador/plugins/CheckUpdatePlugin.java
++++ b/src/main/java/cr/libre/firmador/plugins/CheckUpdatePlugin.java
+@@ -104 +104 @@
+-            if (!version.contentEquals(responseversion)) {
++            if (ReleaseVersion.isNewer(responseversion, version)) {
+--- /dev/null
++++ b/src/main/java/cr/libre/firmador/plugins/ReleaseVersion.java
+@@ -0,0 +1,38 @@
++package cr.libre.firmador.plugins;
++
++import java.math.BigInteger;
++
++/** Compare the numeric releases returned by the stable update endpoint. */
++final class ReleaseVersion {
++    private ReleaseVersion() { }
++
++    static boolean isNewer(String available, String installed) {
++        String[] candidate = components(available);
++        String[] current = components(installed);
++        // An unrecognised response must never trigger a download.
++        if (candidate == null || current == null) {
++            return false;
++        }
++        for (int i = 0; i < Math.max(candidate.length, current.length); i++) {
++            BigInteger a = i < candidate.length ? new BigInteger(candidate[i]) : BigInteger.ZERO;
++            BigInteger b = i < current.length ? new BigInteger(current[i]) : BigInteger.ZERO;
++            int comparison = a.compareTo(b);
++            if (comparison != 0) {
++                return comparison > 0;
++            }
++        }
++        return false;
++    }
++
++    private static String[] components(String version) {
++        if (version == null) {
++            return null;
++        }
++        version = version.trim();
++        // Build metadata (including our +git suffix) does not order releases.
++        if (!version.matches("[0-9]+(\\.[0-9]+)*(\\+[0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*)?")) {
++            return null;
++        }
++        return version.split("\\+", 2)[0].split("\\.");
++    }
++}

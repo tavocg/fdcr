@@ -23,7 +23,10 @@ metarepo.mkSnapshots {
       ])
       // {
         inherit pkcs11Module;
-        patches = [ ./patches/java-library-path.patch ];
+        patches = [
+          ./patches/java-library-path.patch
+          ../firmador/patches/newer-release-only.patch
+        ];
       }
     );
 }
