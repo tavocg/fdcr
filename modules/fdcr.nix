@@ -91,6 +91,9 @@ let
           cp -a --no-preserve=mode,ownership ${base}/usr/. "$out/"
           cp -a --no-preserve=mode,ownership ${base}/etc "$out/etc"
           chmod -R u+w "$out"
+          # `cp --no-preserve=mode` drops the executable bit; without it the
+          # launch script fails with "Permission denied" on exec.
+          chmod u+x "$out/lib/SCMiddleware/SCManager"
           runHook postInstall
         '';
       };
