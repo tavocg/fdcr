@@ -59,6 +59,11 @@ let
       cp -a --no-preserve=mode,ownership ${middlewareData}/usr/. "$out/"
       cp -a --no-preserve=mode,ownership ${middlewareData}/etc "$out/etc"
       chmod -R u+w "$out"
+      # `cp --no-preserve=mode` drops the executable bit. `libidop11.so` launches
+      # `/usr/lib/SCMiddleware/idocachesrv`, so without it the exec fails with
+      # EACCES and the middleware blocks forever waiting for the cache daemon,
+      # which makes neither SCManager nor Firmador see the card.
+      chmod u+x "$out/lib/SCMiddleware/idocachesrv"
       runHook postInstall
     '';
     meta = middlewareData.meta // {
