@@ -61,38 +61,38 @@
       "2026-10-11": {
         "channels": {
           "arch": [
-            "/nix/store/ndf789nizan7x6lnw00wpxpa0jrwc6rv-bccr-certs-arch-2026.08.drv"
+            "/nix/store/gry5haj2mm5ghp4c1sz7094i6qsb4w06-bccr-certs-arch-2026.08.drv"
           ],
           "fedora": [
-            "/nix/store/z9mq9md51nj93fpk4z8j7lcp3ansis66-bccr-certs-rpm-2026.08.drv"
+            "/nix/store/l2fh8567xzxchwqyyd3l8459vsrf86zv-bccr-certs-rpm-2026.08.drv"
           ],
           "jammy": [
-            "/nix/store/valqrm3ixycjmvc56y87n72yy5ig0hy1-bccr-certs-deb-2026.08.drv"
+            "/nix/store/lxl6nr77jjz29xf64z8v0qj7n1yql88g-bccr-certs-deb-2026.08.drv"
           ],
           "noble": [
-            "/nix/store/7r12qnccjmzm4awgzy99hscqvlikpkj2-bccr-certs-deb-2026.08.drv"
+            "/nix/store/287jx9vw0mf4i7lxx2bni4qsaim7jq4b-bccr-certs-deb-2026.08.drv"
           ]
         },
-        "package": "/nix/store/ab9i93n9m7ckbyd8r2nangpisbwf99sc-bccr-certs-2026.08.drv"
+        "package": "/nix/store/ymm8x55zc37y864y0hj05qqpsvq5fyx7-bccr-certs-2026.08.drv"
       }
     },
     "bccr-gaudi": {
       "2026-10-11": {
         "channels": {
           "arch": [
-            "/nix/store/7r9j31r1b0fjsn7r2g0mmyl1bmwxdkpq-bccr-gaudi-arch-29.0.drv"
+            "/nix/store/ik6rp39i1cl2bl2abr6k2f776isdrcfq-bccr-gaudi-arch-29.0.drv"
           ],
           "fedora": [
-            "/nix/store/8hmx6l4h8iqd20dc9q28c8l2lrnl32r3-bccr-gaudi-rpm-29.0.drv"
+            "/nix/store/23zm3plkddq3gz8n7jqvxvhsqgn0d75i-bccr-gaudi-rpm-29.0.drv"
           ],
           "jammy": [
-            "/nix/store/0xx9ha6nzg64d2di1q87gjgjnjasxp1g-bccr-gaudi-deb-29.0.drv"
+            "/nix/store/ypik3l8ivjjs6a8rnbwc1vnar54y3agn-bccr-gaudi-deb-29.0.drv"
           ],
           "noble": [
-            "/nix/store/f9304jv94p3vgrkblkkghkp234qdq337-bccr-gaudi-deb-29.0.drv"
+            "/nix/store/jbql19jsk6s6wag8x436hv3rzfwqkr53-bccr-gaudi-deb-29.0.drv"
           ]
         },
-        "package": "/nix/store/vppf7y4rn4ci78mky64897lr2r576yzf-bccr-gaudi-29.0.drv"
+        "package": "/nix/store/2ww28zzj7p4x5w1vvrc03aw68xlsr2yg-bccr-gaudi-29.0.drv"
       }
     },
     "firmador": {
@@ -154,38 +154,38 @@
       "2026-10-11": {
         "channels": {
           "arch": [
-            "/nix/store/43dn8k3xkqv0di3rv9197g8jq9nabyi2-idopte-p11-arch-6.23.50.5.drv"
+            "/nix/store/fzacz5kfzm5m344ah0s0b016746xr730-idopte-p11-arch-6.23.50.5.drv"
           ],
           "fedora": [
-            "/nix/store/2xqwq5h5jgvdyy9xcvpi7nw7xwr3kzpz-idopte-p11-rpm-6.23.50.5.drv"
+            "/nix/store/3i38vwr6d3ra71rj32larxc38ihw3sp5-idopte-p11-rpm-6.23.50.5.drv"
           ],
           "jammy": [
-            "/nix/store/ay2241bdgyyjb6jbqzjrbwq7645rmk6h-idopte-p11-deb-6.23.50.5.drv"
+            "/nix/store/bkl8ry1iry546rf2q9ksy3qf8qhjipq4-idopte-p11-deb-6.23.50.5.drv"
           ],
           "noble": [
-            "/nix/store/khirpk1gnpkyllr2i8y9c51yibkvc4nf-idopte-p11-deb-6.23.50.5.drv"
+            "/nix/store/jr51r6wma31g4qs0376hi860in8bpcrk-idopte-p11-deb-6.23.50.5.drv"
           ]
         },
-        "package": "/nix/store/aiq3jm0ppx1p5dwhkrlb81yl0jgm06rk-idopte-p11-6.23.50.5.drv"
+        "package": "/nix/store/csb1zzz521ysbsmzpmdw0j58p7g24zaf-idopte-p11-6.23.50.5.drv"
       }
     },
     "idopte-scmanager": {
       "2026-10-11": {
         "channels": {
           "arch": [
-            "/nix/store/bf4js5rzbb7v9ip95izmwrp39ssxss0n-idopte-scmanager-arch-6.23.50.5.drv"
+            "/nix/store/dn6qji54shhbynlmqjarjymy41983gsa-idopte-scmanager-arch-6.23.50.5.drv"
           ],
           "fedora": [
-            "/nix/store/z2rlzwcmq58n7pavaspi81yjhy04n6q9-idopte-scmanager-rpm-6.23.50.5.drv"
+            "/nix/store/ivmdghyy26hzd5lwd9xhjkk4fqjbqrij-idopte-scmanager-rpm-6.23.50.5.drv"
           ],
           "jammy": [
-            "/nix/store/hvf056wbpil1pby81zpicj4wmk5z15bx-idopte-scmanager-deb-6.23.50.5.drv"
+            "/nix/store/50lrprn8k3jby4p8m8rrx6w2l2srl5g3-idopte-scmanager-deb-6.23.50.5.drv"
           ],
           "noble": [
-            "/nix/store/vl2bmik79jc98vainn27wr1cv98n81v5-idopte-scmanager-deb-6.23.50.5.drv"
+            "/nix/store/bj1grqg2may82a6jrc3qiwivb1fdyj16-idopte-scmanager-deb-6.23.50.5.drv"
           ]
         },
-        "package": "/nix/store/bcg2pka49fyg7xlaf3sxgj4gnrdi47qq-idopte-scmanager-6.23.50.5.drv"
+        "package": "/nix/store/iz6pnkr4iwa5grl2bdfhpwmfkv1xpr0m-idopte-scmanager-6.23.50.5.drv"
       }
     },
     "libxml2-idopte-compat": {

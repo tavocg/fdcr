@@ -6,20 +6,31 @@
   dpkg,
 }:
 let
-  pinFile = import ../../../lib/recipes/2026-10-11/pin-file.nix;
+  fetchArtifact = import ../../../lib/recipes/2026-10-11/fetch-artifact.nix;
+  # Commit that stores the vendor ZIPs; the LFS media endpoint serves the real
+  # content for this revision even when the flake input only carries pointers.
+  artifact = {
+    owner = "tavocg";
+    repo = "fdcr";
+    rev = "82d7d2ffd55c14f49b0af6bfde9050f72b33c9a8";
+  };
   nobleRoot = "sfd_ClientesLinux_DEB64_Ubuntu24_26_08/Firma Digital";
   jammyRoot = "sfd_ClientesLinux_DEB64_Ubuntu22_26_08/Firma Digital";
   sources = {
     noble = {
-      zip = pinFile ../../sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip;
-      sha256 = "0e84d21120c2c9be7f419921ee85d1ef75e7d6e119af2e9168acdb3df1b84c52";
+      zip = fetchArtifact (artifact // {
+        path = "artifacts/sfd_ClientesLinux_DEB64_Ubuntu24_rev26_08.zip";
+        sha256 = "0e84d21120c2c9be7f419921ee85d1ef75e7d6e119af2e9168acdb3df1b84c52";
+      });
       idopte = "${nobleRoot}/Idopte/Idopte_6.23.50.5_ubun24_amd64.deb";
       gaudi = "${nobleRoot}/Agente GAUDI/agente-gaudi_29.0_amd64.deb";
       certificates = "${nobleRoot}/Certificados";
     };
     jammy = {
-      zip = pinFile ../../sfd_ClientesLinux_DEB64_Ubuntu22_rev26_08.zip;
-      sha256 = "e5b5e5827f1a20ff76a22e32396dc53b30190761912f0e1f06e3632be11416b5";
+      zip = fetchArtifact (artifact // {
+        path = "artifacts/sfd_ClientesLinux_DEB64_Ubuntu22_rev26_08.zip";
+        sha256 = "e5b5e5827f1a20ff76a22e32396dc53b30190761912f0e1f06e3632be11416b5";
+      });
       idopte = "${jammyRoot}/Idopte/Idopte_6.23.50.5_ubun22_amd64.deb";
       gaudi = "${jammyRoot}/Agente GAUDI/agente-gaudi_29.0_amd64.deb";
       certificates = "${jammyRoot}/Certificados";
@@ -33,10 +44,6 @@ let
         nativeBuildInputs = [ unzip ];
       }
       ''
-        printf '%s  %s\n' '${source.sha256}' '${source.zip}' | sha256sum --check --status || {
-          echo "Source ZIP SHA-256 mismatch (check Git LFS checkout)" >&2
-          exit 1
-        }
         mkdir -p "$out/certificates"
         unzip -p '${source.zip}' '${source.idopte}' > "$out/idopte.deb"
         unzip -p '${source.zip}' '${source.gaudi}' > "$out/gaudi.deb"

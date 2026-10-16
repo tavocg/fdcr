@@ -30,13 +30,21 @@ lib/environments/2026-10-11.nix      # Nixpkgs y metarepo fijados con rev + narH
 
 1. Guardar el archivo nuevo en `artifacts/`, sin sobrescribir uno existente, y
    agregarlo con Git LFS. Para otros tipos de binario, añadir su patrón a
-   `.gitattributes` o usar `git lfs track`. Hacer `git lfs pull` antes de construir.
+   `.gitattributes` o usar `git lfs track`. Un flake input descargado desde GitHub
+   solo trae el archivo puntero de LFS, nunca el contenido real, así que la receta
+   lee el binario del endpoint LFS (paso 2); `git lfs pull` solo hace falta para
+   inspeccionar los archivos localmente.
 2. Crear una receta nueva en `artifacts/recipes/<fecha>/`. Inspeccionar las rutas,
    dependencias y scripts del instalador; fijar el hash y declarar explícitamente
-   la extracción. Aislar archivos locales con
-   `lib/recipes/2026-10-11/pin-file.nix` para conservar su referencia por contenido
-   al construir desde un flake y al pasar por `toString` en las integraciones.
-   Puede devolver un binario, un árbol de archivos o varios
+   la extracción. Para artifacts guardados con LFS, obtener el binario con
+   `lib/recipes/<fecha>/fetch-artifact.nix` (`owner`, `repo`, `rev`, `path` y el
+   `sha256` del fabricante): descarga el contenido real desde
+   `media.githubusercontent.com` y lo fija por contenido, de modo que la ruta en
+   el store coincide con un checkout local con `git lfs pull` y las derivaciones
+   históricas no cambian. Aislar archivos locales auxiliares (lanzadores, unidades
+   systemd, `.desktop`) con `lib/recipes/2026-10-11/pin-file.nix` para conservar su
+   referencia por contenido al construir desde un flake y al pasar por `toString`
+   en las integraciones. Puede devolver un binario, un árbol de archivos o varios
    componentes. Los scripts del fabricante se inspeccionan, nunca se ejecutan
    durante la extracción. El catálogo `artifacts/artifacts.nix` es opcional para
    las conexiones directas; agregar nombres allí no modifica las recetas previas.
