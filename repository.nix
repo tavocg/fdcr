@@ -6,7 +6,16 @@
   channels = {
     jammy = { format = "apt"; releases = [ "ubuntu2204" ]; };
     noble = { format = "apt"; releases = [ "ubuntu2604" "ubuntu2404" "debian13" ]; };
-    fedora = { format = "dnf"; releases = [ "fedora45" "fedora44" "fedora43" ]; };
+    fedora = {
+      format = "dnf";
+      releases = [
+        "fedora45"
+        "fedora44"
+        "fedora43"
+        "opensuse-tumbleweed"
+        "opensuse-leap160"
+      ];
+    };
     arch = { format = "pacman"; releases = [ "arch" ]; };
   };
 }
