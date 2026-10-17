@@ -52,6 +52,31 @@ El middleware y su administrador gráfico se instalan por separado:
 sudo dnf install idopte-p11 idopte-scmanager
 ```
 
+## openSUSE Leap 16.0 y Tumbleweed (`zypper`)
+
+openSUSE comparte el canal RPM `fedora`. El instalador automático detecta
+Zypper y configura `/etc/zypp/repos.d/fdcr.repo` con el alias `fdcr`.
+Para configurarlo manualmente, crea ese archivo:
+
+```ini
+[fdcr]
+name=Paquetes de firma digital para Costa Rica
+baseurl=https://tavocg.github.io/fdcr/fedora/
+enabled=1
+autorefresh=1
+gpgcheck=1
+pkg_gpgcheck=1
+repo_gpgcheck=0
+gpgkey=https://tavocg.github.io/fdcr/fdcr.asc
+```
+
+```sh
+sudo rpm --import https://tavocg.github.io/fdcr/fdcr.asc
+sudo zypper refresh fdcr
+sudo zypper install firmador
+sudo zypper install idopte-p11 idopte-scmanager
+```
+
 ## Arch Linux (`pacman`)
 
 ```sh
