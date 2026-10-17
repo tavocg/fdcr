@@ -14,6 +14,9 @@ Actualmente ofrece:
 También publica un módulo NixOS (`nixosModules.default`) que adapta el middleware
 y SCManager; véase [doc/nixos.md](doc/nixos.md).
 
+Para usar SCManager y Firmador desde un perfil o devShell, véase
+[uso con Nix](doc/nix.md). Ambos incluyen el middleware Idopte.
+
 Consulta el [estado de la paquetería](doc/packages.md).
 
 > [!WARNING]

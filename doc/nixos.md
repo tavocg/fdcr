@@ -52,40 +52,23 @@ Al activar `scmanager`, el módulo habilita el middleware de forma implícita.
 
 ## Firmador y la biblioteca PKCS#11
 
-El comando `firmador` del catálogo apunta a `/usr/lib/SCMiddleware/libidop11.so`.
-En NixOS esa ruta no existe, así que hay que pasarle la biblioteca del paquete
-adaptado con el argumento `pkcs11Module`:
+Los paquetes `firmador` y `firmador-git` ya incluyen el middleware Idopte en un
+entorno FHS, con su configuración y las rutas absolutas que necesita. Puedes
+instalarlos directamente:
 
 ```nix
-{ inputs, pkgs, config, ... }:
-let
-  fdcr = inputs.fdcr.packages.${pkgs.stdenv.hostPlatform.system};
-in
-{
-  environment.systemPackages = [
-    (fdcr.firmador.override {
-      pkcs11Module = config.services.fdcr.pkcs11Module;
-    })
-  ];
-}
+environment.systemPackages = [ fdcr.firmador ];
 ```
 
-`config.services.fdcr.pkcs11Module` es exactamente
-`"${config.services.fdcr.package}/lib/SCMiddleware/libidop11.so"`, por lo que
-también puedes escribir la ruta literal:
+No necesitan activar el módulo completo, pero el host debe tener PC/SC habilitado:
 
 ```nix
-(fdcr.firmador.override {
-  pkcs11Module = "${config.services.fdcr.package}/lib/SCMiddleware/libidop11.so";
-})
+services.pcscd.enable = true;
 ```
 
-El envoltorio de `firmador` exporta `LIBASEP11` apuntando a esa biblioteca y
-delega en `.firmador-wrapped`. La variante `firmador-git` acepta el mismo
-argumento. Firmador 1.9.8 todavía no leía `LIBASEP11`, así que en Nix se
-parchea la fuente con ese backport (2.0.0+ ya lo incluye); como el parche solo
-se aplica cuando se pasa `pkcs11Module`, las recetas publicadas para el resto
-de canales no cambian.
+El argumento `pkcs11Module` sigue disponible para seleccionar otra biblioteca.
+Firmador 1.9.8 recibe el backport de `LIBASEP11`; las publicaciones para otras
+distribuciones conservan sus recetas nativas.
 
 ## Certificados
 
@@ -115,11 +98,7 @@ in
     scmanager.enable = true;
   };
 
-  environment.systemPackages = [
-    (fdcr.firmador.override {
-      pkcs11Module = config.services.fdcr.pkcs11Module;
-    })
-  ];
+  environment.systemPackages = [ fdcr.firmador ];
 }
 ```
 
