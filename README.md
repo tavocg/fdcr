@@ -6,6 +6,8 @@ Actualmente ofrece:
 
 - `firmador`
 - `firmador-git`
+- `opensc`
+- `opensc-git`
 - `bccr-gaudi`
 - `bccr-certs`
 - `idopte-p11`
@@ -17,7 +19,8 @@ y SCManager; véase [doc/nixos.md](doc/nixos.md).
 Para usar SCManager y Firmador desde un perfil o devShell, véase
 [uso con Nix](doc/nix.md). Ambos incluyen el middleware Idopte.
 
-Consulta el [estado de la paquetería](doc/packages.md).
+Consulta el [estado de la paquetería](doc/packages.md) y las
+[recetas de OpenSC](packages/opensc/README.md).
 
 > [!WARNING]
 > No usar en producción todavía, actualmente este repositorio se encuentra en
