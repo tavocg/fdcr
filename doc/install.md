@@ -11,7 +11,7 @@ ejemplos siguientes configuran manualmente el repositorio alojado en
 BASE_URL=https://tavocg.github.io/fdcr
 sudo install -d -m 0755 /etc/apt/keyrings
 curl -fsSL "$BASE_URL/fdcr.asc" | sudo gpg --dearmor --yes -o /etc/apt/keyrings/fdcr.gpg
-echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/fdcr.gpg] $BASE_URL/noble noble main" \
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/fdcr.gpg] $BASE_URL/apt noble main" \
   | sudo tee /etc/apt/sources.list.d/fdcr.list >/dev/null
 sudo apt update
 ```
@@ -28,8 +28,13 @@ sudo apt install idopte-p11 idopte-scmanager
 ```
 
 Para Ubuntu 22.04 usa `jammy`; para Ubuntu 24.04, `noble`; para Ubuntu 26.04,
-`ubuntu2604`; para Debian 13, `debian`. Sustituye las dos apariciones de `noble`
-en el ejemplo según corresponda.
+`ubuntu2604`; para Debian 13, `debian`. Sustituye la suite `noble` en el ejemplo según corresponda; la URL termina
+siempre en `/apt`.
+
+Si configuraste el repositorio antes del pool compartido, vuelve a ejecutar el
+instalador o cambia la URL anterior (`/noble`, `/jammy`, `/debian` o
+`/ubuntu2604`) por `/apt` en la entrada APT, conservando la suite. Después
+ejecuta `sudo apt update`.
 
 ## Fedora (`dnf`)
 

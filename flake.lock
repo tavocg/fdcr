@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792197639,
-        "narHash": "sha256-b3i6HRp4NVdRPf+dUL4hzwZMfP1FbRs4ARU3yuXSbpg=",
+        "lastModified": 1792381338,
+        "narHash": "sha256-B1+Ry7DrdZYF/rIMRWZpRkqLlpHfbKNxi/dF91FazUY=",
         "owner": "alturalabscr",
         "repo": "metarepo",
-        "rev": "0aa3dd6e4895642409ccda2fd50d599e2e433f3d",
+        "rev": "3e0726c8e7a8497fca77680fadda91d0c34db0cd",
         "type": "github"
       },
       "original": {

@@ -85,8 +85,16 @@ ocupa aproximadamente **1 329 343 871 bytes**. Firmas, índices y detalles del
 ZIP de CI pueden variar ligeramente.
 
 `deploy-pages@v5` compara el tamaño del artifact con **1 073 741 824 bytes**
-(1 GiB). Todavía faltan reducir aproximadamente **255,6 MB** (243,8 MiB)
-para evitar la advertencia. Desactivar esa snapshot por sí solo no basta.
+(1 GiB). Antes del pool compartido, faltaban reducir aproximadamente
+**255,6 MB** (243,8 MiB); desactivar esa snapshot por sí solo no bastaba.
+
+El pin de metarepo `3e0726c8e7a8497fca77680fadda91d0c34db0cd` incorpora un
+pool APT compartido por SHA-256 bajo `apt/pool`, con índices por suite en
+`apt/dists`. La validación temporal sin firma redujo la publicación a
+**921 768 554 bytes**, con un ZIP aproximado de **917 767 735 bytes** y
+**155 974 089 bytes** de margen bajo el umbral. El tamaño de CI puede variar
+ligeramente por las firmas e índices. Los clientes APT existentes deben
+actualizar su URL a `/apt`; véase [install.md](install.md).
 
 Un ejemplo de nueva snapshot que reutiliza un builder:
 
