@@ -9,8 +9,9 @@ let
   expected =
     (builtins.fromJSON (builtins.readFile ./historical.json)).${pkgs.stdenv.hostPlatform.system};
   actual = import ./manifest.nix { inherit lib packages repository; };
-  # New distro channels may reuse historical artifacts. Every existing channel
-  # and derivation must still match the recorded value exactly.
+  # Catalog entries may be commented out to stop publishing old snapshots.
+  # Keep their recorded hashes: reactivation checks the original recipes again.
+  # Every active historical channel and derivation must still match exactly.
   historicalUnchanged = lib.all (
     name:
     lib.all (
@@ -32,7 +33,9 @@ let
         && builtins.hasAttr parent old.channels
         && new.channels.${channel} == old.channels.${parent}
       ) (lib.subtractLists (builtins.attrNames old.channels) (builtins.attrNames new.channels))
-    ) (builtins.attrNames expected.${name})
+    ) (builtins.filter (snapshot: builtins.hasAttr snapshot actual.${name}) (
+      builtins.attrNames expected.${name}
+    ))
   ) (builtins.attrNames expected);
 
   # Model the supported transition: a Java payload and a native payload with

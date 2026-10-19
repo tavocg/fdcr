@@ -14,7 +14,7 @@ artifacts/
   archivo-del-fabricante.zip
   recipes/2026-10-11/ubuntu.nix       # extracción fija y metadata del DEB
 packages/bccr-certs/
-  snapshots.nix                     # catálogo; todas se publican
+  snapshots.nix                     # catálogo; se publican las entradas activas
   builders.nix                      # catálogo de builders identificados
   2026-10-11/
     snapshot.nix                    # versión, revisión, builder y entorno
@@ -62,11 +62,31 @@ lib/environments/2026-10-11.nix      # Nixpkgs y metarepo fijados con rev + narH
    ```
 
 El identificador ISO mayor es el paquete predeterminado para Nix; todas las
-snapshots se publican y sus archivos siguen disponibles. El índice de Pacman
+snapshots activas del catálogo se publican. Se pueden comentar entradas antiguas
+en `snapshots.nix` para reducir el tamaño publicado, conservando sus directorios
+y los registros de `tests/historical.json` para una futura reactivación.
+El índice de Pacman
 conserva una versión por nombre; las anteriores pueden instalarse con `pacman -U`
-desde su archivo. Para varias incorporaciones el mismo día, usar sufijos
+desde su archivo mientras la snapshot siga activa. Para varias incorporaciones el mismo día, usar sufijos
 ordenados (`-01`, `-02`). Evitar repetir nombre, versión, revisión y arquitectura
 nativos dentro del mismo canal: el gestor de paquetes no puede distinguirlos.
+
+### Tamaño de la publicación
+
+El [workflow 46 de GitHub](https://github.com/tavocg/fdcr/actions/runs/39187740921)
+publicó correctamente el artifact `metarepo-pages` de **1 691 385 491 bytes**
+(creado el 2026-10-19 a las 02:09 UTC), aunque mostró la advertencia de tamaño.
+Se desactivó `firmador-git/2026-10-11-01` y se mantuvo activa
+`2026-10-11-02` (`2.0.0+git20260908.a34e5b8`). Tras ejecutar
+`nix run .#build-public`, los siete canales suman **1 333 240 076 bytes**.
+El TAR generado con las opciones de `upload-pages-artifact@v5` ocupa
+**1 333 360 640 bytes**; un ZIP con Deflate nivel 6, como el upload de Actions,
+ocupa aproximadamente **1 329 343 871 bytes**. Firmas, índices y detalles del
+ZIP de CI pueden variar ligeramente.
+
+`deploy-pages@v5` compara el tamaño del artifact con **1 073 741 824 bytes**
+(1 GiB). Todavía faltan reducir aproximadamente **255,6 MB** (243,8 MiB)
+para evitar la advertencia. Desactivar esa snapshot por sí solo no basta.
 
 Un ejemplo de nueva snapshot que reutiliza un builder:
 
@@ -116,12 +136,13 @@ No reemplazar las referencias del entorno existente.
 ## Conservar el historial
 
 Los directorios de snapshots, artifacts y builders ya publicados son inmutables.
-Los catálogos solo agregan entradas; nunca redirigen un identificador anterior.
+Los catálogos pueden desactivar entradas comentándolas; nunca redirigen un identificador anterior.
 Una corrección, incluso de empaquetado, necesita una snapshot nueva y una
 versión/revisión nativa que no colisione con las anteriores.
 
 `tests/historical.json` registra las derivaciones Nix y las publicaciones nativas
-históricas en ambas arquitecturas. `nix flake check` rechaza cambios de receta,
+históricas en ambas arquitecturas. Las entradas desactivadas conservan su registro;
+se vuelven a comprobar al reactivarlas. `nix flake check` rechaza cambios de receta,
 fuente, herramientas, dependencias o hooks que alteren esas derivaciones. No
 regenerar las entradas existentes para aprobar un cambio. Se pueden añadir las
 nuevas entradas al registrar nuevas snapshots. La comprobación también simula
