@@ -17,7 +17,10 @@
     debian = {
       inherits = "noble";
       format = "apt";
-      releases = [ "debian13" ];
+      releases = [
+        "debian13"
+        "linuxmint7"
+      ];
     };
     ubuntu2604 = {
       inherits = "noble";
