@@ -25,10 +25,15 @@ in
       gengetopt = pkgs.gengetopt;
     }).overrideAttrs
       (old: {
-        configureFlags = (old.configureFlags or [ ]) ++ [ "--sysconfdir=/etc/opensc" ];
+        configureFlags = (old.configureFlags or [ ]) ++ [
+          "--sysconfdir=/etc"
+          "--disable-shared"
+          "--enable-static"
+        ];
+        NIX_CFLAGS_COMPILE = "-fPIC";
         installFlags = [
-          "CVCDIR=$(out)/etc/opensc/eac/cvc"
-          "X509DIR=$(out)/etc/opensc/eac/x509"
+          "CVCDIR=$(out)/etc/eac/cvc"
+          "X509DIR=$(out)/etc/eac/x509"
         ];
       });
 }

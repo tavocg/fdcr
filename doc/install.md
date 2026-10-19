@@ -5,7 +5,7 @@ para las versiones y arquitecturas compatibles de cada distribución. Los
 ejemplos siguientes configuran manualmente el repositorio alojado en
 `https://tavocg.github.io/fdcr`.
 
-## Ubuntu (`apt`)
+## Ubuntu y Debian (`apt`)
 
 ```sh
 BASE_URL=https://tavocg.github.io/fdcr
@@ -26,6 +26,10 @@ administrador gráfico de tarjetas:
 ```sh
 sudo apt install idopte-p11 idopte-scmanager
 ```
+
+Para Ubuntu 22.04 usa `jammy`; para Ubuntu 24.04, `noble`; para Ubuntu 26.04,
+`ubuntu2604`; para Debian 13, `debian`. Sustituye las dos apariciones de `noble`
+en el ejemplo según corresponda.
 
 ## Fedora (`dnf`)
 
@@ -54,14 +58,14 @@ sudo dnf install idopte-p11 idopte-scmanager
 
 ## openSUSE Leap 16.0 y Tumbleweed (`zypper`)
 
-openSUSE comparte el canal RPM `fedora`. El instalador automático detecta
+openSUSE usa el canal RPM `opensuse`. El instalador automático detecta
 Zypper y configura `/etc/zypp/repos.d/fdcr.repo` con el alias `fdcr`.
 Para configurarlo manualmente, crea ese archivo:
 
 ```ini
 [fdcr]
 name=Paquetes de firma digital para Costa Rica
-baseurl=https://tavocg.github.io/fdcr/fedora/
+baseurl=https://tavocg.github.io/fdcr/opensuse/
 enabled=1
 autorefresh=1
 gpgcheck=1

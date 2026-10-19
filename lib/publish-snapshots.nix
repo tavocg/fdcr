@@ -15,14 +15,27 @@ let
         {
           inherit repository;
           package = snapshot;
+          channels =
+            options.channels
+              or (builtins.attrNames (lib.filterAttrs (_: config: !(config ? inherits)) repository.channels));
         }
         // builtins.removeAttrs options [ "artifactTransforms" ]
       );
     in
     {
-      channels = lib.mapAttrs (
-        channel: artifacts: map ((options.artifactTransforms or { }).${channel} or (x: x)) artifacts
-      ) publication.channels;
+      channels =
+        let
+          own = lib.mapAttrs (
+            channel: artifacts: map ((options.artifactTransforms or { }).${channel} or (x: x)) artifacts
+          ) publication.channels;
+          # Distro-specific channels reuse existing packages unless the snapshot
+          # explicitly supplies an artifact for that channel (as OpenSC does).
+          inherited = lib.filterAttrs (
+            name: config:
+            config ? inherits && !(builtins.hasAttr name own) && builtins.hasAttr config.inherits own
+          ) repository.channels;
+        in
+        own // lib.mapAttrs (_: config: own.${config.inherits}) inherited;
     }
   ) package.snapshots;
   channels = lib.unique (lib.concatMap (p: builtins.attrNames p.channels) publications);

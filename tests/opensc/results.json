@@ -1,0 +1,567 @@
+{
+  "architecture": "x86_64-linux",
+  "artifacts": [
+    {
+      "derivation": "/nix/store/3ymy3nfc7gbwdkgfcirbq22y81jarzy8-opensc-deb-0.27.1.drv",
+      "file": "/nix/store/sj8bffmcj9gqss4h4snl227h4sphymyb-opensc-deb-0.27.1/opensc_0.27.1-2cr0.1_amd64.deb",
+      "sha256": "afb02e67a42f515c8854b8fb3009b03df2d23fb60e8e8dc190814ccd5fe04169"
+    },
+    {
+      "derivation": "/nix/store/60nbkqd2swsv97q5lgqb7lfgpcbac5jh-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv",
+      "file": "/nix/store/dgmzllb9aigcj85p6916vihspx7ahgaa-opensc-git-rpm-0.27.1+git20261004.fc27ee8/opensc-git-0.27.1+git20261004.fc27ee8-12.fc45cr0.1.x86_64.rpm",
+      "sha256": "247129c5fe3b200d49f67b194bfce7248575af206d46dbcb83927f298eac626c"
+    },
+    {
+      "derivation": "/nix/store/6vrz734bkgfwlw5353j0an9f39kbamkm-opensc-deb-0.27.1.drv",
+      "file": "/nix/store/kv7v24r5cfzk48q3c5bc9nqaq9a77bpr-opensc-deb-0.27.1/opensc_0.27.1-2cr0.1_amd64.deb",
+      "sha256": "6d39eb398190862a82339deaa3931f02c8683a918bca3acaf3b20d7f1ea9d26c"
+    },
+    {
+      "derivation": "/nix/store/8v9j8p0naxhp27ydlhjkrx2wzlndzksm-opensc-deb-0.27.1.drv",
+      "file": "/nix/store/gfypcd8vn4zv5sc3rpw1pp3zznic3dal-opensc-deb-0.27.1/opensc_0.27.1-2cr0.1_amd64.deb",
+      "sha256": "e2863467925b3d9c0daaf46641d729ca73f572bbc0f487df3406b73da3bd04a5"
+    },
+    {
+      "derivation": "/nix/store/b7g4bzhpj66yz8qdqy390qzjl7fl1fpz-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv",
+      "file": "/nix/store/n7x3znh5ky5zbl7gn09ygznwdcndm176-opensc-git-deb-0.27.1+git20261004.fc27ee8/opensc-git_0.27.1+git20261004.fc27ee8-2cr0.1_amd64.deb",
+      "sha256": "2716e0136c3b656b1666ac3316e4c62263f7902f0067f2fb453ce124e1c37a97"
+    },
+    {
+      "derivation": "/nix/store/dla7dlkrmdny1w6c009rnwz2fk5x3zzb-opensc-git-arch-0.27.1+git20261004.fc27ee8+2cr0.1.drv",
+      "file": "/nix/store/0lr047j3gm054l0xh2zrnwrdcfiqfd3l-opensc-git-arch-0.27.1+git20261004.fc27ee8+2cr0.1/opensc-git-0.27.1+git20261004.fc27ee8+2cr0.1-2-x86_64.pkg.tar.zst",
+      "sha256": "407c65b9a71cdeb7872de67825afdc4f9c51d581733140615960fe21063490ea"
+    },
+    {
+      "derivation": "/nix/store/gxrzcrvf7v4a39606iw2b7np2vpgh9vf-opensc-deb-0.27.1.drv",
+      "file": "/nix/store/najq2clipzp71zlcs67fsz3lvn271jhx-opensc-deb-0.27.1/opensc_0.27.1-2cr0.1_amd64.deb",
+      "sha256": "45607049ad0dd9f9d414b59417d9974123ffd1f3351ac05952bde9c9a03cf753"
+    },
+    {
+      "derivation": "/nix/store/i1sbyw4hymi7hf4d9gcmr47hgmwnssfp-opensc-rpm-0.27.1.drv",
+      "file": "/nix/store/n5qb4hhmdzzi12mh7vhdmavhhbrw0r61-opensc-rpm-0.27.1/opensc-0.27.1-12.fc45cr0.1.x86_64.rpm",
+      "sha256": "f470af595ddd111c8a76238e0c46a37c9bd403cd2aa3b163af1ed6af4ecf8b7b"
+    },
+    {
+      "derivation": "/nix/store/jvl43kkfcj9pyyrdcix227xfv4m6inmb-opensc-arch-0.27.1+2cr0.1.drv",
+      "file": "/nix/store/mvgs7s1qw57lkc5qj4vgl6y4dk42y31b-opensc-arch-0.27.1+2cr0.1/opensc-0.27.1+2cr0.1-2-x86_64.pkg.tar.zst",
+      "sha256": "dc3c7ed9f97c2114771d716cbd23e025dbf87926a9addec7585773ee8bf0d76a"
+    },
+    {
+      "derivation": "/nix/store/lsv5aql4bmiqikd3w29xima8pndb479d-opensc-rpm-0.27.1.drv",
+      "file": "/nix/store/j29sbacwg4kna3rsq24qyiw18sfb4nhd-opensc-rpm-0.27.1/opensc-0.27.1-12.fc45cr0.1.x86_64.rpm",
+      "sha256": "1e01d47047f54558ec9dea0086715308d2bb6fc852a2cd3205ced63df05584b5"
+    },
+    {
+      "derivation": "/nix/store/m2gjfr2mgz0ss0ahvsqvi75q84x5cdw2-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv",
+      "file": "/nix/store/m02qg14ldvk6inhbb87lkld3ppc1h1lh-opensc-git-deb-0.27.1+git20261004.fc27ee8/opensc-git_0.27.1+git20261004.fc27ee8-2cr0.1_amd64.deb",
+      "sha256": "ee926fa5a7adc520bc74b0a2e7da0013430da03ecaa21ef69a5b435e53f33889"
+    },
+    {
+      "derivation": "/nix/store/v3s5qb8d93k4np8gg7dl11wyz60dw8ls-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv",
+      "file": "/nix/store/7hz487gx8rnljzn6hvhcdsxnybr8a3cs-opensc-git-deb-0.27.1+git20261004.fc27ee8/opensc-git_0.27.1+git20261004.fc27ee8-2cr0.1_amd64.deb",
+      "sha256": "9863a212aa6f6d0dbf0f042ab792efed7ff5ca3b1b75e352af9ba0dbcd221f79"
+    },
+    {
+      "derivation": "/nix/store/w9gmzwlw8dbdkvkxv1f37c0mqhfmc18i-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv",
+      "file": "/nix/store/5x22c8vxi3jwwgb36yd8flm8ciqp47wy-opensc-git-deb-0.27.1+git20261004.fc27ee8/opensc-git_0.27.1+git20261004.fc27ee8-2cr0.1_amd64.deb",
+      "sha256": "7bdc16e0b23c356e303d2dfea06809ab5e2f2fe200e94d08e60d32f346f62172"
+    },
+    {
+      "derivation": "/nix/store/zwd7ndi6k8jllb9sxqvysryvb7fdrsmc-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv",
+      "file": "/nix/store/vq082j59q7r2x62d96002kgc60i39kay-opensc-git-rpm-0.27.1+git20261004.fc27ee8/opensc-git-0.27.1+git20261004.fc27ee8-12.fc45cr0.1.x86_64.rpm",
+      "sha256": "a3af5b4d06c8cfc6540c0beb2857f034567b32e1c8001039ab32ccbce9fc1148"
+    }
+  ],
+  "cases": [
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-0.27.1+2cr0.1-2-x86_64.pkg.tar.zst",
+      "artifact_file_count": 123,
+      "case": "arch-opensc",
+      "installation": "passed",
+      "installed_version": "opensc 0.27.1+2cr0.1-2",
+      "layout": "passed",
+      "official_file_count": 123,
+      "official_packages": [
+        "opensc 0.27.1-2"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-git-0.27.1+git20261004.fc27ee8+2cr0.1-2-x86_64.pkg.tar.zst",
+      "artifact_file_count": 123,
+      "case": "arch-opensc-git",
+      "installation": "passed",
+      "installed_version": "opensc-git 0.27.1+git20261004.fc27ee8+2cr0.1-2",
+      "layout": "passed",
+      "official_file_count": 123,
+      "official_packages": [
+        "opensc 0.27.1-2"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13.0.0"
+      ],
+      "abi_or_upstream_removed": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.12",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.12.0.2",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.12",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.12.0.2"
+      ],
+      "abi_symlinks": {},
+      "artifact": "opensc_0.27.1-2cr0.1_amd64.deb",
+      "artifact_file_count": 130,
+      "case": "debian13-opensc",
+      "installation": "passed",
+      "installed_version": "0.27.1-2cr0.1",
+      "layout": "passed",
+      "official_file_count": 130,
+      "official_packages": [
+        "opensc 0.26.1-2",
+        "opensc-pkcs11 0.26.1-2"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13.0.0"
+      ],
+      "abi_or_upstream_removed": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.12",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.12.0.2",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.12",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.12.0.2"
+      ],
+      "abi_symlinks": {},
+      "artifact": "opensc-git_0.27.1+git20261004.fc27ee8-2cr0.1_amd64.deb",
+      "artifact_file_count": 130,
+      "case": "debian13-opensc-git",
+      "installation": "passed",
+      "installed_version": "0.27.1+git20261004.fc27ee8-2cr0.1",
+      "layout": "passed",
+      "official_file_count": 130,
+      "official_packages": [
+        "opensc 0.26.1-2",
+        "opensc-pkcs11 0.26.1-2"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-0.27.1-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 117,
+      "case": "fedora43-opensc",
+      "installation": "passed",
+      "installed_version": "0.27.1-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 143,
+      "official_packages": [
+        "opensc-libs-0.27.1-2.fc43.x86_64",
+        "opensc-0.27.1-2.fc43.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 26,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-git-0.27.1+git20261004.fc27ee8-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 117,
+      "case": "fedora43-opensc-git",
+      "installation": "passed",
+      "installed_version": "0.27.1+git20261004.fc27ee8-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 143,
+      "official_packages": [
+        "opensc-libs-0.27.1-2.fc43.x86_64",
+        "opensc-0.27.1-2.fc43.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 26,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-0.27.1-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 117,
+      "case": "fedora44-opensc",
+      "installation": "passed",
+      "installed_version": "0.27.1-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 143,
+      "official_packages": [
+        "opensc-libs-0.27.1-2.fc44.x86_64",
+        "opensc-0.27.1-2.fc44.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 26,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-git-0.27.1+git20261004.fc27ee8-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 117,
+      "case": "fedora44-opensc-git",
+      "installation": "passed",
+      "installed_version": "0.27.1+git20261004.fc27ee8-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 143,
+      "official_packages": [
+        "opensc-libs-0.27.1-2.fc44.x86_64",
+        "opensc-0.27.1-2.fc44.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 26,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-0.27.1-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 117,
+      "case": "fedora45-opensc",
+      "installation": "passed",
+      "installed_version": "0.27.1-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 143,
+      "official_packages": [
+        "opensc-libs-0.27.1-12.fc45.x86_64",
+        "opensc-0.27.1-12.fc45.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 26,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-git-0.27.1+git20261004.fc27ee8-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 117,
+      "case": "fedora45-opensc-git",
+      "installation": "passed",
+      "installed_version": "0.27.1+git20261004.fc27ee8-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 143,
+      "official_packages": [
+        "opensc-libs-0.27.1-12.fc45.x86_64",
+        "opensc-0.27.1-12.fc45.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 26,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13.0.0"
+      ],
+      "abi_or_upstream_removed": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.8",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.8.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.8",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.8.0.0",
+        "/usr/share/opensc/gpk.profile",
+        "/usr/share/opensc/incrypto34.profile",
+        "/usr/share/opensc/jcop.profile",
+        "/usr/share/opensc/miocos.profile",
+        "/usr/share/opensc/westcos.profile"
+      ],
+      "abi_symlinks": {},
+      "artifact": "opensc_0.27.1-2cr0.1_amd64.deb",
+      "artifact_file_count": 126,
+      "case": "jammy-opensc",
+      "installation": "passed",
+      "installed_version": "0.27.1-2cr0.1",
+      "layout": "passed",
+      "official_file_count": 131,
+      "official_packages": [
+        "opensc 0.22.0-1ubuntu2.1",
+        "opensc-pkcs11 0.22.0-1ubuntu2.1"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13.0.0"
+      ],
+      "abi_or_upstream_removed": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.8",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.8.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.8",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.8.0.0",
+        "/usr/share/opensc/gpk.profile",
+        "/usr/share/opensc/incrypto34.profile",
+        "/usr/share/opensc/jcop.profile",
+        "/usr/share/opensc/miocos.profile",
+        "/usr/share/opensc/westcos.profile"
+      ],
+      "abi_symlinks": {},
+      "artifact": "opensc-git_0.27.1+git20261004.fc27ee8-2cr0.1_amd64.deb",
+      "artifact_file_count": 126,
+      "case": "jammy-opensc-git",
+      "installation": "passed",
+      "installed_version": "0.27.1+git20261004.fc27ee8-2cr0.1",
+      "layout": "passed",
+      "official_file_count": 131,
+      "official_packages": [
+        "opensc 0.22.0-1ubuntu2.1",
+        "opensc-pkcs11 0.22.0-1ubuntu2.1"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13.0.0"
+      ],
+      "abi_or_upstream_removed": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.11",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.11.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.11",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.11.0.0"
+      ],
+      "abi_symlinks": {},
+      "artifact": "opensc_0.27.1-2cr0.1_amd64.deb",
+      "artifact_file_count": 127,
+      "case": "noble-opensc",
+      "installation": "passed",
+      "installed_version": "0.27.1-2cr0.1",
+      "layout": "passed",
+      "official_file_count": 127,
+      "official_packages": [
+        "opensc 0.25.0~rc1-1ubuntu0.2",
+        "opensc-pkcs11 0.25.0~rc1-1ubuntu0.2"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.13.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.13.0.0"
+      ],
+      "abi_or_upstream_removed": [
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.11",
+        "/usr/lib/x86_64-linux-gnu/libopensc.so.11.0.0",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.11",
+        "/usr/lib/x86_64-linux-gnu/libsmm-local.so.11.0.0"
+      ],
+      "abi_symlinks": {},
+      "artifact": "opensc-git_0.27.1+git20261004.fc27ee8-2cr0.1_amd64.deb",
+      "artifact_file_count": 127,
+      "case": "noble-opensc-git",
+      "installation": "passed",
+      "installed_version": "0.27.1+git20261004.fc27ee8-2cr0.1",
+      "layout": "passed",
+      "official_file_count": 127,
+      "official_packages": [
+        "opensc 0.25.0~rc1-1ubuntu0.2",
+        "opensc-pkcs11 0.25.0~rc1-1ubuntu0.2"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [
+        "/usr/lib64/libopensc.so.13",
+        "/usr/lib64/libopensc.so.13.0.0",
+        "/usr/lib64/libsmm-local.so.13",
+        "/usr/lib64/libsmm-local.so.13.0.0"
+      ],
+      "abi_or_upstream_removed": [
+        "/usr/lib64/libopensc.so.12",
+        "/usr/lib64/libopensc.so.12.0.2",
+        "/usr/lib64/libsmm-local.so.12",
+        "/usr/lib64/libsmm-local.so.12.0.2"
+      ],
+      "abi_symlinks": {
+        "/usr/lib64/libsmm-local.so": {
+          "official": {
+            "target": "libsmm-local.so.12.0.2",
+            "type": "symlink"
+          },
+          "ours": {
+            "target": "libsmm-local.so.13.0.0",
+            "type": "symlink"
+          }
+        }
+      },
+      "artifact": "opensc-0.27.1-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 103,
+      "case": "opensuse-leap160-opensc",
+      "installation": "passed",
+      "installed_version": "0.27.1-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 103,
+      "official_packages": [
+        "opensc-0.26.1-160000.5.1.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [
+        "/usr/lib64/libopensc.so.13",
+        "/usr/lib64/libopensc.so.13.0.0",
+        "/usr/lib64/libsmm-local.so.13",
+        "/usr/lib64/libsmm-local.so.13.0.0"
+      ],
+      "abi_or_upstream_removed": [
+        "/usr/lib64/libopensc.so.12",
+        "/usr/lib64/libopensc.so.12.0.2",
+        "/usr/lib64/libsmm-local.so.12",
+        "/usr/lib64/libsmm-local.so.12.0.2"
+      ],
+      "abi_symlinks": {
+        "/usr/lib64/libsmm-local.so": {
+          "official": {
+            "target": "libsmm-local.so.12.0.2",
+            "type": "symlink"
+          },
+          "ours": {
+            "target": "libsmm-local.so.13.0.0",
+            "type": "symlink"
+          }
+        }
+      },
+      "artifact": "opensc-git-0.27.1+git20261004.fc27ee8-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 103,
+      "case": "opensuse-leap160-opensc-git",
+      "installation": "passed",
+      "installed_version": "0.27.1+git20261004.fc27ee8-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 103,
+      "official_packages": [
+        "opensc-0.26.1-160000.5.1.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-0.27.1-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 103,
+      "case": "opensuse-tumbleweed-opensc",
+      "installation": "passed",
+      "installed_version": "0.27.1-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 103,
+      "official_packages": [
+        "opensc-0.27.1-2.3.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-git-0.27.1+git20261004.fc27ee8-12.fc45cr0.1.x86_64.rpm",
+      "artifact_file_count": 103,
+      "case": "opensuse-tumbleweed-opensc-git",
+      "installation": "passed",
+      "installed_version": "0.27.1+git20261004.fc27ee8-12.fc45cr0.1",
+      "layout": "passed",
+      "official_file_count": 103,
+      "official_packages": [
+        "opensc-0.27.1-2.3.x86_64"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc_0.27.1-2cr0.1_amd64.deb",
+      "artifact_file_count": 131,
+      "case": "ubuntu2604-opensc",
+      "installation": "passed",
+      "installed_version": "0.27.1-2cr0.1",
+      "layout": "passed",
+      "official_file_count": 131,
+      "official_packages": [
+        "opensc 0.27.0~rc1-1",
+        "opensc-pkcs11 0.27.0~rc1-1"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    },
+    {
+      "abi_added": [],
+      "abi_or_upstream_removed": [],
+      "abi_symlinks": {},
+      "artifact": "opensc-git_0.27.1+git20261004.fc27ee8-2cr0.1_amd64.deb",
+      "artifact_file_count": 131,
+      "case": "ubuntu2604-opensc-git",
+      "installation": "passed",
+      "installed_version": "0.27.1+git20261004.fc27ee8-2cr0.1",
+      "layout": "passed",
+      "official_file_count": 131,
+      "official_packages": [
+        "opensc 0.27.0~rc1-1",
+        "opensc-pkcs11 0.27.0~rc1-1"
+      ],
+      "omitted_rpm_build_id_links": 0,
+      "pkcs11": "passed",
+      "unexpected_differences": 0
+    }
+  ],
+  "exceptions": "Upstream library ABI/SONAME changes, compiler build-id metadata, and five profiles removed upstream since Ubuntu 22.04 OpenSC 0.22. No other added, missing, or relocated files.",
+  "executed_utc": "2026-10-19T01:56:52.666139+00:00",
+  "nix_checks": "Both systems evaluated; all preexisting non-OpenSC package derivations and channel artifacts unchanged.",
+  "scope": "Installed over the official distribution OpenSC packages; archive paths, file types, symlink targets, installed version, PKCS#11 initialization/finalization and p11-kit registration."
+}

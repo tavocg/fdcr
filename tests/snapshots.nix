@@ -9,11 +9,30 @@ let
   expected =
     (builtins.fromJSON (builtins.readFile ./historical.json)).${pkgs.stdenv.hostPlatform.system};
   actual = import ./manifest.nix { inherit lib packages repository; };
+  # New distro channels may reuse historical artifacts. Every existing channel
+  # and derivation must still match the recorded value exactly.
   historicalUnchanged = lib.all (
     name:
-    lib.all (snapshot: actual.${name}.${snapshot} == expected.${name}.${snapshot}) (
-      builtins.attrNames expected.${name}
-    )
+    lib.all (
+      snapshot:
+      let
+        old = expected.${name}.${snapshot};
+        new = actual.${name}.${snapshot};
+      in
+      new.package == old.package
+      && lib.all (channel: new.channels.${channel} == old.channels.${channel}) (
+        builtins.attrNames old.channels
+      )
+      && lib.all (
+        channel:
+        let
+          parent = repository.channels.${channel}.inherits or null;
+        in
+        parent != null
+        && builtins.hasAttr parent old.channels
+        && new.channels.${channel} == old.channels.${parent}
+      ) (lib.subtractLists (builtins.attrNames old.channels) (builtins.attrNames new.channels))
+    ) (builtins.attrNames expected.${name})
   ) (builtins.attrNames expected);
 
   # Model the supported transition: a Java payload and a native payload with
@@ -111,13 +130,23 @@ assert after.snapshots."2026-10-14".publication.release == "2";
 assert
   builtins.attrNames publication.channels == [
     "arch"
+    "debian"
     "fedora"
     "jammy"
     "noble"
+    "opensuse"
+    "ubuntu2604"
   ];
 assert lib.all (artifacts: builtins.length artifacts == 1) (
   builtins.attrValues publication.channels
 );
+# Alias channels reuse the original artifact exactly, including scoped channels.
+assert
+  map (a: a.drvPath) publication.channels.debian == map (a: a.drvPath) publication.channels.noble;
+assert
+  map (a: a.drvPath) publication.channels.ubuntu2604 == map (a: a.drvPath) publication.channels.noble;
+assert
+  map (a: a.drvPath) publication.channels.opensuse == map (a: a.drvPath) publication.channels.fedora;
 # Force native metadata/build recipes, including each format's architecture.
 assert builtins.deepSeq (lib.mapAttrs (
   _: artifacts: map (a: a.drvPath) artifacts

@@ -20,13 +20,24 @@ nix build path:.#opensc-git
 nix run path:.#build-public
 ```
 
-La publicación usa metarepo y los canales existentes. El payload nativo se
-compila contra el ABI mínimo de Ubuntu 22.04 y carga las bibliotecas del sistema;
-no necesita Nix instalado. Incluye una OpenPACE privada para evitar diferencias
-de ABI entre distribuciones; OpenSSL se obtiene de las dependencias del sistema. `compat.nix` fija esa base de compilación. Las
-bibliotecas propias residen en `/usr/lib/opensc`; la publicación agrega los
-enlaces de compatibilidad y dependencias correspondientes a DEB, RPM y Arch.
-El módulo se registra mediante el archivo estándar de p11-kit.
+La publicación usa metarepo y conserva las rutas de cada distribución:
+Debian/Ubuntu usan el directorio multiarch; Fedora/openSUSE, `/usr/lib64`;
+Arch, `/usr/lib`. El payload se compila contra el ABI mínimo de Ubuntu 22.04,
+usa el cargador y OpenSSL del sistema, y no necesita Nix instalado. OpenPACE
+se enlaza estáticamente para evitar incompatibilidades entre sus versiones
+sin instalar una biblioteca privada. `compat.nix` fija la base de compilación.
+
+La configuración, documentación, completaciones y registro PKCS#11 siguen las
+ubicaciones vanilla. Los canales `debian`, `ubuntu2604` y `opensuse` permiten
+respetar sus diferencias; para los paquetes preexistentes heredan los artefactos
+de `noble` o `fedora`. El instalador selecciona el canal por distribución.
+Las instalaciones anteriores que apuntaban a un canal compartido deben volver
+a configurar el repositorio con el instalador o las instrucciones manuales.
 
 Las dos variantes son alternativas y reemplazan OpenSC vanilla y sus bibliotecas
 separadas. En Fedora usa `dnf install --allowerasing opensc` o `opensc-git`.
+
+La matriz de instalación y comparación de archivos está en
+[tests/opensc](../../tests/opensc/README.md), con sus excepciones de ABI y perfiles
+retirados por upstream. Las pruebas de contenedor cubren x86_64; no requieren
+una tarjeta física.
