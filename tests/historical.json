@@ -76,7 +76,7 @@
           "opensuse": [
             "/nix/store/a7jvhkvncddkfmwid511dwbhchzhinva-opensc-rpm-0.27.1.drv"
           ],
-          "ubuntu2604": [
+          "resolute": [
             "/nix/store/ad5568kp2gxhhn18khxwi3yljinxs23r-opensc-deb-0.27.1.drv"
           ]
         },
@@ -104,7 +104,7 @@
           "opensuse": [
             "/nix/store/blaglr5483fshgpjq75c2y70f120gfb6-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
           ],
-          "ubuntu2604": [
+          "resolute": [
             "/nix/store/n055l5x0qiawpjfaiinj9dxbyi52b8my-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ]
         },
@@ -275,7 +275,7 @@
           "opensuse": [
             "/nix/store/lsv5aql4bmiqikd3w29xima8pndb479d-opensc-rpm-0.27.1.drv"
           ],
-          "ubuntu2604": [
+          "resolute": [
             "/nix/store/3ymy3nfc7gbwdkgfcirbq22y81jarzy8-opensc-deb-0.27.1.drv"
           ]
         },
@@ -303,7 +303,7 @@
           "opensuse": [
             "/nix/store/zwd7ndi6k8jllb9sxqvysryvb7fdrsmc-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
           ],
-          "ubuntu2604": [
+          "resolute": [
             "/nix/store/m2gjfr2mgz0ss0ahvsqvi75q84x5cdw2-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ]
         },

@@ -28,13 +28,9 @@ sudo apt install idopte-p11 idopte-scmanager
 ```
 
 Para Ubuntu 22.04 usa `jammy`; para Ubuntu 24.04, `noble`; para Ubuntu 26.04,
-`ubuntu2604`; para Debian 13, `debian`. Sustituye la suite `noble` en el ejemplo según corresponda; la URL termina
-siempre en `/apt`.
-
-Si configuraste el repositorio antes del pool compartido, vuelve a ejecutar el
-instalador o cambia la URL anterior (`/noble`, `/jammy`, `/debian` o
-`/ubuntu2604`) por `/apt` en la entrada APT, conservando la suite. Después
-ejecuta `sudo apt update`.
+`resolute`; para Debian, `debian`. Sustituye la suite `noble` en el ejemplo según
+corresponda; la URL termina siempre en `/apt`. El instalador automático detecta
+Debian y selecciona su canal.
 
 ## Fedora (`dnf`)
 

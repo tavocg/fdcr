@@ -1,10 +1,9 @@
-# fdcr (ALPHA)
-
-> [!WARNING]
-> No usar en producción todavía, actualmente este repositorio se encuentra en
-> fase de pruebas.
+# fdcr
 
 Repositorio de dependencias para Firma Digital en Costa Rica.
+
+> [!NOTE]
+> Fase beta del repositorio, podrían haber cambios que rompan compatibilidad.
 
 - `firmador`
 - `firmador-git`

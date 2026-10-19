@@ -23,7 +23,7 @@
         "linuxmint7"
       ];
     };
-    ubuntu2604 = {
+    resolute = {
       inherits = "noble";
       format = "apt";
       releases = [ "ubuntu2604" ];

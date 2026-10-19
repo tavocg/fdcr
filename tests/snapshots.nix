@@ -138,7 +138,7 @@ assert
     "jammy"
     "noble"
     "opensuse"
-    "ubuntu2604"
+    "resolute"
   ];
 assert lib.all (artifacts: builtins.length artifacts == 1) (
   builtins.attrValues publication.channels
@@ -147,7 +147,7 @@ assert lib.all (artifacts: builtins.length artifacts == 1) (
 assert
   map (a: a.drvPath) publication.channels.debian == map (a: a.drvPath) publication.channels.noble;
 assert
-  map (a: a.drvPath) publication.channels.ubuntu2604 == map (a: a.drvPath) publication.channels.noble;
+  map (a: a.drvPath) publication.channels.resolute == map (a: a.drvPath) publication.channels.noble;
 assert
   map (a: a.drvPath) publication.channels.opensuse == map (a: a.drvPath) publication.channels.fedora;
 # Force native metadata/build recipes, including each format's architecture.

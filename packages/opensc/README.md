@@ -28,7 +28,7 @@ se enlaza estáticamente para evitar incompatibilidades entre sus versiones
 sin instalar una biblioteca privada. `compat.nix` fija la base de compilación.
 
 La configuración, documentación, completaciones y registro PKCS#11 siguen las
-ubicaciones vanilla. Los canales `debian`, `ubuntu2604` y `opensuse` permiten
+ubicaciones vanilla. Los canales `debian`, `resolute` y `opensuse` permiten
 respetar sus diferencias; para los paquetes preexistentes heredan los artefactos
 de `noble` o `fedora`. El instalador selecciona el canal por distribución.
 Las instalaciones anteriores que apuntaban a un canal compartido deben volver

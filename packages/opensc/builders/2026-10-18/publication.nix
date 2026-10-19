@@ -155,7 +155,7 @@ in
       "jammy"
       "noble"
       "debian"
-      "ubuntu2604"
+      "resolute"
       "fedora"
       "opensuse"
       "arch"
@@ -169,7 +169,7 @@ in
       jammy.payload = payload "jammy";
       noble.payload = payload "noble";
       debian.payload = payload "debian";
-      ubuntu2604.payload = payload "ubuntu2604";
+      resolute.payload = payload "ubuntu2604";
       opensuse.payload = payload "opensuse";
     };
     formats = {
