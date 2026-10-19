@@ -12,6 +12,7 @@
       format = "apt";
       releases = [
         "ubuntu2404"
+        "linuxmint223"
       ];
     };
     debian = {
