@@ -34,6 +34,21 @@ curl -fsSL https://tavocg.github.io/fdcr/install.sh | sudo sh
 
 Para instalación manual, véase [doc/install.md](doc/install.md).
 
+## Uso
+
+```sh
+# Debian/Ubuntu
+sudo apt install firmador opensc
+
+# Fedora
+sudo dnf install firmador ccid
+sudo dnf install --repo=fdcr opensc
+
+# Arch
+sudo pacman -S firmador fdcr/opensc ccid
+sudo systemctl enable --now pcscd.{socket,service}
+```
+
 ## Desarrollo
 
 Las fuentes, herramientas y recetas de construcción/publicación están fijadas
