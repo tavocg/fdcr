@@ -2,7 +2,7 @@
   lib,
   stdenv,
   metarepo,
-  # Ruta de la biblioteca PKCS#11 del middleware. Al sobreescribir con
+  # Ruta de la biblioteca PKCS#11. Al sobreescribir con
   # `firmador.override { pkcs11Module = …; }` el lanzador exporta LIBASEP11.
   pkcs11Module ? null,
 }:
@@ -26,14 +26,12 @@ metarepo.mkSnapshots {
         # Firmador 1.9.8 no lee LIBASEP11, así que el lanzador exportaría una
         # variable que el JAR ignora. El parche la agrega (2.0.0+ ya la
         # soporta) y solo se aplica en Nix, cuando el envoltorio la exporta;
-        # El parche de java.library.path se aplica siempre.
         patches = [
-          ./patches/1.9.8-java-library-path.patch
           ./patches/newer-release-only.patch
         ]
-          ++ lib.optional
-            (pkcs11Module != null && lib.versionOlder args.version "2.0.0")
-            ./patches/1.9.8-libasep11.patch;
+        ++ lib.optional (
+          pkcs11Module != null && lib.versionOlder args.version "2.0.0"
+        ) ./patches/1.9.8-libasep11.patch;
       }
     );
 }

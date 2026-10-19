@@ -39,47 +39,6 @@ bibliotecas separadas.
 Consulta los [detalles de empaquetado](../packages/opensc/README.md) y la
 [las pruebas de instalación](../tests/opensc/README.md).
 
-## `idopte-p11`
-
-Middleware Idopte para tarjetas inteligentes y firma digital.
-
-| Distro       | Canal      | Probado |
-|--------------|------------|---------|
-| Ubuntu 26.04 | resolute | ✅      |
-| Ubuntu 24.04 | noble      | ✅      |
-| Ubuntu 22.04 | jammy      | ✅      |
-| Debian 13    | debian     | ✅      |
-| Fedora 45    |            |         |
-| Fedora 44    | fedora     | ✅      |
-| Fedora 43    |            |         |
-| Arch Linux   | arch       | ✅      |
-
-> [!NOTE]
-> En Ubuntu 26.04 se observa un fallo durante la instalación de sus componentes
-> PC/SC: el socket intenta arrancar antes de crearse el usuario `pcscd`
-> (`Failed to resolve user`, `217/USER`). En las pruebas, un segundo después
-> `pcscd.socket` ya estaba escuchando y completamente funcional sin requerir
-> intervención manual.
->
-> Observado el 2026-10-10.
-
-- [ ] Comprobar `idocachesrv`, ¿necesita quedarse corriendo? Considerar `Type=forking`.
-
-## `idopte-scmanager`
-
-Interfaz gráfica e integración de escritorio de Idopte. Depende de `idopte-p11`.
-
-| Distro       | Canal      | Probado |
-|--------------|------------|---------|
-| Ubuntu 26.04 | resolute | ✅      |
-| Ubuntu 24.04 | noble      | ✅      |
-| Ubuntu 22.04 | jammy      | ✅      |
-| Debian 13    | debian     | ✅      |
-| Fedora 45    |            |         |
-| Fedora 44    | fedora     | ✅      |
-| Fedora 43    |            |         |
-| Arch Linux   | arch       | ✅      |
-
 ## `firmador`
 
 Firma de documentos con Firmador Libre.
@@ -118,6 +77,10 @@ directorio. `packages/firmador-git/snapshots.nix` registra esas recetas;
 
 ## `bccr-gaudi`
 
+Construcción temporalmente suspendida: se retiraron los artifacts del BCCR.
+La receta conserva comentadas las referencias para reincorporarlos después.
+Las pruebas de la tabla corresponden al estado anterior a su retiro.
+
 Agente GAUDI del Banco Central de Costa Rica.
 
 | Distro       | Canal      | Probado |
@@ -133,6 +96,10 @@ Agente GAUDI del Banco Central de Costa Rica.
 
 ## `bccr-certs`
 
+Construcción temporalmente suspendida: se retiraron los artifacts del BCCR.
+La receta conserva comentadas las referencias para reincorporarlos después.
+Las pruebas de la tabla corresponden al estado anterior a su retiro.
+
 Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 
 | Distro       | Canal      | Probado |
@@ -145,23 +112,3 @@ Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 | Fedora 44    | fedora     | ✅      |
 | Fedora 43    |            |         |
 | Arch Linux   | arch       | ✅      |
-
-## `libxml2-idopte-compat`
-
-| Distro       | Canal      | Probado |
-|--------------|------------|---------|
-| Ubuntu 26.04 | resolute | ✅      |
-
-Biblioteca de compatibilidad publicada en los canales `noble`, `resolute` y `debian` para Idopte.
-Reempaqueta la biblioteca amd64 de [Debian 13](https://packages.debian.org/trixie/libxml2),
-versión `2.12.7+dfsg+really2.9.14-2.1+deb13u3`, con descarga y SHA-256 fijados en
-`artifacts/recipes/2026-10-11/libxml2.nix`. Incluye los avisos de licencia y
-changelogs de Debian.
-
-Instala `libxml2.so.2` y su destino en `/usr/lib/SCMiddleware`, donde las bibliotecas
-Idopte ya buscan sus dependencias. No reemplaza la biblioteca del sistema.
-
-> [!NOTE]
-> Al actualizarla, agregar una receta y snapshot nuevas con URL, hash, versión/revisión
-> y dependencias según el DEB de Debian, conservando las recetas anteriores.
-> La copia privada requiere seguimiento de las actualizaciones de seguridad de Debian.

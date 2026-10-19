@@ -23,45 +23,23 @@
               builtins.elem (package.pname or package.name) [
                 "bccr-certs"
                 "bccr-gaudi"
-                "idopte-p11"
-                "idopte-scmanager"
               ];
           };
       };
-      # Los payloads y publicaciones nativos permanecen en legacyPackages.
       packages = nixpkgs.lib.mapAttrs (
         system: native:
-        if system != "x86_64-linux" then
-          native
-        else
-          let
-            pkgs = import nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
+        let
+          firmador =
+            base:
+            base.override {
+              pkcs11Module = "${native.opensc}/lib/opensc-pkcs11.so";
             };
-            env = import ./lib/nix/environments.nix {
-              inherit pkgs;
-              packages = native;
-            };
-            firmador =
-              base:
-              nixpkgs.lib.makeOverridable (
-                {
-                  pkcs11Module ? "${env.middleware}/lib/SCMiddleware/libidop11.so",
-                }:
-                env.firmadorEnv { inherit base pkcs11Module; }
-              ) { };
-          in
-          native
-          // {
-            idopte-p11 = env.middleware;
-            idopte-scmanager = env.scmanagerEnv {
-              base = native.idopte-scmanager;
-              nautilusSupport = false;
-            };
-            firmador = firmador native.firmador;
-            firmador-git = firmador native.firmador-git;
-          }
+        in
+        native
+        // {
+          firmador = firmador native.firmador;
+          firmador-git = firmador native.firmador-git;
+        }
       ) self.legacyPackages;
       devShells.x86_64-linux =
         let
@@ -75,10 +53,8 @@
         in
         {
           default = shell [
-            "idopte-scmanager"
             "firmador"
           ];
-          scmanager = shell [ "idopte-scmanager" ];
           firmador = shell [ "firmador" ];
           firmador-git = shell [ "firmador-git" ];
         };

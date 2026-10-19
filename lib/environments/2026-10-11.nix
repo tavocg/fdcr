@@ -23,8 +23,6 @@ let
       builtins.elem (package.pname or package.name) [
         "bccr-certs"
         "bccr-gaudi"
-        "idopte-p11"
-        "idopte-scmanager"
       ];
   };
   metarepo =

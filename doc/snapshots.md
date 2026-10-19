@@ -7,11 +7,11 @@ son decisiones diferentes. Una snapshot registra esas decisiones completas.
 Las fechas de directorio son **fechas de registro en fdcr**, no fechas deducidas
 del ZIP ni versiones del fabricante. `rev26_08` no se interpreta: el nombre del
 ZIP, sus rutas internas y su SHA-256 son literales en la receta del artifact.
-La versión publicada sigue siendo, por ejemplo, `2026.08` o `6.23.50.5`.
+La versión publicada sigue siendo, por ejemplo, `2026.08`.
 
 ```text
 artifacts/
-  archivo-del-fabricante.zip
+  bccr-noble-2026.08.zip
   recipes/2026-10-11/ubuntu.nix       # extracción fija y metadata del DEB
 packages/bccr-certs/
   snapshots.nix                     # catálogo; se publican las entradas activas
@@ -30,10 +30,8 @@ lib/environments/2026-10-11.nix      # Nixpkgs y metarepo fijados con rev + narH
 
 1. Guardar el archivo nuevo en `artifacts/`, sin sobrescribir uno existente, y
    agregarlo con Git LFS. Para otros tipos de binario, añadir su patrón a
-   `.gitattributes` o usar `git lfs track`. Un flake input descargado desde GitHub
-   solo trae el archivo puntero de LFS, nunca el contenido real, así que la receta
-   lee el binario del endpoint LFS (paso 2); `git lfs pull` solo hace falta para
-   inspeccionar los archivos localmente.
+   `.gitattributes` o usar `git lfs track`. Para los ZIP locales de GAUDI y certificados se requiere un checkout con
+   `git lfs pull`; la receta fija los archivos por contenido con `pin-file.nix`.
 2. Crear una receta nueva en `artifacts/recipes/<fecha>/`. Inspeccionar las rutas,
    dependencias y scripts del instalador; fijar el hash y declarar explícitamente
    la extracción. Para artifacts guardados con LFS, obtener el binario con
@@ -141,6 +139,10 @@ importa un entorno con Nixpkgs y metarepo fijados. Para herramientas nuevas,
 crear otro archivo en `lib/environments/` y seleccionarlo en la snapshot nueva.
 No reemplazar las referencias del entorno existente.
 
+La retirada completa de componentes y la limpieza de los ZIP compartidos
+actualizan excepcionalmente el registro de derivaciones. A partir de esta base,
+las siguientes incorporaciones conservan las reglas de inmutabilidad.
+
 ## Conservar el historial
 
 Los directorios de snapshots, artifacts y builders ya publicados son inmutables.
@@ -169,19 +171,9 @@ de que el fabricante conserve una descarga.
 
 ## Adaptaciones de los instaladores actuales
 
-Se inspeccionaron los DEB Ubuntu 22/24 y el RPM RH9 de los tres ZIP originales.
+Se conservan GAUDI y los certificados de los DEB Ubuntu 22/24.
 Las extracciones conservan los campos de control y scripts en `vendor-control/`.
 
-- Idopte: `lib.sh` y `Comandos.txt` instalan PC/SC y CCID. Las dependencias están
-  separadas entre middleware y GUI; se conserva la activación por socket.
-  `idocachesrv` permanece opcional mientras se comprueba su ejecución en primer
-  plano. Metarepo reinicia el servicio si ya está activo y lo detiene al remover.
-- SCManager: el `postinst` descomprime `xsd.bin` y genera dos archivos desktop.
-  Se generan durante la construcción y quedan bajo control del gestor. Se
-  agregaron las dependencias de la extensión Nautilus y las herramientas que
-  actualizan cachés MIME/desktop, ejecutadas mediante hooks de metarepo.
-  Se conserva la configuración OpenSSL del administrador y sus asociaciones
-  predeterminadas; no se copian los borrados recursivos ni `killall` del proveedor.
 - GAUDI: el `postinst` instala el menú y autostart. Esos archivos ya están en el
   payload; el gestor realiza instalación/remoción. Se incorporaron las
   dependencias adicionales declaradas por el fabricante. Las rutas de jpackage

@@ -20,13 +20,6 @@ sudo apt update
 sudo apt install firmador
 ```
 
-El middleware Idopte se instala por separado. Para instalarlo junto con su
-administrador gráfico de tarjetas:
-
-```sh
-sudo apt install idopte-p11 idopte-scmanager
-```
-
 Para Ubuntu 22.04 usa `jammy`; para Ubuntu 24.04, `noble`; para Ubuntu 26.04,
 `resolute`; para Debian, `debian`. Sustituye la suite `noble` en el ejemplo según
 corresponda; la URL termina siempre en `/apt`. El instalador automático detecta
@@ -51,12 +44,6 @@ gpgkey=https://tavocg.github.io/fdcr/fdcr.asc
 sudo dnf install firmador
 ```
 
-El middleware y su administrador gráfico se instalan por separado:
-
-```sh
-sudo dnf install idopte-p11 idopte-scmanager
-```
-
 ## openSUSE Leap 16.0 y Tumbleweed (`zypper`)
 
 openSUSE usa el canal RPM `opensuse`. El instalador automático detecta
@@ -79,7 +66,6 @@ gpgkey=https://tavocg.github.io/fdcr/fdcr.asc
 sudo rpm --import https://tavocg.github.io/fdcr/fdcr.asc
 sudo zypper refresh fdcr
 sudo zypper install firmador
-sudo zypper install idopte-p11 idopte-scmanager
 ```
 
 ## Arch Linux (`pacman`)
@@ -107,12 +93,6 @@ Server = https://tavocg.github.io/fdcr/arch/
 sudo pacman -Sy firmador
 ```
 
-El middleware y su administrador gráfico se instalan por separado:
-
-```sh
-sudo pacman -S idopte-p11 idopte-scmanager
-```
-
 ## Nix
 
 El flake también ofrece Firmador directamente.
@@ -124,8 +104,7 @@ nix run github:tavocg/fdcr#firmador
 
 ## NixOS
 
-El flake publica un módulo NixOS que adapta el middleware y SCManager a las
-rutas de NixOS (solo `x86_64-linux`):
+El flake publica un módulo NixOS que instala OpenSC y habilita PC/SC:
 
 ```nix
 {

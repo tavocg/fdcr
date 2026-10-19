@@ -36,7 +36,7 @@ let
     ) (builtins.filter (snapshot: builtins.hasAttr snapshot actual.${name}) (
       builtins.attrNames expected.${name}
     ))
-  ) (builtins.attrNames expected);
+  ) (builtins.filter (name: builtins.hasAttr name actual) (builtins.attrNames expected));
 
   # Model the supported transition: a Java payload and a native payload with
   # different dependencies and channels, selected through distinct builders.
@@ -123,6 +123,13 @@ let
     package = after;
   };
 in
+# Artifact removal must leave all four supported packages active.
+assert builtins.attrNames actual == [
+  "firmador"
+  "firmador-git"
+  "opensc"
+  "opensc-git"
+];
 assert lib.assertMsg historicalUnchanged
   "FDCR: a historical recipe changed; add a new builder/snapshot instead";
 assert before.snapshots."2026-10-11".drvPath == after.snapshots."2026-10-11".drvPath;

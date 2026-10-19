@@ -2,6 +2,7 @@
   lib,
   maven,
   makeWrapper,
+  python3,
   pname ? "firmador",
   version,
   src,
@@ -9,18 +10,15 @@
   buildJdk,
   compilerParameters,
   dependencies,
-  # Rutas de compilación nativas fijan el middleware en el payload. En Nix se
-  # pasa la biblioteca PKCS#11 del middleware para exportar LIBASEP11 en el
-  # lanzador; `null` conserva exactamente la derivación publicada.
+  # Biblioteca PKCS#11 opcional que el lanzador exporta en LIBASEP11.
   pkcs11Module ? null,
   # Firmador 1.9.8 no lee LIBASEP11, así que las recetas de Nix parchean la
-  # fuente; `[ ]` conserva exactamente la derivación publicada.
+  # fuente para admitir la variable de entorno.
   patches ? [ ],
 }:
 let
   pinFile = import ../../../../lib/recipes/2026-10-11/pin-file.nix;
-  # `override` en la derivación solo cambia este bloque; con `null` el texto es
-  # idéntico al de las recetas históricas.
+  # La biblioteca puede seleccionarse mediante override.
   wrapper = lib.optionalString (pkcs11Module != null) ''
     wrapProgram "$out/bin/${pname}" \
       --set-default LIBASEP11 ${lib.escapeShellArg (toString pkcs11Module)}
@@ -33,9 +31,13 @@ maven.buildMavenPackage {
 
   inherit patches;
 
+  postPatch = ''
+    ${python3}/bin/python3 ${pinFile ./configure-pkcs11.py}
+  '';
+
   mvnJdk = buildJdk;
   inherit mvnHash;
-  nativeBuildInputs = lib.optional (pkcs11Module != null) makeWrapper;
+  nativeBuildInputs = [ python3 ] ++ lib.optional (pkcs11Module != null) makeWrapper;
   # Each snapshot declares its Java compilation target explicitly.
   mvnParameters = "-Dmaven.test.skip=true ${compilerParameters}";
   doCheck = false;

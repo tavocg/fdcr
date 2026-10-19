@@ -2,7 +2,7 @@
   lib,
   stdenv,
   metarepo,
-  # Ruta de la biblioteca PKCS#11 del middleware. Al sobreescribir con
+  # Ruta de la biblioteca PKCS#11. Al sobreescribir con
   # `firmador-git.override { pkcs11Module = …; }` el lanzador exporta LIBASEP11.
   pkcs11Module ? null,
 }:
@@ -24,7 +24,6 @@ metarepo.mkSnapshots {
       // {
         inherit pkcs11Module;
         patches = [
-          ./patches/java-library-path.patch
           ../firmador/patches/newer-release-only.patch
         ];
       }
