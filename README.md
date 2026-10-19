@@ -33,11 +33,7 @@ sudo pacman -S ccid firmador fdcr/opensc
 sudo systemctl enable --now pcscd.{socket,service}
 ```
 
-También publica un módulo NixOS (`nixosModules.default`) que adapta el middleware
-y SCManager; véase [doc/nixos.md](doc/nixos.md).
-
-Para usar SCManager y Firmador desde un perfil o devShell, véase
-[uso con Nix](doc/nix.md). Ambos incluyen el middleware Idopte.
+[Uso con Nix](doc/nix.md).
 
 Consulta el [estado de la paquetería](doc/packages.md) y las
 [recetas de OpenSC](packages/opensc/README.md).

@@ -144,4 +144,4 @@ rutas de NixOS (solo `x86_64-linux`):
 ```
 
 Para el detalle de las opciones, Firmador con su biblioteca PKCS#11,
-certificados y un ejemplo completo, véase [doc/nixos.md](nixos.md).
+certificados y un ejemplo completo, véase [uso con Nix](nix.md#uso-en-nixos).
