@@ -31,7 +31,7 @@ sudo apt install firmador opensc
 
 # Fedora
 sudo dnf install firmador ccid
-sudo dnf install --repo=fdcr opensc
+sudo dnf install --repo=fdcr opensc --allowerasing
 
 # Arch
 sudo pacman -S firmador fdcr/opensc ccid
