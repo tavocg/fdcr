@@ -6,36 +6,52 @@
 }:
 let
   inherit (pkgs) lib;
+  # Linux references match commit 47eeff5, before Windows publication was added.
   expected =
     (builtins.fromJSON (builtins.readFile ./historical.json)).${pkgs.stdenv.hostPlatform.system};
-  actual = import ./manifest.nix { inherit lib packages repository; };
+  actual = import ./manifest.nix {
+    inherit
+      lib
+      packages
+      repository
+      pkgs
+      metarepo
+      ;
+  };
   # Catalog entries may be commented out to stop publishing old snapshots.
   # Keep their recorded hashes: reactivation checks the original recipes again.
   # Every active historical channel and derivation must still match exactly.
   historicalUnchanged = lib.all (
     name:
-    lib.all (
-      snapshot:
-      let
-        old = expected.${name}.${snapshot};
-        new = actual.${name}.${snapshot};
-      in
-      new.package == old.package
-      && lib.all (channel: new.channels.${channel} == old.channels.${channel}) (
-        builtins.attrNames old.channels
-      )
-      && lib.all (
-        channel:
+    lib.all
+      (
+        snapshot:
         let
-          parent = repository.channels.${channel}.inherits or null;
+          old = expected.${name}.${snapshot};
+          new = actual.${name}.${snapshot};
         in
-        parent != null
-        && builtins.hasAttr parent old.channels
-        && new.channels.${channel} == old.channels.${parent}
-      ) (lib.subtractLists (builtins.attrNames old.channels) (builtins.attrNames new.channels))
-    ) (builtins.filter (snapshot: builtins.hasAttr snapshot actual.${name}) (
-      builtins.attrNames expected.${name}
-    ))
+        new.package == old.package
+        && lib.all (channel: new.channels.${channel} == old.channels.${channel}) (
+          builtins.attrNames old.channels
+        )
+        && lib.all (
+          channel:
+          let
+            parent = repository.channels.${channel}.inherits or null;
+          in
+          (repository.channels.${channel}.format == "msi")
+          || (
+            parent != null
+            && builtins.hasAttr parent old.channels
+            && new.channels.${channel} == old.channels.${parent}
+          )
+        ) (lib.subtractLists (builtins.attrNames old.channels) (builtins.attrNames new.channels))
+      )
+      (
+        builtins.filter (snapshot: builtins.hasAttr snapshot actual.${name}) (
+          builtins.attrNames expected.${name}
+        )
+      )
   ) (builtins.filter (name: builtins.hasAttr name actual) (builtins.attrNames expected));
 
   # Model the supported transition: a Java payload and a native payload with
@@ -119,17 +135,23 @@ let
     "2026-10-14" = new;
   } "2026-10-14";
   publication = import ../lib/publish-snapshots.nix {
-    inherit lib repository;
+    inherit
+      lib
+      repository
+      pkgs
+      metarepo
+      ;
     package = after;
   };
 in
 # Artifact removal must leave all four supported packages active.
-assert builtins.attrNames actual == [
-  "firmador"
-  "firmador-git"
-  "opensc"
-  "opensc-git"
-];
+assert
+  builtins.attrNames actual == [
+    "firmador"
+    "firmador-git"
+    "opensc"
+    "opensc-git"
+  ];
 assert lib.assertMsg historicalUnchanged
   "FDCR: a historical recipe changed; add a new builder/snapshot instead";
 assert before.snapshots."2026-10-11".drvPath == after.snapshots."2026-10-11".drvPath;

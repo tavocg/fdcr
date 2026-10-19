@@ -39,7 +39,22 @@
         // {
           firmador = firmador native.firmador;
           firmador-git = firmador native.firmador-git;
+          build-public = nixpkgs.legacyPackages.${system}.writeShellApplication {
+            name = "build-public";
+            runtimeInputs = [ nixpkgs.legacyPackages.${system}.python3 ];
+            text = ''
+              ${native.build-public}/bin/build-public
+              python3 ${./lib/windows-index.py} public/win
+            '';
+          };
         }
+        // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") (
+          nixpkgs.lib.genAttrs [ "firmador-msi" "firmador-git-msi" "opensc-msi" "opensc-git-msi" ] (
+            name:
+            (metarepo.lib.forPkgs nixpkgs.legacyPackages.${system}).mkMsiInstaller
+              native.${nixpkgs.lib.removeSuffix "-msi" name}.windowsInstallerOptions
+          )
+        )
       ) self.legacyPackages;
       devShells.x86_64-linux =
         let
@@ -72,6 +87,10 @@
             inherit pkgs packages;
             metarepo = metarepo.lib.forPkgs pkgs;
             repository = import ./repository.nix;
+          };
+          windows = import ./tests/windows.nix {
+            inherit pkgs packages;
+            metarepo = metarepo.lib.forPkgs pkgs;
           };
           nixos = import ./tests/nixos.nix {
             inherit pkgs nixpkgs;

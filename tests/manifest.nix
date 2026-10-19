@@ -1,5 +1,7 @@
 {
   lib,
+  pkgs,
+  metarepo,
   packages,
   repository,
 }:
@@ -9,7 +11,12 @@ lib.mapAttrs (
     _: snapshot:
     let
       publication = import ../lib/publish-snapshots.nix {
-        inherit lib repository;
+        inherit
+          lib
+          repository
+          pkgs
+          metarepo
+          ;
         package = {
           snapshots.current = snapshot;
         };

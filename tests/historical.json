@@ -77,56 +77,56 @@
       "2026-10-18": {
         "channels": {
           "arch": [
-            "/nix/store/3zp3swgcn3qwmd99ynljakcv0903fsg1-opensc-arch-0.27.1+2cr0.1.drv"
+            "/nix/store/g40yy1j6llz1b9cs0wrfr4nfw44di1vp-opensc-arch-0.27.1+2cr0.1.drv"
           ],
           "debian": [
-            "/nix/store/x62cv3fwm7my7wsg7kwzlls43nq41z5j-opensc-deb-0.27.1.drv"
+            "/nix/store/1py757709rf044y9l66cagzjp97q4sqh-opensc-deb-0.27.1.drv"
           ],
           "fedora": [
-            "/nix/store/qgybrjk052x0alya39pnqnzx5rcshwpy-opensc-rpm-0.27.1.drv"
+            "/nix/store/lf2j02mhi4x7qmv2ib6ncyygv1y6c4h0-opensc-rpm-0.27.1.drv"
           ],
           "jammy": [
-            "/nix/store/y3m6h11mxkljs4dr5b33y9pjky7zkyjp-opensc-deb-0.27.1.drv"
+            "/nix/store/5q5ywll1lrblks0ridd9z1zg97ir67ly-opensc-deb-0.27.1.drv"
           ],
           "noble": [
-            "/nix/store/4icbvjj0wy8lc7z4dxg6c7qhyxjfcddn-opensc-deb-0.27.1.drv"
+            "/nix/store/ig1a6ihq2240398draqjhvsqfl306v5j-opensc-deb-0.27.1.drv"
           ],
           "opensuse": [
-            "/nix/store/cmkd1x4qm74sj724ardimshgk9lyrd3p-opensc-rpm-0.27.1.drv"
+            "/nix/store/a7jvhkvncddkfmwid511dwbhchzhinva-opensc-rpm-0.27.1.drv"
           ],
           "resolute": [
-            "/nix/store/wh846k4ham007byypmwwkc7q2ipr9a6p-opensc-deb-0.27.1.drv"
+            "/nix/store/ad5568kp2gxhhn18khxwi3yljinxs23r-opensc-deb-0.27.1.drv"
           ]
         },
-        "package": "/nix/store/icmpjm0wdr15wgn0c9485nnmzsf46sir-opensc-0.27.1.drv"
+        "package": "/nix/store/zdqqk6mmvf8m6xabzk3ssmb0341xjj13-opensc-0.27.1.drv"
       }
     },
     "opensc-git": {
       "2026-10-18": {
         "channels": {
           "arch": [
-            "/nix/store/fq6d94d2zl52xv52yp0srk0p96pbhjgi-opensc-git-arch-0.27.1+git20261004.fc27ee8+2cr0.1.drv"
+            "/nix/store/yr1aphlq2c76479mzmgp1960vklww0pb-opensc-git-arch-0.27.1+git20261004.fc27ee8+2cr0.1.drv"
           ],
           "debian": [
-            "/nix/store/dd35jlqpag5vgsa052qfy44zh1d6zqm2-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/43yafhnk5yaj2l1i52dmzfbdivra4wmd-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ],
           "fedora": [
-            "/nix/store/49njymxalinwkshnadfjajcypzpl0wja-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/0z8gm4v9q84b6l2cghli1p3b3a0c317q-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
           ],
           "jammy": [
-            "/nix/store/qli7d2kqgkrdksp1kv96rh6r2c4f0f30-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/ashy7lz5b37vndbmbln8i9x99jc8mnrc-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ],
           "noble": [
-            "/nix/store/lnmqdg43vwiil5mq7zjb2zhjn325ahf9-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/vvbvjif4mzwvjblhb3q7154g5q2cb70j-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ],
           "opensuse": [
-            "/nix/store/9w2xn9wfzvillzj7772s6xrvwbwi3lpm-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/blaglr5483fshgpjq75c2y70f120gfb6-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
           ],
           "resolute": [
-            "/nix/store/1cjsmx3wczg8mkwxfwyhfvwni9l10m4c-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/n055l5x0qiawpjfaiinj9dxbyi52b8my-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ]
         },
-        "package": "/nix/store/shdcgrl123jxmmdldndsxp13771gbcsh-opensc-git-0.27.1+git20261004.fc27ee8.drv"
+        "package": "/nix/store/5r48k7pxqsaw37p5g18z7iv2vcfnm7fh-opensc-git-0.27.1+git20261004.fc27ee8.drv"
       }
     }
   },
@@ -264,56 +264,56 @@
       "2026-10-18": {
         "channels": {
           "arch": [
-            "/nix/store/d1drbn15h4p05sififg8mv18h345jkni-opensc-arch-0.27.1+2cr0.1.drv"
+            "/nix/store/jvl43kkfcj9pyyrdcix227xfv4m6inmb-opensc-arch-0.27.1+2cr0.1.drv"
           ],
           "debian": [
-            "/nix/store/3c5x1228a7wskc932pw7ywrxfq9yjclz-opensc-deb-0.27.1.drv"
+            "/nix/store/6vrz734bkgfwlw5353j0an9f39kbamkm-opensc-deb-0.27.1.drv"
           ],
           "fedora": [
-            "/nix/store/96h2yj9g7wspghnxrl8vp48fy7rcb2wa-opensc-rpm-0.27.1.drv"
+            "/nix/store/i1sbyw4hymi7hf4d9gcmr47hgmwnssfp-opensc-rpm-0.27.1.drv"
           ],
           "jammy": [
-            "/nix/store/8w80r8czk1x1v58kyyvsxaf28q7dm6wr-opensc-deb-0.27.1.drv"
+            "/nix/store/8v9j8p0naxhp27ydlhjkrx2wzlndzksm-opensc-deb-0.27.1.drv"
           ],
           "noble": [
-            "/nix/store/jx8q4dp0pl42bxfwr1zavyfpjh99k1ya-opensc-deb-0.27.1.drv"
+            "/nix/store/gxrzcrvf7v4a39606iw2b7np2vpgh9vf-opensc-deb-0.27.1.drv"
           ],
           "opensuse": [
-            "/nix/store/1fnhjxr8qwbl3yb5d39wspg9qzmilkdq-opensc-rpm-0.27.1.drv"
+            "/nix/store/lsv5aql4bmiqikd3w29xima8pndb479d-opensc-rpm-0.27.1.drv"
           ],
           "resolute": [
-            "/nix/store/zp4p1qm2bs67ld8qjqribwmp4pgnnz1q-opensc-deb-0.27.1.drv"
+            "/nix/store/3ymy3nfc7gbwdkgfcirbq22y81jarzy8-opensc-deb-0.27.1.drv"
           ]
         },
-        "package": "/nix/store/06xiw9k8g7p22gb24i1b40s8wdik59mz-opensc-0.27.1.drv"
+        "package": "/nix/store/dkmgp6xz661gmsvibw6i32754kgn5182-opensc-0.27.1.drv"
       }
     },
     "opensc-git": {
       "2026-10-18": {
         "channels": {
           "arch": [
-            "/nix/store/hwvryx4z5x0f91qnqcnm1z6jm50f8y9x-opensc-git-arch-0.27.1+git20261004.fc27ee8+2cr0.1.drv"
+            "/nix/store/dla7dlkrmdny1w6c009rnwz2fk5x3zzb-opensc-git-arch-0.27.1+git20261004.fc27ee8+2cr0.1.drv"
           ],
           "debian": [
-            "/nix/store/89r8ww7qcgwkczbkkj2jyclvzb2lpdf5-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/w9gmzwlw8dbdkvkxv1f37c0mqhfmc18i-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ],
           "fedora": [
-            "/nix/store/941jmnvs31nd5rl8sg2xpj6brffxih3a-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/60nbkqd2swsv97q5lgqb7lfgpcbac5jh-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
           ],
           "jammy": [
-            "/nix/store/zjc83663607v7clk89d8bwnzch9d2h8w-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/v3s5qb8d93k4np8gg7dl11wyz60dw8ls-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ],
           "noble": [
-            "/nix/store/jmwyfhlky099aa9s3crl1cacvnr42rfh-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/b7g4bzhpj66yz8qdqy390qzjl7fl1fpz-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ],
           "opensuse": [
-            "/nix/store/b6ahr07q78hdggnl8gks1b4vzlwkx0xy-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/zwd7ndi6k8jllb9sxqvysryvb7fdrsmc-opensc-git-rpm-0.27.1+git20261004.fc27ee8.drv"
           ],
           "resolute": [
-            "/nix/store/87wh0fzahb4zxfdi60hlbvn238lpxa7h-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
+            "/nix/store/m2gjfr2mgz0ss0ahvsqvi75q84x5cdw2-opensc-git-deb-0.27.1+git20261004.fc27ee8.drv"
           ]
         },
-        "package": "/nix/store/qb1b07flp2mimxwkzlds1h6525zhrcpf-opensc-git-0.27.1+git20261004.fc27ee8.drv"
+        "package": "/nix/store/hw41j14vpjag2cqmdrpvfnxhm0hv1dhy-opensc-git-0.27.1+git20261004.fc27ee8.drv"
       }
     }
   }

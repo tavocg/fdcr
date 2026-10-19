@@ -17,6 +17,7 @@ curl -fsSL https://tavocg.github.io/fdcr/install.sh | sudo sh
 ```
 
 Para instalación manual, véase [doc/install.md](doc/install.md).
+Para Windows 11 x64, véase [instaladores MSI](doc/windows.md).
 
 ## Uso
 

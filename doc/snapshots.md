@@ -186,3 +186,14 @@ Los comentarios inmediatamente anteriores a las adaptaciones genéricas señalan
 las extensiones propuestas a metarepo: opciones completas por snapshot, archivos por contenido y `%dir`.
 Las pruebas de construcción no sustituyen las pruebas gráficas por distribución
 registradas en [packages.md](packages.md).
+
+## Windows desde el mismo snapshot
+
+Los builders de Firmador y OpenSC añaden `windowsInstallerOptions` a cada
+snapshot existente. El mismo registro de fuente, versión y parches alimenta
+Linux y Windows. No agregues snapshots duplicados para Windows.
+`lib/publish-snapshots.nix` conserva la publicación Linux con su toolchain fijado
+y construye el MSI con `metarepo.mkMsiInstaller`. La selección por snapshot y
+la herencia de canales se delegan a `metarepo.mkPublication` mediante
+`snapshotOptions`; FDCR conserva únicamente la adaptación a los builders
+históricos y las opciones específicas de cada paquete. Véase [Windows](windows.md).

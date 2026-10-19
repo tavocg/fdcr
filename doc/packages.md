@@ -112,3 +112,9 @@ Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 | Fedora 44    | fedora     | ✅      |
 | Fedora 43    |            |         |
 | Arch Linux   | arch       | ✅      |
+
+## Windows
+
+`firmador`, `firmador-git`, `opensc` y `opensc-git` generan MSI para Windows 11
+x64. Consulta [instalación y construcción](windows.md). Las pruebas Linux de las
+tablas anteriores no certifican funcionamiento en Windows.

@@ -1,47 +1,70 @@
 {
   lib,
+  pkgs,
+  metarepo,
   package,
   repository,
 }:
 let
-  # metarepo.mkPublication should accept per-snapshot formats, overrides and
-  # payload builders. Currently snapshot.publication only merges flat mkPackage
-  # options. Dispatch separately so a Rust snapshot can coexist with Java ones.
-  publications = lib.mapAttrsToList (
-    _: snapshot:
+  # Keep historical Linux builders while metarepo handles snapshot selection
+  # and channel inheritance for every platform in a single publication.
+  publish = metarepo.mkPublication.override {
+    mkPackage =
+      args:
+      (args._artifactTransform or (x: x)) (
+        args._packageBuilder (
+          builtins.removeAttrs args [
+            "_packageBuilder"
+            "_artifactTransform"
+          ]
+        )
+      );
+  };
+in
+publish {
+  inherit repository;
+  package = package // {
+    passthru = (package.passthru or { }) // {
+      inherit (package) snapshots;
+    };
+  };
+  snapshotOptions =
+    snapshot:
     let
       options = snapshot.nativePublication;
-      publication = snapshot.snapshotMetarepo.mkPublication (
-        {
-          inherit repository;
-          package = snapshot;
-          channels =
-            options.channels
-              or (builtins.attrNames (lib.filterAttrs (_: config: !(config ? inherits)) repository.channels));
-        }
-        // builtins.removeAttrs options [ "artifactTransforms" ]
-      );
+      resolve = value: if builtins.isFunction value then value snapshot else value;
+      windows =
+        repository.channels ? win
+        && pkgs.stdenv.hostPlatform.system == "x86_64-linux"
+        && snapshot ? windowsInstallerOptions;
     in
-    {
+    builtins.removeAttrs options [ "artifactTransforms" ]
+    // {
+      _packageBuilder = snapshot.snapshotMetarepo.mkPackage;
       channels =
-        let
-          own = lib.mapAttrs (
-            channel: artifacts: map ((options.artifactTransforms or { }).${channel} or (x: x)) artifacts
-          ) publication.channels;
-          # Distro-specific channels reuse existing packages unless the snapshot
-          # explicitly supplies an artifact for that channel (as OpenSC does).
-          inherited = lib.filterAttrs (
-            name: config:
-            config ? inherits && !(builtins.hasAttr name own) && builtins.hasAttr config.inherits own
-          ) repository.channels;
-        in
-        own // lib.mapAttrs (_: config: own.${config.inherits}) inherited;
-    }
-  ) package.snapshots;
-  channels = lib.unique (lib.concatMap (p: builtins.attrNames p.channels) publications);
-in
-{
-  channels = lib.genAttrs channels (
-    channel: lib.concatMap (p: p.channels.${channel} or [ ]) publications
-  );
+        (options.channels or (builtins.attrNames (
+          lib.filterAttrs (_: config: !(config ? inherits) && config.format != "msi") repository.channels
+        ))
+        )
+        ++ lib.optional windows "win";
+      overrides = lib.recursiveUpdate (resolve (options.overrides or { })) (
+        lib.mapAttrs (_: transform: { _artifactTransform = transform; }) (options.artifactTransforms or { })
+      );
+      formats =
+        (resolve (options.formats or { }))
+        // lib.optionalAttrs windows {
+          msi = {
+            _packageBuilder = metarepo.mkPackage;
+            architecture = "x64";
+            payload = pkgs.emptyDirectory;
+            hooks = { };
+            # Preserve the existing MSI catalog metadata.
+            description = "";
+            homepage = "";
+            maintainer = "";
+            license = "";
+            installer = metarepo.mkMsiInstaller snapshot.windowsInstallerOptions;
+          };
+        };
+    };
 }

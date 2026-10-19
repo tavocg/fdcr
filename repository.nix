@@ -4,6 +4,10 @@
   label = "Paquetes de firma digital para Costa Rica";
   url = "https://tavocg.github.io/fdcr";
   channels = {
+    win = {
+      format = "msi";
+      releases = [ "windows11" ];
+    };
     jammy = {
       format = "apt";
       releases = [ "ubuntu2204" ];
