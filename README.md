@@ -5,14 +5,10 @@ Repositorio de dependencias para Firma Digital en Costa Rica.
 > [!NOTE]
 > Fase beta del repositorio, podrían haber cambios que rompan compatibilidad.
 
-- `firmador`
-- `firmador-git`
-- `opensc`
-- `opensc-git`
-- `bccr-gaudi`
-- `bccr-certs`
-- `idopte-p11`
-- `idopte-scmanager`
+- Firmador Libre: `firmador` y `firmador-git`
+- OpenSC parcheado para funcionar con JCOP3/4 del BCCR: `opensc` y `opensc-git`
+- Agente GAUDI y certificados del BCCR: `bccr-gaudi` y `bccr-certs`
+- Middleware Idopte: `idopte-p11` y `idopte-scmanager`
 
 ## Instalación
 
