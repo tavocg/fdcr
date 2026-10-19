@@ -30,11 +30,11 @@ Para instalación manual, véase [doc/install.md](doc/install.md).
 sudo apt install firmador opensc
 
 # Fedora
-sudo dnf install firmador ccid
-sudo dnf install --repo=fdcr opensc --allowerasing
+sudo dnf install ccid firmador
+sudo dnf upgrade --from-repo=fdcr opensc --best --allowerasing
 
 # Arch
-sudo pacman -S firmador fdcr/opensc ccid
+sudo pacman -S ccid firmador fdcr/opensc
 sudo systemctl enable --now pcscd.{socket,service}
 ```
 
