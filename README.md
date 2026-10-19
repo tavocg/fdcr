@@ -1,8 +1,10 @@
 # fdcr (ALPHA)
 
-Repositorio de dependencias para Firma Digital en Costa Rica.
+> [!WARNING]
+> No usar en producción todavía, actualmente este repositorio se encuentra en
+> fase de pruebas.
 
-Actualmente ofrece:
+Repositorio de dependencias para Firma Digital en Costa Rica.
 
 - `firmador`
 - `firmador-git`
@@ -12,19 +14,6 @@ Actualmente ofrece:
 - `bccr-certs`
 - `idopte-p11`
 - `idopte-scmanager`
-
-También publica un módulo NixOS (`nixosModules.default`) que adapta el middleware
-y SCManager; véase [doc/nixos.md](doc/nixos.md).
-
-Para usar SCManager y Firmador desde un perfil o devShell, véase
-[uso con Nix](doc/nix.md). Ambos incluyen el middleware Idopte.
-
-Consulta el [estado de la paquetería](doc/packages.md) y las
-[recetas de OpenSC](packages/opensc/README.md).
-
-> [!WARNING]
-> No usar en producción todavía, actualmente este repositorio se encuentra en
-> fase de pruebas.
 
 ## Instalación
 
@@ -48,6 +37,15 @@ sudo dnf install --repo=fdcr opensc
 sudo pacman -S firmador fdcr/opensc ccid
 sudo systemctl enable --now pcscd.{socket,service}
 ```
+
+También publica un módulo NixOS (`nixosModules.default`) que adapta el middleware
+y SCManager; véase [doc/nixos.md](doc/nixos.md).
+
+Para usar SCManager y Firmador desde un perfil o devShell, véase
+[uso con Nix](doc/nix.md). Ambos incluyen el middleware Idopte.
+
+Consulta el [estado de la paquetería](doc/packages.md) y las
+[recetas de OpenSC](packages/opensc/README.md).
 
 ## Desarrollo
 
