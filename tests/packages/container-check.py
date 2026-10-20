@@ -18,6 +18,8 @@ arch = target == 'arch'
 suse = target.startswith('opensuse')
 os.environ['DEBIAN_FRONTEND'] = 'noninteractive'
 report = {'target': target, 'os_release': Path('/etc/os-release').read_text(), 'cases': [], 'passed': False}
+if Path('/etc/linuxmint/info').exists():
+    report['mint_info'] = Path('/etc/linuxmint/info').read_text()
 try:
     if apt:
         print(run('apt-get', 'update'), flush=True)

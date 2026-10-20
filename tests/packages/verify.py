@@ -10,6 +10,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('channels', type=Path)
 parser.add_argument('results', type=Path)
 parser.add_argument('--targets', nargs='+')
+parser.add_argument('--jobs', type=int, default=2)
 parser.add_argument('--images', type=Path, help='Optional target-to-image mapping')
 args = parser.parse_args()
 channels = json.loads(args.channels.read_text())
@@ -50,12 +51,18 @@ def check(target):
         '-v', f'{directory}:/results', '-v', f'{script}:/check.py:ro', image,
         'python3', '/check.py', target], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     (directory / 'installation.log').write_text(process.stdout)
+    report_path = directory / 'result.json'
+    report = json.loads(report_path.read_text()) if report_path.exists() else {'target': target, 'passed': False}
+    report['image'] = image
+    report['image_id'] = subprocess.check_output(['docker', 'image', 'inspect', '--format', '{{.Id}}', image], text=True).strip()
+    report['artifacts'] = channels[target_channels[target]]
+    report_path.write_text(json.dumps(report, indent=2) + '\n')
     print(target, 'PASS' if process.returncode == 0 else 'FAIL', flush=True)
     if process.returncode:
         print('\n'.join(process.stdout.splitlines()[-12:]), flush=True)
     return process.returncode == 0
 
-with ThreadPoolExecutor(max_workers=4) as pool:
+with ThreadPoolExecutor(max_workers=args.jobs) as pool:
     passed = list(pool.map(check, args.targets or list(target_channels)))
 reports = [json.loads(p.read_text()) for p in sorted(results.glob('*/result.json'))]
 (results / 'summary.json').write_text(json.dumps(reports, indent=2) + '\n')
