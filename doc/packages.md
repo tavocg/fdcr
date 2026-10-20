@@ -78,8 +78,6 @@ directorio. `packages/firmador-git/snapshots.nix` registra esas recetas;
 ## `bccr-gaudi`
 
 Artifacts registrados en `artifacts/bccr/2026-10-20/` (Git LFS).
-La receta conserva comentadas las referencias para reincorporarlos después.
-Las pruebas de la tabla corresponden al estado anterior a su retiro.
 
 Agente GAUDI del Banco Central de Costa Rica.
 
@@ -97,8 +95,6 @@ Agente GAUDI del Banco Central de Costa Rica.
 ## `bccr-certs`
 
 Artifacts registrados en `artifacts/bccr-certs-26.08/` (Git LFS).
-La receta conserva comentadas las referencias para reincorporarlos después.
-Las pruebas de la tabla corresponden al estado anterior a su retiro.
 
 Certificados de la jerarquía nacional de Firma Digital de Costa Rica.
 

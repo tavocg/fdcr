@@ -7,4 +7,8 @@ in
     build = ./builders/2026-10-11/build.nix;
     publication = ./builders/2026-10-11/publication.nix;
   };
+  artifacts_2026_10_20 = mkBuilder {
+    build = ./builders/2026-10-11/build.nix;
+    publication = ./builders/2026-10-20/publication.nix;
+  };
 }

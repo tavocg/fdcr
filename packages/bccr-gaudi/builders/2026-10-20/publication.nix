@@ -1,6 +1,13 @@
 { lib, package }:
 {
-  options = {
+  options = rec {
+    channels = [
+      "jammy"
+      "noble"
+      "fedora"
+      "opensuse"
+      "arch"
+    ];
     payload = package.payload;
     maintainer = "Banco Central de Costa Rica";
     license = "LicenseRef-Proprietary";
@@ -15,8 +22,10 @@
       payload = (package.override { ubuntuRelease = "jammy"; }).payload;
       depends = package.dependencies.jammy;
     };
+    overrides.opensuse.depends = package.dependencies.opensuse;
     # metarepo.mkDnf should expose declarative %dir entries. jpackage queries
     # rpm -ql to find app/runtime; metarepo still lists only files and symlinks.
+    artifactTransforms.opensuse = artifactTransforms.fedora;
     artifactTransforms.fedora =
       artifact:
       artifact.overrideAttrs (old: {

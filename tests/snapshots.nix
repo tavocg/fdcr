@@ -146,14 +146,33 @@ let
 in
 # All supported Linux packages must remain active.
 assert
-  builtins.attrNames actual == [
+  builtins.attrNames actual == (lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux") [
     "bccr-certs"
     "bccr-gaudi"
+  ])
+  ++ [
     "firmador"
     "firmador-git"
     "opensc"
     "opensc-git"
   ];
+# These publications have distro-specific dependencies/hooks; aliasing Fedora
+# silently drops the openSUSE overrides even when the native packages build.
+assert lib.all
+  (
+    name:
+    lib.all (
+      snapshot: actual.${name}.${snapshot}.channels.opensuse != actual.${name}.${snapshot}.channels.fedora
+    ) (builtins.attrNames actual.${name})
+  )
+  (
+    builtins.filter (name: builtins.hasAttr name actual) [
+      "firmador"
+      "firmador-git"
+      "bccr-certs"
+      "bccr-gaudi"
+    ]
+  );
 assert lib.assertMsg historicalUnchanged
   "FDCR: a historical recipe changed; add a new builder/snapshot instead";
 assert before.snapshots."2026-10-11".drvPath == after.snapshots."2026-10-11".drvPath;

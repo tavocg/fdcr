@@ -4,7 +4,7 @@ let
   builders = callPackage ../builders.nix { };
 in
 {
-  builder = builders.artifacts_2026_10_11;
+  builder = builders.artifacts_2026_10_20;
   source = (callPackage ./source.nix { }).src;
   version = "2026.10.20";
   dependencies = import ./dependencies.nix;

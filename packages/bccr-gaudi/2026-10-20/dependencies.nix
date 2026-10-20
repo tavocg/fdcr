@@ -97,6 +97,33 @@
     "xdg-utils"
     "zlib"
   ];
+  # RPM library capabilities resolve to the native openSUSE package names.
+  opensuse = [
+    "libasound.so.2()(64bit)"
+    "libatk-1.0.so.0()(64bit)"
+    "libcairo.so.2()(64bit)"
+    "libfontconfig.so.1()(64bit)"
+    "libfreetype.so.6()(64bit)"
+    "libc.so.6()(64bit)"
+    "libgdk_pixbuf-2.0.so.0()(64bit)"
+    "libglib-2.0.so.0()(64bit)"
+    "libgtk-x11-2.0.so.0()(64bit)"
+    "libgtk-3.so.0()(64bit)"
+    "libX11.so.6()(64bit)"
+    "libXext.so.6()(64bit)"
+    "libXi.so.6()(64bit)"
+    "libXrender.so.1()(64bit)"
+    "libXtst.so.6()(64bit)"
+    "libXxf86vm.so.1()(64bit)"
+    "libGL.so.1()(64bit)"
+    "libgcc_s.so.1()(64bit)"
+    "libstdc++.so.6()(64bit)"
+    "libpango-1.0.so.0()(64bit)"
+    "libpcsclite.so.1()(64bit)"
+    "libz.so.1()(64bit)"
+    "pcsc-lite"
+    "xdg-utils"
+  ];
   pacman = [
     "alsa-lib"
     "at-spi2-core"

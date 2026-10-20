@@ -28,6 +28,13 @@ cada resultado junto al identificador de imagen y las rutas de los artifacts.
 
 Los contenedores son desechables. `--jobs` limita el paralelismo (2 por defecto).
 Cada distro conserva `installation.log` y `result.json`; `summary.json` reúne
-los resultados. Los artifacts se copian o enlazan dentro de la carpeta de
-resultados y se montan en modo lectura. Cada repetición debe usar una carpeta
+los resultados. Los artifacts se montan directamente desde el store en modo lectura, sin
+copiar los binarios a la carpeta de resultados. Cada repetición debe usar una carpeta
 nueva para evitar reutilizar resultados o archivos de una ejecución anterior.
+
+Las correcciones de la auditoría incluyen quitar `libpcre3` de GAUDI 30.0, dependencias
+RPM específicas de openSUSE (bibliotecas y epoch de Java), y rutas y hooks nativos
+de confianza para los certificados en openSUSE. Los snapshots históricos permanecen
+sin cambios. La prueba inspecciona los bundles generados para los distintos usos
+(TLS, correo y firma de código), sin exigir que una raíz de firma de código sea
+una raíz TLS.

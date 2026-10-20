@@ -8,4 +8,9 @@ in
     windows = ./builders/2026-10-19/windows.nix;
     publication = ./builders/2026-10-11/publication.nix;
   };
+  java_2026_10_20 = mkBuilder {
+    build = ./builders/2026-10-11/build.nix;
+    windows = ./builders/2026-10-19/windows.nix;
+    publication = ./builders/2026-10-20/publication.nix;
+  };
 }
