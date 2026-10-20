@@ -144,9 +144,11 @@ let
     package = after;
   };
 in
-# Artifact removal must leave all four supported packages active.
+# All supported Linux packages must remain active.
 assert
   builtins.attrNames actual == [
+    "bccr-certs"
+    "bccr-gaudi"
     "firmador"
     "firmador-git"
     "opensc"

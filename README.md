@@ -7,8 +7,7 @@ Repositorio de dependencias para Firma Digital en Costa Rica.
 
 - Firmador Libre: `firmador`, `firmador-git`
 - OpenSC parcheado para funcionar con JCOP3/4 del BCCR: `opensc`, `opensc-git`
-- Agente GAUDI y certificados del BCCR: `bccr-gaudi`, `bccr-certs`
-  (construcción suspendida hasta reincorporar los artifacts).
+- Agente GAUDI y certificados del BCCR: `bccr-gaudi`, `bccr-certs`.
 
 ## Instalación
 

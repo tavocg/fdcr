@@ -18,9 +18,8 @@ else
         module
         {
           services.fdcr.enable = true;
-          # Restore these integration checks with the BCCR artifacts.
-          # services.fdcr.certificates.enable = true;
-          # services.fdcr.gaudi.enable = true;
+          services.fdcr.certificates.enable = true;
+          services.fdcr.gaudi.enable = true;
 
           nixpkgs.config.allowUnfreePredicate =
             package:

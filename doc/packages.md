@@ -77,7 +77,7 @@ directorio. `packages/firmador-git/snapshots.nix` registra esas recetas;
 
 ## `bccr-gaudi`
 
-Construcción temporalmente suspendida: se retiraron los artifacts del BCCR.
+Artifacts registrados en `artifacts/bccr/2026-10-20/` (Git LFS).
 La receta conserva comentadas las referencias para reincorporarlos después.
 Las pruebas de la tabla corresponden al estado anterior a su retiro.
 
@@ -96,7 +96,7 @@ Agente GAUDI del Banco Central de Costa Rica.
 
 ## `bccr-certs`
 
-Construcción temporalmente suspendida: se retiraron los artifacts del BCCR.
+Artifacts registrados en `artifacts/bccr-certs-26.08/` (Git LFS).
 La receta conserva comentadas las referencias para reincorporarlos después.
 Las pruebas de la tabla corresponden al estado anterior a su retiro.
 
