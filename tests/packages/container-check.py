@@ -17,7 +17,7 @@ apt = target in ('jammy', 'noble', 'debian13', 'ubuntu2604', 'linuxmint223', 'li
 arch = target == 'arch'
 suse = target.startswith('opensuse')
 os.environ['DEBIAN_FRONTEND'] = 'noninteractive'
-report = {'target': target, 'cases': [], 'passed': False}
+report = {'target': target, 'os_release': Path('/etc/os-release').read_text(), 'cases': [], 'passed': False}
 try:
     if apt:
         print(run('apt-get', 'update'), flush=True)
@@ -47,12 +47,13 @@ try:
         for name in names:
             if apt:
                 assert run('dpkg-query', '-W', '-f=${Status}', name).strip() == 'install ok installed'
+                assert run('dpkg-query', '-W', '-f=${Version}', name).strip() == run('dpkg-deb', '-f', '/artifacts/' + packages[name], 'Version').strip()
                 files = run('dpkg-query', '-L', name).splitlines()
             elif arch:
-                run('pacman', '-Q', name)
+                assert run('pacman', '-Q', name).strip() == run('pacman', '-Qp', '/artifacts/' + packages[name]).strip()
                 files = run('pacman', '-Qlq', name).splitlines()
             else:
-                run('rpm', '-q', name)
+                assert run('rpm', '-q', '--qf', '%{VERSION}-%{RELEASE}', name) == run('rpm', '-qp', '--qf', '%{VERSION}-%{RELEASE}', '/artifacts/' + packages[name])
                 files = run('rpm', '-ql', name).splitlines()
             owned[name] = [p for p in files if Path(p).is_file() or Path(p).is_symlink()]
             assert owned[name], name
