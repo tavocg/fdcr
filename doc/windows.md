@@ -28,6 +28,23 @@ seleccionar otra instalación de OpenSC con `LIBASEP11`. Firmador y Firmador Git
 La versión estable registra el protocolo `firmador:`; Git no lo reemplaza.
 Las actualizaciones del runtime incluido requieren reconstruir el MSI.
 
+## Diagnóstico
+
+Si aparece `Unable to access jarfile /C:/Program Files/FDCR/firmador/firmador.jar`,
+la instalación está completa pero una versión anterior de Firmador 1.9.8 se
+relanzaba con una ruta tipo URL. Actualice al MSI con release 3 o superior.
+
+El lanzador comprueba OpenSC antes de iniciar Java en
+`%ProgramW6432%\FDCR\opensc\bin\opensc-pkcs11.dll`, o en la ruta indicada por
+`LIBASEP11`. Si el archivo falta, muestra un mensaje en vez del error de Java.
+Para verificar la instalación:
+
+```powershell
+Get-Item "$env:ProgramFiles\FDCR\opensc\bin\opensc-pkcs11.dll"
+& "$env:ProgramFiles\FDCR\opensc\bin\pkcs11-tool.exe" --list-slots
+Get-ChildItem "$env:ProgramFiles\FDCR\firmador"
+```
+
 ## Construcción y validación en Linux
 
 ```sh

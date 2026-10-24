@@ -1,0 +1,18 @@
+Use a filesystem path instead of a URL path when relaunching the JVM.
+
+`URL.toURI().getPath()` returns a leading slash on Windows (for example
+`/C:/Program Files/FDCR/firmador/firmador.jar`). Passing that to `java -jar`
+makes the JVM report "Unable to access jarfile" and the application never
+starts. `Paths.get(URI)` converts the file URL to the platform path.
+
+--- a/src/main/java9/Firmador.java
++++ b/src/main/java9/Firmador.java
+@@ -57,7 +57,7 @@
+         String[] arguments = ProcessHandle.current().info().arguments().orElse(new String[0]);
+         if (arguments.length == 0) {
+             command.add("-jar");
+-            command.add(MethodHandles.lookup().lookupClass().getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
++            command.add(java.nio.file.Paths.get(MethodHandles.lookup().lookupClass().getProtectionDomain().getCodeSource().getLocation().toURI()).toString());
+         }
+         command.add("--add-exports");
+         command.add("jdk.crypto.cryptoki/sun.security.pkcs11.wrapper=ALL-UNNAMED");

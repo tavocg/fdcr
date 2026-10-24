@@ -29,11 +29,19 @@ for name, installer in installers.items():
     if name.startswith('firmador'):
         assert any(p.name == name + '.exe' for p in binaries)
         assert any(p.name == 'javaw.exe' for p in binaries)
+        launcher = next(p for p in binaries if p.name == name + '.exe')
+        # The launcher must pass the Java 21 option and "run" so Firmador
+        # does not relaunch itself through its Windows-incompatible path.
+        assert '--add-exports'.encode('utf-16-le') in launcher.read_bytes()
         jar = next(p for p in files if p.name == 'firmador.jar')
         with zipfile.ZipFile(jar) as archive:
             assert archive.testzip() is None
             signer = next(n for n in archive.namelist() if n.endswith('/CRSigner.class'))
             assert b'java.library.path' in archive.read(signer)
+            java21 = 'META-INF/versions/21/Firmador.class'
+            if java21 in archive.namelist():
+                # URL.getPath() yields /C:/... on Windows.
+                assert b'java/nio/file/Paths' in archive.read(java21)
     else:
         module = next(p for p in binaries if p.name == 'opensc-pkcs11.dll')
         assert any(p.name == 'opensc-tool.exe' for p in binaries)

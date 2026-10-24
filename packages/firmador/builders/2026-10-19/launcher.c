@@ -19,12 +19,15 @@ int WINAPI wWinMain(HINSTANCE a, HINSTANCE b, LPWSTR args, int show) {
     if (!wcsrchr(dll, L'\\')) return 1;
     *wcsrchr(dll, L'\\') = 0;
     swprintf_s(java, 32768, L"%ls\\runtime\\bin\\javaw.exe", root);
-    swprintf_s(command, 32768, L"\"%ls\" \"-Djava.library.path=%ls\" -jar \"%ls\\firmador.jar\" %ls", java, dll, root, args);
+    // Passing "run" makes Firmador skip its self-relaunch, which loses JVM
+    // options and builds the JAR path with URI.getPath() (invalid on Windows).
+    const wchar_t *run = (args == NULL || *args == 0) ? L"run" : L"";
+    swprintf_s(command, 32768, L"\"%ls\" \"-Djava.library.path=%ls\" --add-exports jdk.crypto.cryptoki/sun.security.pkcs11.wrapper=ALL-UNNAMED -jar \"%ls\\firmador.jar\" %ls %ls", java, dll, root, run, args);
     int argc;
     LPWSTR *argv = CommandLineToArgvW(GetCommandLineW(), &argc);
     if (argv && argc == 2 && wcsncmp(argv[1], L"firmador:", 9) == 0) {
         if (wcschr(argv[1], L'"')) { LocalFree(argv); return 1; }
-        swprintf_s(command, 32768, L"\"%ls\" \"-Djava.library.path=%ls\" \"-Djnlp.remoteOrigin=%ls\" -jar \"%ls\\firmador.jar\"", java, dll, argv[1] + 9, root);
+        swprintf_s(command, 32768, L"\"%ls\" \"-Djava.library.path=%ls\" \"-Djnlp.remoteOrigin=%ls\" --add-exports jdk.crypto.cryptoki/sun.security.pkcs11.wrapper=ALL-UNNAMED -jar \"%ls\\firmador.jar\" run", java, dll, argv[1] + 9, root);
     }
     LocalFree(argv);
     STARTUPINFOW si = { .cb = sizeof(si) };

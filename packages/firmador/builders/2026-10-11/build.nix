@@ -15,6 +15,8 @@
   # Firmador 1.9.8 no lee LIBASEP11, así que las recetas de Nix parchean la
   # fuente para admitir la variable de entorno.
   patches ? [ ],
+  # Parches propios de una snapshot, sin alterar las anteriores.
+  extraPatches ? [ ],
 }:
 let
   pinFile = import ../../../../lib/recipes/2026-10-11/pin-file.nix;
@@ -29,7 +31,7 @@ maven.buildMavenPackage {
 
   inherit src;
 
-  inherit patches;
+  patches = patches ++ extraPatches;
 
   postPatch = ''
     ${python3}/bin/python3 ${pinFile ./configure-pkcs11.py}
